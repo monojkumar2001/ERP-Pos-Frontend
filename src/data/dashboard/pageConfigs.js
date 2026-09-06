@@ -73,6 +73,7 @@ const OVERRIDES = {
   "/en/accounting/journals": {
     title: "Journals",
     module: "Accounting",
+    apiEndpoint: "/accounting/journals",
     addLabel: "Add Journal",
     hideFilterToggle: true,
     filters: [
@@ -118,6 +119,7 @@ const OVERRIDES = {
   "/en/accounting/expenses": {
     title: "Expenses",
     module: "Accounting",
+    apiEndpoint: "/accounting/expenses",
     addLabel: "Add Expense",
     hideFilterToggle: true,
     filters: [
@@ -166,6 +168,7 @@ const OVERRIDES = {
   "/en/accounting/incomes": {
     title: "Incomes",
     module: "Accounting",
+    apiEndpoint: "/accounting/incomes",
     addLabel: "Add Income",
     hideFilterToggle: true,
     filters: [
@@ -534,6 +537,23 @@ function buildPageConfigs() {
     }
   } catch (_) {
     /* generated file optional until scrape completes */
+  }
+
+  // Accounting list pages load from API (company-scoped)
+  const accountingApis = {
+    "/en/accounting/journals": "/accounting/journals",
+    "/en/accounting/expenses": "/accounting/expenses",
+    "/en/accounting/incomes": "/accounting/incomes",
+    "/en/accounting/transfer-money": "/accounting/transfers",
+    "/en/accounting/recurring-journal": "/accounting/recurring-journals",
+  };
+  for (const [href, endpoint] of Object.entries(accountingApis)) {
+    if (map[href]) {
+      map[href].apiEndpoint = endpoint;
+      map[href].module = "Accounting";
+      // Prefer live API rows over static mock
+      map[href].rows = [];
+    }
   }
 
   return map;

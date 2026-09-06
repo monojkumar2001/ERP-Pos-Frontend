@@ -55,3 +55,17 @@ export const authApi = {
   me: () => api("/me"),
   logout: () => api("/logout", { method: "POST" }),
 };
+
+export const accountingApi = {
+  dashboard: (params = {}) => {
+    const q = new URLSearchParams(params).toString();
+    return api(`/accounting/dashboard${q ? `?${q}` : ""}`);
+  },
+  accounts: () => api("/accounting/accounts"),
+  journals: () => api("/accounting/journals"),
+  expenses: () => api("/accounting/expenses"),
+  incomes: () => api("/accounting/incomes"),
+  transfers: () => api("/accounting/transfers"),
+  recurringJournals: () => api("/accounting/recurring-journals"),
+};
+

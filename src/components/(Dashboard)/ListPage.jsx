@@ -1,12 +1,53 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import PageHeader from "./PageHeader";
 import FilterBar from "./FilterBar";
 import DataTable from "./DataTable";
+import { api } from "../../lib/api";
 
 export default function ListPage({ config }) {
   const [showFilters, setShowFilters] = useState(true);
+  const [rows, setRows] = useState(config?.rows || []);
+  const [totalEntries, setTotalEntries] = useState(config?.totalEntries);
+  const [totalAmount, setTotalAmount] = useState(config?.totalAmount);
+  const [loading, setLoading] = useState(Boolean(config?.apiEndpoint));
+  const [error, setError] = useState("");
+
+  useEffect(() => {
+    if (!config?.apiEndpoint) {
+      setRows(config?.rows || []);
+      setTotalEntries(config?.totalEntries);
+      setTotalAmount(config?.totalAmount);
+      setLoading(false);
+      setError("");
+      return;
+    }
+
+    let cancelled = false;
+    setLoading(true);
+    setError("");
+
+    api(config.apiEndpoint)
+      .then((data) => {
+        if (cancelled) return;
+        setRows(data.rows || []);
+        setTotalEntries(data.totalEntries ?? (data.rows || []).length);
+        setTotalAmount(data.totalAmount);
+      })
+      .catch((err) => {
+        if (cancelled) return;
+        setError(err.message || "Failed to load data");
+        setRows([]);
+      })
+      .finally(() => {
+        if (!cancelled) setLoading(false);
+      });
+
+    return () => {
+      cancelled = true;
+    };
+  }, [config?.apiEndpoint, config?.title]);
 
   if (!config) {
     return (
@@ -29,13 +70,24 @@ export default function ListPage({ config }) {
         }
       />
       {showFilters && <FilterBar filters={config.filters || []} />}
-      <DataTable
-        columns={config.columns || []}
-        rows={config.rows || []}
-        totalEntries={config.totalEntries}
-        totalAmount={config.totalAmount}
-        amountKey={config.amountKey}
-      />
+      {error && (
+        <div className="mb-3 rounded border border-red-200 bg-red-50 px-3 py-2 text-[13px] text-red-700">
+          {error}
+        </div>
+      )}
+      {loading ? (
+        <div className="rounded-lg border border-slate-200 bg-white p-10 text-center text-slate-500">
+          Loading…
+        </div>
+      ) : (
+        <DataTable
+          columns={config.columns || []}
+          rows={rows}
+          totalEntries={totalEntries}
+          totalAmount={totalAmount}
+          amountKey={config.amountKey}
+        />
+      )}
     </div>
   );
 }
