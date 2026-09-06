@@ -43,11 +43,13 @@ export default function LoginPage() {
 
       router.push("/en/dashboard");
     } catch (err) {
-      const msg =
-        err instanceof ApiError
-          ? err.message
-          : "Login failed. Please try again.";
-      setError(msg);
+      if (err instanceof ApiError && err.data?.requires_verification) {
+        router.push(
+          `/account/verify?email=${encodeURIComponent(err.data.email || email.trim())}`
+        );
+        return;
+      }
+      setError(err instanceof ApiError ? err.message : "Login failed. Please try again.");
     } finally {
       setLoading(false);
     }
@@ -56,7 +58,7 @@ export default function LoginPage() {
   return (
     <AuthShell>
       <AuthCard>
-        <div className="mt-0 text-center">
+        <div className="text-center">
           <AuthLogo />
           <AuthText>
             Welcome back! Get started with Softifybd. No credit card required. Get 14

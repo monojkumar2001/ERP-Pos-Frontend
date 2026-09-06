@@ -125,7 +125,13 @@ export function AuthField({
   );
 }
 
-export function PasswordField({ id = "password", label = "Password", value, onChange }) {
+export function PasswordField({
+  id = "password",
+  label = "Password",
+  value,
+  onChange,
+  required = true,
+}) {
   const [show, setShow] = useState(false);
 
   return (
@@ -135,6 +141,7 @@ export function PasswordField({ id = "password", label = "Password", value, onCh
       type={show ? "text" : "password"}
       value={value}
       onChange={onChange}
+      required={required}
       rightSlot={
         <button
           type="button"

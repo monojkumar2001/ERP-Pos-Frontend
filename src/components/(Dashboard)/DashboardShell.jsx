@@ -1,11 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { usePathname, useRouter } from "next/navigation";
 import Sidebar from "./Sidebar";
 import Topbar from "./Topbar";
+import { isLoggedIn } from "../../lib/auth";
 
 export default function DashboardShell({ children }) {
+  const router = useRouter();
+  const pathname = usePathname();
   const [collapsed, setCollapsed] = useState(false);
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    if (!isLoggedIn()) {
+      router.replace(`/account/login?next=${encodeURIComponent(pathname || "/en/dashboard")}`);
+      return;
+    }
+    setReady(true);
+  }, [pathname, router]);
+
+  if (!ready) {
+    return (
+      <div className="flex min-h-screen items-center justify-center bg-[#f4f6f8] text-sm text-[#6c7a89]">
+        Checking session...
+      </div>
+    );
+  }
 
   return (
     <div

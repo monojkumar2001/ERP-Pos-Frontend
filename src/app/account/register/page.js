@@ -16,7 +16,6 @@ import {
   PrimaryButton,
 } from "../../../components/auth/AuthUI";
 import { authApi, ApiError } from "../../../lib/api";
-import { saveSession } from "../../../lib/auth";
 
 export default function RegisterPage() {
   const router = useRouter();
@@ -48,13 +47,8 @@ export default function RegisterPage() {
         country: form.country || null,
       });
 
-      saveSession({
-        token: data.token,
-        user: data.user,
-        company: data.company,
-      });
-
-      router.push("/en/dashboard");
+      const email = encodeURIComponent(data.email || form.email.trim());
+      router.push(`/account/verify?email=${email}`);
     } catch (err) {
       const msg =
         err instanceof ApiError

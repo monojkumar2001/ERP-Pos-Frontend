@@ -10,7 +10,8 @@ export class ApiError extends Error {
 }
 
 export async function api(path, { method = "GET", body, token, headers } = {}) {
-  const authToken = token ?? (typeof window !== "undefined" ? localStorage.getItem("erp_token") : null);
+  const authToken =
+    token ?? (typeof window !== "undefined" ? localStorage.getItem("erp_token") : null);
 
   const res = await fetch(`${API_URL}${path}`, {
     method,
@@ -44,6 +45,13 @@ export async function api(path, { method = "GET", body, token, headers } = {}) {
 export const authApi = {
   register: (payload) => api("/register", { method: "POST", body: payload }),
   login: (payload) => api("/login", { method: "POST", body: payload }),
+  verify: (payload) => api("/auth/verify", { method: "POST", body: payload }),
+  resendVerification: (payload) =>
+    api("/auth/resend-verification", { method: "POST", body: payload }),
+  forgotPassword: (payload) =>
+    api("/auth/forgot-password", { method: "POST", body: payload }),
+  resetPassword: (payload) =>
+    api("/auth/reset-password", { method: "POST", body: payload }),
   me: () => api("/me"),
   logout: () => api("/logout", { method: "POST" }),
 };
