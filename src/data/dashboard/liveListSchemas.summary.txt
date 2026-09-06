@@ -1,0 +1,23 @@
+Live list schemas scraped: 39 routes
+Generated overrides applied via liveOverrides.generated.json
+
+DONE (same-to-same columns/filters/titles):
+- Accounting: expenses, incomes, transfer-money, recurring-journal (+ journals/accounts/dash already)
+- Item: items, manufacturers, brands, price-list, colors, item-sizes, item-attributes
+- Customer: customer-types, customers
+- Sale: direct-sales, quotation, orders, deliveries, invoices, returns, batch-payments, payments, customer-debits, refunds
+- Purchase: supplier-types, suppliers, direct-purchases, requisitions, orders, receipts, bills, returns, batch-payments, payments, supplier-credits, refunds
+- Inventory: item-stock
+- HRM: employees
+- ACL: role, user
+
+REMAINING (still generic defaults — need live scrape next):
+- Item categories (tree UI on live)
+- POS: outlets, check-ins, counters, sessions, returns, outlet-access
+- Manufacturing list pages
+- Inventory: stock-adjustments, warehouse-transfer, receive-stock, warehouse-access
+- HRM setup/attendance/payroll/leave (except employees + attendance-sheet special)
+- Support tickets
+- Settings email/sms
+
+Re-run: node src/data/dashboard/applyLiveSchemas.mjs after updating liveListSchemas.json

@@ -190,11 +190,12 @@ export function PhoneField({ value, onChange, country, onCountryChange }) {
   );
 }
 
-export function PrimaryButton({ children, type = "submit" }) {
+export function PrimaryButton({ children, type = "submit", disabled = false }) {
   return (
     <button
       type={type}
-      className="mt-4 block h-12 w-full rounded-lg bg-[#00a78b] px-3 py-3 text-base font-medium leading-[1.5] text-white transition hover:bg-[#174f7d]"
+      disabled={disabled}
+      className="mt-4 block h-12 w-full rounded-lg bg-[#00a78b] px-3 py-3 text-base font-medium leading-[1.5] text-white transition hover:bg-[#174f7d] disabled:cursor-not-allowed disabled:opacity-60"
     >
       {children}
     </button>

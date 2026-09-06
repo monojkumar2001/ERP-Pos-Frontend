@@ -1487,5 +1487,863 @@
     "statuses": [
       "Active"
     ]
+  },
+  "/en/purchase/direct-purchases": {
+    "path": "/en/purchase/direct-purchases",
+    "title": "Direct Bills",
+    "addBtn": "Add Direct Bill",
+    "ths": [
+      "ORDER NUMBER",
+      "RECEIPT NUMBER",
+      "DATE",
+      "SUPPLIER",
+      "SUB TOTAL",
+      "TOTAL TAX",
+      "TOTAL DISCOUNT",
+      "GRAND TOTAL",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Status",
+        "multi": true,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 620 entries",
+    "totalAmt": "Grand Total ৳ 874,978.02",
+    "firstRows": [
+      [
+        "DP-000653",
+        "GRN-000793",
+        "6 Sep 2026",
+        "Rahim",
+        "৳ 77,500",
+        "৳ 0",
+        "৳ 0",
+        "৳ 77,500",
+        "Completed",
+        ""
+      ],
+      [
+        "DP-000652",
+        "GRN-000792",
+        "3 Sep 2026",
+        "Rahim",
+        "৳ 11,000",
+        "৳ 0",
+        "৳ 0",
+        "৳ 11,000",
+        "Completed",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Completed"
+    ]
+  },
+  "/en/purchase/requisitions": {
+    "path": "/en/purchase/requisitions",
+    "title": "Requisitions",
+    "addBtn": "Add New Requisition",
+    "ths": [
+      "REQUISITION NUMBER",
+      "REQUESTED BY",
+      "REQUESTED DATE",
+      "APPROVED DATE",
+      "AMOUNT",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 141 entries",
+    "totalAmt": "Grand Total ৳ 9,011,112.25",
+    "firstRows": [
+      [
+        "R-000141",
+        "biznify@softifybd.com",
+        "1 Sep 2026",
+        "1 Sep 2026",
+        "৳ 400",
+        "Closed",
+        ""
+      ],
+      [
+        "R-000140",
+        "demo@biznify.com.bd",
+        "13 Aug 2026",
+        "13 Aug 2026",
+        "৳ 40,000",
+        "Closed",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Closed",
+      "Approved",
+      "Draft"
+    ]
+  },
+  "/en/purchase/orders": {
+    "path": "/en/purchase/orders",
+    "title": "Orders",
+    "addBtn": "Add Order",
+    "ths": [
+      "ORDER NUMBER",
+      "DATE",
+      "SUPPLIER",
+      "TOTAL",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Order Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Order Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 208 entries",
+    "totalAmt": "Grand Total ৳ 8,712,276.5",
+    "firstRows": [
+      [
+        "PO-000208",
+        "1 Sep 2026",
+        "Rahim",
+        "৳ 400",
+        "Approved",
+        ""
+      ],
+      [
+        "PO-000207",
+        "1 Sep 2026",
+        "Rahim",
+        "৳ 400",
+        "Approved",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Approved",
+      "Draft",
+      "Received",
+      "Closed"
+    ]
+  },
+  "/en/purchase/receipts": {
+    "path": "/en/purchase/receipts",
+    "title": "Goods Received Notes",
+    "addBtn": "",
+    "ths": [
+      "RECEIPT NUMBER",
+      "ORDER NUMBER",
+      "DATE",
+      "SUPPLIER",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Receipt Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Receipt Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 759 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "GRN-000793",
+        "DP-000653",
+        "6 Sep 2026",
+        "Rahim",
+        "Not Billable",
+        ""
+      ],
+      [
+        "GRN-000792",
+        "DP-000652",
+        "3 Sep 2026",
+        "Rahim",
+        "Not Billable",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Not Billable",
+      "Billable"
+    ]
+  },
+  "/en/purchase/bills": {
+    "path": "/en/purchase/bills",
+    "title": "Bills",
+    "addBtn": "",
+    "ths": [
+      "BILL NUMBER",
+      "DATE",
+      "ORDER NUMBER",
+      "SUPPLIER",
+      "TOTAL",
+      "PAID",
+      "DUE",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Bill Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Bill Status",
+        "multi": true,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 727 entries",
+    "totalAmt": "Grand Total ৳ 936,778.02",
+    "firstRows": [
+      [
+        "BL-2026-000262",
+        "6 Sep 2026",
+        "DP-000653",
+        "Rahim",
+        "৳ 77,500",
+        "৳ 0",
+        "৳ 77,500",
+        "Unpaid",
+        ""
+      ],
+      [
+        "BL-2026-000261",
+        "3 Sep 2026",
+        "DP-000652",
+        "Rahim",
+        "৳ 11,000",
+        "৳ 11,000",
+        "৳ 0",
+        "Paid",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Unpaid",
+      "Paid",
+      "Partially Paid"
+    ]
+  },
+  "/en/purchase/returns": {
+    "path": "/en/purchase/returns",
+    "title": "Returns",
+    "addBtn": "",
+    "ths": [
+      "RETURN NUMBER",
+      "ORDER NUMBER",
+      "RETURN DATE",
+      "SUPPLIER",
+      "AMOUNT",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Return Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Return Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 58 entries",
+    "totalAmt": "Grand Total ৳ 75,606",
+    "firstRows": [
+      [
+        "PR-000070",
+        "DP-000607",
+        "30 Jul 2026",
+        "MR Trading",
+        "৳ 1,260",
+        "Approved",
+        ""
+      ],
+      [
+        "PR-000069",
+        "DP-000579",
+        "13 Jul 2026",
+        "Coca-Cola",
+        "৳ 100",
+        "Approved",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Approved"
+    ]
+  },
+  "/en/purchase/batch-payments": {
+    "path": "/en/purchase/batch-payments",
+    "title": "Batch Payment Log",
+    "addBtn": "",
+    "ths": [
+      "BATCH NUMBER",
+      "DATE",
+      "SUPPLIER",
+      "PAYMENT METHOD",
+      "PAID",
+      "DISCOUNT",
+      "TOTAL",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Payment Method",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Payment Method",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 90 entries",
+    "totalAmt": "Grand Total ৳ 502,458,258",
+    "firstRows": [
+      [
+        "B-000090",
+        "1 Sep 2026",
+        "Rahim",
+        "NRB Bank",
+        "৳ 199,240",
+        "৳ 0",
+        "৳ 199,240",
+        ""
+      ],
+      [
+        "B-000089",
+        "27 Aug 2026",
+        "hbehb",
+        "ক্যাশ",
+        "৳ 50,000",
+        "৳ 0",
+        "৳ 50,000",
+        ""
+      ]
+    ],
+    "statuses": []
+  },
+  "/en/purchase/payments": {
+    "path": "/en/purchase/payments",
+    "title": "Payments",
+    "addBtn": "",
+    "ths": [
+      "PAYMENT NUMBER",
+      "DATE",
+      "BILL NUMBER",
+      "BILL DATE",
+      "SUPPLIER",
+      "PAYMENT METHOD",
+      "PAID",
+      "DISCOUNT",
+      "TOTAL",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": true,
+    "placeholders": [
+      "Payment Method",
+      "Payment Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Payment Method",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Payment Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 540 entries",
+    "totalAmt": "Grand Total ৳ 774,340",
+    "firstRows": [
+      [
+        "PP-000560",
+        "3 Sep 2026",
+        "BL-2026-000261",
+        "3 Sep 2026",
+        "Rahim",
+        "ক্যাশ",
+        "৳ 11,000",
+        "৳ 0",
+        "৳ 11,000",
+        "Verified",
+        ""
+      ],
+      [
+        "PP-000559",
+        "2 Sep 2026",
+        "BL-2026-000260",
+        "2 Sep 2026",
+        "Rahim",
+        "Counter Cash",
+        "৳ 50,000",
+        "৳ 0",
+        "৳ 50,000",
+        "In-Process",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Verified",
+      "In-Process"
+    ]
+  },
+  "/en/purchase/supplier-credits": {
+    "path": "/en/purchase/supplier-credits",
+    "title": "Supplier Credits",
+    "addBtn": "Add Supplier Credit",
+    "ths": [
+      "CREDIT NUMBER",
+      "DATE",
+      "SUPPLIER",
+      "TYPE",
+      "REFERENCE",
+      "GRAND TOTAL",
+      "ADJUSTED AMOUNT",
+      "ADJUSTABLE AMOUNT",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Credit Status",
+      "Reference Type",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Credit Status",
+        "multi": true,
+        "values": []
+      },
+      {
+        "ph": "Reference Type",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 87 entries",
+    "totalAmt": "Grand Total ৳ 97,579",
+    "firstRows": [
+      [
+        "DM-2026-000026",
+        "30 Jul 2026",
+        "MR Trading",
+        "Purchase Return",
+        "PR-000070",
+        "৳ 1,260",
+        "৳ 0",
+        "৳ 1,260",
+        "Unpaid",
+        ""
+      ],
+      [
+        "DM-2026-000025",
+        "13 Jul 2026",
+        "Coca-Cola",
+        "Purchase Return",
+        "PR-000069",
+        "৳ 100",
+        "৳ 0",
+        "৳ 100",
+        "Unpaid",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Unpaid",
+      "Paid",
+      "Partially Paid"
+    ]
+  },
+  "/en/purchase/refunds": {
+    "path": "/en/purchase/refunds",
+    "title": "Purchase Refunds",
+    "addBtn": "",
+    "ths": [
+      "REFUND NUMBER",
+      "DATE",
+      "SUPPLIER",
+      "PAYMENT METHOD",
+      "REFUNDED TO",
+      "AMOUNT REFUNDED",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Refunded To",
+      "Payment Method",
+      "Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Refunded To",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Payment Method",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 5 of 5 entries",
+    "totalAmt": "Grand Total ৳ 10,020",
+    "firstRows": [
+      [
+        "PRF-000005",
+        "10 Jun 2026",
+        "Masud Rahman",
+        "ক্যাশ",
+        "Biznify Dev Team",
+        "৳ 2,000",
+        "Refunded",
+        ""
+      ],
+      [
+        "PRF-000004",
+        "24 Feb 2026",
+        "ash bazar",
+        "Green it cash",
+        "Demo",
+        "৳ 2,000",
+        "Refunded",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Refunded"
+    ]
+  },
+  "/en/inventory/item-stock": {
+    "path": "/en/inventory/item-stock",
+    "title": "Item Stock Summary",
+    "addBtn": "",
+    "ths": [
+      "ITEM",
+      "CODE",
+      "GROUP",
+      "BRAND",
+      "AVAILABLE STOCK",
+      "LOW STOCK",
+      "STATUS"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Search",
+      "Select Item Manufacturer",
+      "Select Item Brand",
+      "Warehouses",
+      "Select Status"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Select Item Manufacturer",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Item Brand",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Warehouses",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Status",
+        "multi": false,
+        "values": [
+          "Active"
+        ]
+      }
+    ],
+    "footer": "Showing 1 to 25 of 4551 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "TP Link",
+        "I-004787",
+        "N/A",
+        "TP Link",
+        "49 pc",
+        "10 pc",
+        "Active"
+      ],
+      [
+        "Vsol-Xpon-ONU",
+        "I-004786",
+        "N/A",
+        "N/A",
+        "9 pc",
+        "0 pc",
+        "Active"
+      ]
+    ],
+    "statuses": [
+      "Active"
+    ]
+  },
+  "/en/hrm/employee/employees": {
+    "path": "/en/hrm/employee/employees",
+    "title": "Employees",
+    "addBtn": "Add Employee",
+    "ths": [
+      "CODE",
+      "NAME",
+      "DEPARTMENT",
+      "POSITION",
+      "EMPLOYMENT TYPE",
+      "EMAIL",
+      "PHONE NUMBER",
+      "JOINING DATE",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": true,
+    "placeholders": [
+      "Select Employee Type",
+      "Select Department",
+      "Select Employment Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Select Employee Type",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Department",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Employment Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 73 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "116",
+        "Anik Chowdhury",
+        "Sales",
+        "Sales",
+        "Full Time",
+        "anik.softifybd@gmail.com",
+        "01894431223",
+        "1 Aug 2026",
+        "Active",
+        ""
+      ],
+      [
+        "0003",
+        "Showmik Hossain",
+        "Digital Marketing",
+        "Sales",
+        "Full Time",
+        "showmik@gmail.coom",
+        "01700000000",
+        "1 Jun 2026",
+        "Active",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Active"
+    ]
+  },
+  "/en/acl/role/index": {
+    "path": "/en/acl/role/index",
+    "title": "Roles",
+    "addBtn": "Create Role",
+    "ths": [
+      "ROLE NAME",
+      "REDIRECT URL",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [],
+    "ngSelects": [],
+    "footer": "Showing 1 to 25 of 44 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "Administrator",
+        "/dashboard",
+        ""
+      ],
+      [
+        "Minhaj",
+        "/accounting/dashboard",
+        ""
+      ]
+    ],
+    "statuses": []
+  },
+  "/en/acl/user/index": {
+    "path": "/en/acl/user/index",
+    "title": "Users",
+    "addBtn": "",
+    "ths": [
+      "EMAIL",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [],
+    "ngSelects": [],
+    "footer": "Showing 1 to 22 of 22 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "dev.biznify@softifybd.com",
+        "Active",
+        ""
+      ],
+      [
+        "demo@biznify.com.bd",
+        "Active",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Active",
+      "Inactive"
+    ]
   }
 }

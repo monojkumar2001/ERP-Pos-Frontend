@@ -988,6 +988,7 @@
     },
     "/en/sales/sales-deliveries": {
       "title": "Sales Deliveries",
+      "addLabel": "",
       "hideFilterToggle": true,
       "filters": [
         {
@@ -1081,6 +1082,7 @@
     },
     "/en/sales/sales-invoices": {
       "title": "Sales Invoices",
+      "addLabel": "",
       "hideFilterToggle": true,
       "filters": [
         {
@@ -1181,6 +1183,7 @@
     },
     "/en/sales/sales-returns": {
       "title": "Returns",
+      "addLabel": "",
       "hideFilterToggle": true,
       "filters": [
         {
@@ -1260,6 +1263,7 @@
     },
     "/en/sales/batch-payments": {
       "title": "Batch Payments Log",
+      "addLabel": "",
       "hideFilterToggle": true,
       "filters": [
         {
@@ -1342,6 +1346,7 @@
     },
     "/en/sales/sales-payments": {
       "title": "Payments",
+      "addLabel": "",
       "hideFilterToggle": true,
       "filters": [
         {
@@ -1542,6 +1547,7 @@
     },
     "/en/sales/refunds": {
       "title": "Sales Refunds",
+      "addLabel": "",
       "hideFilterToggle": true,
       "filters": [
         {
@@ -1708,6 +1714,1063 @@
         }
       ],
       "totalEntries": 147
+    },
+    "/en/purchase/direct-purchases": {
+      "title": "Direct Bills",
+      "addLabel": "Add Direct Bill",
+      "hideFilterToggle": true,
+      "filters": [
+        {
+          "key": "status",
+          "label": "Status",
+          "type": "multiselect",
+          "placeholder": "Status",
+          "options": [
+            "Approved",
+            "Draft"
+          ],
+          "defaultValue": []
+        },
+        {
+          "key": "range",
+          "label": "Select Range",
+          "placeholder": "Select Range",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Month",
+            "Last Month",
+            "This Year",
+            "Last Year",
+            "Custom"
+          ]
+        },
+        {
+          "key": "from",
+          "label": "From Date",
+          "type": "date",
+          "placeholder": "From Date"
+        },
+        {
+          "key": "to",
+          "label": "To Date",
+          "type": "date",
+          "placeholder": "To Date"
+        }
+      ],
+      "columns": [
+        {
+          "key": "order_number",
+          "label": "ORDER NUMBER",
+          "type": "link"
+        },
+        {
+          "key": "receipt_number",
+          "label": "RECEIPT NUMBER",
+          "type": "link"
+        },
+        {
+          "key": "date",
+          "label": "DATE"
+        },
+        {
+          "key": "supplier",
+          "label": "SUPPLIER"
+        },
+        {
+          "key": "sub_total",
+          "label": "SUB TOTAL"
+        },
+        {
+          "key": "total_tax",
+          "label": "TOTAL TAX"
+        },
+        {
+          "key": "total_discount",
+          "label": "TOTAL DISCOUNT"
+        },
+        {
+          "key": "grand_total",
+          "label": "GRAND TOTAL"
+        },
+        {
+          "key": "status",
+          "label": "STATUS",
+          "type": "status"
+        },
+        {
+          "key": "action",
+          "label": "ACTION",
+          "type": "action"
+        }
+      ],
+      "totalEntries": 620,
+      "totalAmount": "৳ 874,978.02",
+      "amountKey": "sub_total"
+    },
+    "/en/purchase/requisitions": {
+      "title": "Requisitions",
+      "addLabel": "Add New Requisition",
+      "hideFilterToggle": true,
+      "filters": [
+        {
+          "key": "status",
+          "label": "Status",
+          "placeholder": "Status"
+        },
+        {
+          "key": "range",
+          "label": "Select Range",
+          "placeholder": "Select Range",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Month",
+            "Last Month",
+            "This Year",
+            "Last Year",
+            "Custom"
+          ]
+        },
+        {
+          "key": "from",
+          "label": "From Date",
+          "type": "date",
+          "placeholder": "From Date"
+        },
+        {
+          "key": "to",
+          "label": "To Date",
+          "type": "date",
+          "placeholder": "To Date"
+        }
+      ],
+      "columns": [
+        {
+          "key": "requisition_number",
+          "label": "REQUISITION NUMBER",
+          "type": "link"
+        },
+        {
+          "key": "requested_by",
+          "label": "REQUESTED BY"
+        },
+        {
+          "key": "requested_date",
+          "label": "REQUESTED DATE"
+        },
+        {
+          "key": "approved_date",
+          "label": "APPROVED DATE"
+        },
+        {
+          "key": "amount",
+          "label": "AMOUNT"
+        },
+        {
+          "key": "status",
+          "label": "STATUS",
+          "type": "status"
+        },
+        {
+          "key": "action",
+          "label": "ACTION",
+          "type": "action"
+        }
+      ],
+      "totalEntries": 141,
+      "totalAmount": "৳ 9,011,112.25",
+      "amountKey": "amount"
+    },
+    "/en/purchase/orders": {
+      "title": "Orders",
+      "addLabel": "Add Order",
+      "hideFilterToggle": true,
+      "filters": [
+        {
+          "key": "order_status",
+          "label": "Order Status",
+          "placeholder": "Order Status"
+        },
+        {
+          "key": "range",
+          "label": "Select Range",
+          "placeholder": "Select Range",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Month",
+            "Last Month",
+            "This Year",
+            "Last Year",
+            "Custom"
+          ]
+        },
+        {
+          "key": "from",
+          "label": "From Date",
+          "type": "date",
+          "placeholder": "From Date"
+        },
+        {
+          "key": "to",
+          "label": "To Date",
+          "type": "date",
+          "placeholder": "To Date"
+        }
+      ],
+      "columns": [
+        {
+          "key": "order_number",
+          "label": "ORDER NUMBER",
+          "type": "link"
+        },
+        {
+          "key": "date",
+          "label": "DATE"
+        },
+        {
+          "key": "supplier",
+          "label": "SUPPLIER"
+        },
+        {
+          "key": "total",
+          "label": "TOTAL"
+        },
+        {
+          "key": "status",
+          "label": "STATUS",
+          "type": "status"
+        },
+        {
+          "key": "action",
+          "label": "ACTION",
+          "type": "action"
+        }
+      ],
+      "totalEntries": 208,
+      "totalAmount": "৳ 8,712,276.5",
+      "amountKey": "total"
+    },
+    "/en/purchase/receipts": {
+      "title": "Goods Received Notes",
+      "addLabel": "",
+      "hideFilterToggle": true,
+      "filters": [
+        {
+          "key": "receipt_status",
+          "label": "Receipt Status",
+          "placeholder": "Receipt Status"
+        },
+        {
+          "key": "range",
+          "label": "Select Range",
+          "placeholder": "Select Range",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Month",
+            "Last Month",
+            "This Year",
+            "Last Year",
+            "Custom"
+          ]
+        },
+        {
+          "key": "from",
+          "label": "From Date",
+          "type": "date",
+          "placeholder": "From Date"
+        },
+        {
+          "key": "to",
+          "label": "To Date",
+          "type": "date",
+          "placeholder": "To Date"
+        }
+      ],
+      "columns": [
+        {
+          "key": "receipt_number",
+          "label": "RECEIPT NUMBER",
+          "type": "link"
+        },
+        {
+          "key": "order_number",
+          "label": "ORDER NUMBER",
+          "type": "link"
+        },
+        {
+          "key": "date",
+          "label": "DATE"
+        },
+        {
+          "key": "supplier",
+          "label": "SUPPLIER"
+        },
+        {
+          "key": "status",
+          "label": "STATUS",
+          "type": "status"
+        },
+        {
+          "key": "action",
+          "label": "ACTION",
+          "type": "action"
+        }
+      ],
+      "totalEntries": 759
+    },
+    "/en/purchase/bills": {
+      "title": "Bills",
+      "addLabel": "",
+      "hideFilterToggle": true,
+      "filters": [
+        {
+          "key": "bill_status",
+          "label": "Bill Status",
+          "type": "multiselect",
+          "placeholder": "Bill Status",
+          "options": [
+            "Approved",
+            "Draft"
+          ],
+          "defaultValue": []
+        },
+        {
+          "key": "range",
+          "label": "Select Range",
+          "placeholder": "Select Range",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Month",
+            "Last Month",
+            "This Year",
+            "Last Year",
+            "Custom"
+          ]
+        },
+        {
+          "key": "from",
+          "label": "From Date",
+          "type": "date",
+          "placeholder": "From Date"
+        },
+        {
+          "key": "to",
+          "label": "To Date",
+          "type": "date",
+          "placeholder": "To Date"
+        }
+      ],
+      "columns": [
+        {
+          "key": "bill_number",
+          "label": "BILL NUMBER",
+          "type": "link"
+        },
+        {
+          "key": "date",
+          "label": "DATE"
+        },
+        {
+          "key": "order_number",
+          "label": "ORDER NUMBER"
+        },
+        {
+          "key": "supplier",
+          "label": "SUPPLIER"
+        },
+        {
+          "key": "total",
+          "label": "TOTAL"
+        },
+        {
+          "key": "paid",
+          "label": "PAID"
+        },
+        {
+          "key": "due",
+          "label": "DUE"
+        },
+        {
+          "key": "status",
+          "label": "STATUS",
+          "type": "status"
+        },
+        {
+          "key": "action",
+          "label": "ACTION",
+          "type": "action"
+        }
+      ],
+      "totalEntries": 727,
+      "totalAmount": "৳ 936,778.02",
+      "amountKey": "total"
+    },
+    "/en/purchase/returns": {
+      "title": "Returns",
+      "addLabel": "",
+      "hideFilterToggle": true,
+      "filters": [
+        {
+          "key": "return_status",
+          "label": "Return Status",
+          "placeholder": "Return Status"
+        },
+        {
+          "key": "range",
+          "label": "Select Range",
+          "placeholder": "Select Range",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Month",
+            "Last Month",
+            "This Year",
+            "Last Year",
+            "Custom"
+          ]
+        },
+        {
+          "key": "from",
+          "label": "From Date",
+          "type": "date",
+          "placeholder": "From Date"
+        },
+        {
+          "key": "to",
+          "label": "To Date",
+          "type": "date",
+          "placeholder": "To Date"
+        }
+      ],
+      "columns": [
+        {
+          "key": "return_number",
+          "label": "RETURN NUMBER",
+          "type": "link"
+        },
+        {
+          "key": "order_number",
+          "label": "ORDER NUMBER",
+          "type": "link"
+        },
+        {
+          "key": "return_date",
+          "label": "RETURN DATE"
+        },
+        {
+          "key": "supplier",
+          "label": "SUPPLIER"
+        },
+        {
+          "key": "amount",
+          "label": "AMOUNT"
+        },
+        {
+          "key": "status",
+          "label": "STATUS",
+          "type": "status"
+        },
+        {
+          "key": "action",
+          "label": "ACTION",
+          "type": "action"
+        }
+      ],
+      "totalEntries": 58,
+      "totalAmount": "৳ 75,606",
+      "amountKey": "amount"
+    },
+    "/en/purchase/batch-payments": {
+      "title": "Batch Payment Log",
+      "addLabel": "",
+      "hideFilterToggle": true,
+      "filters": [
+        {
+          "key": "payment_method",
+          "label": "Payment Method",
+          "placeholder": "Payment Method"
+        },
+        {
+          "key": "range",
+          "label": "Select Range",
+          "placeholder": "Select Range",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Month",
+            "Last Month",
+            "This Year",
+            "Last Year",
+            "Custom"
+          ]
+        },
+        {
+          "key": "from",
+          "label": "From Date",
+          "type": "date",
+          "placeholder": "From Date"
+        },
+        {
+          "key": "to",
+          "label": "To Date",
+          "type": "date",
+          "placeholder": "To Date"
+        }
+      ],
+      "columns": [
+        {
+          "key": "batch_number",
+          "label": "BATCH NUMBER",
+          "type": "link"
+        },
+        {
+          "key": "date",
+          "label": "DATE"
+        },
+        {
+          "key": "supplier",
+          "label": "SUPPLIER"
+        },
+        {
+          "key": "payment_method",
+          "label": "PAYMENT METHOD"
+        },
+        {
+          "key": "paid",
+          "label": "PAID"
+        },
+        {
+          "key": "discount",
+          "label": "DISCOUNT"
+        },
+        {
+          "key": "total",
+          "label": "TOTAL"
+        },
+        {
+          "key": "action",
+          "label": "ACTION",
+          "type": "action"
+        }
+      ],
+      "totalEntries": 90,
+      "totalAmount": "৳ 502,458,258",
+      "amountKey": "total"
+    },
+    "/en/purchase/payments": {
+      "title": "Payments",
+      "addLabel": "",
+      "hideFilterToggle": true,
+      "filters": [
+        {
+          "key": "payment_method",
+          "label": "Payment Method",
+          "placeholder": "Payment Method"
+        },
+        {
+          "key": "payment_status",
+          "label": "Payment Status",
+          "placeholder": "Payment Status"
+        },
+        {
+          "key": "range",
+          "label": "Select Range",
+          "placeholder": "Select Range",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Month",
+            "Last Month",
+            "This Year",
+            "Last Year",
+            "Custom"
+          ]
+        },
+        {
+          "key": "from",
+          "label": "From Date",
+          "type": "date",
+          "placeholder": "From Date"
+        },
+        {
+          "key": "to",
+          "label": "To Date",
+          "type": "date",
+          "placeholder": "To Date"
+        }
+      ],
+      "columns": [
+        {
+          "key": "_check",
+          "label": "",
+          "type": "checkbox"
+        },
+        {
+          "key": "payment_number",
+          "label": "PAYMENT NUMBER",
+          "type": "link"
+        },
+        {
+          "key": "date",
+          "label": "DATE"
+        },
+        {
+          "key": "bill_number",
+          "label": "BILL NUMBER"
+        },
+        {
+          "key": "bill_date",
+          "label": "BILL DATE"
+        },
+        {
+          "key": "supplier",
+          "label": "SUPPLIER"
+        },
+        {
+          "key": "payment_method",
+          "label": "PAYMENT METHOD"
+        },
+        {
+          "key": "paid",
+          "label": "PAID"
+        },
+        {
+          "key": "discount",
+          "label": "DISCOUNT"
+        },
+        {
+          "key": "total",
+          "label": "TOTAL"
+        },
+        {
+          "key": "status",
+          "label": "STATUS",
+          "type": "status"
+        },
+        {
+          "key": "action",
+          "label": "ACTION",
+          "type": "action"
+        }
+      ],
+      "totalEntries": 540,
+      "totalAmount": "৳ 774,340",
+      "amountKey": "total"
+    },
+    "/en/purchase/supplier-credits": {
+      "title": "Supplier Credits",
+      "addLabel": "Add Supplier Credit",
+      "hideFilterToggle": true,
+      "filters": [
+        {
+          "key": "credit_status",
+          "label": "Credit Status",
+          "type": "multiselect",
+          "placeholder": "Credit Status",
+          "options": [
+            "Approved",
+            "Draft"
+          ],
+          "defaultValue": []
+        },
+        {
+          "key": "reference_type",
+          "label": "Reference Type",
+          "placeholder": "Reference Type"
+        },
+        {
+          "key": "range",
+          "label": "Select Range",
+          "placeholder": "Select Range",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Month",
+            "Last Month",
+            "This Year",
+            "Last Year",
+            "Custom"
+          ]
+        },
+        {
+          "key": "from",
+          "label": "From Date",
+          "type": "date",
+          "placeholder": "From Date"
+        },
+        {
+          "key": "to",
+          "label": "To Date",
+          "type": "date",
+          "placeholder": "To Date"
+        }
+      ],
+      "columns": [
+        {
+          "key": "credit_number",
+          "label": "CREDIT NUMBER",
+          "type": "link"
+        },
+        {
+          "key": "date",
+          "label": "DATE"
+        },
+        {
+          "key": "supplier",
+          "label": "SUPPLIER"
+        },
+        {
+          "key": "type",
+          "label": "TYPE"
+        },
+        {
+          "key": "reference",
+          "label": "REFERENCE"
+        },
+        {
+          "key": "grand_total",
+          "label": "GRAND TOTAL"
+        },
+        {
+          "key": "adjusted_amount",
+          "label": "ADJUSTED AMOUNT"
+        },
+        {
+          "key": "adjustable_amount",
+          "label": "ADJUSTABLE AMOUNT"
+        },
+        {
+          "key": "status",
+          "label": "STATUS",
+          "type": "status"
+        },
+        {
+          "key": "action",
+          "label": "ACTION",
+          "type": "action"
+        }
+      ],
+      "totalEntries": 87,
+      "totalAmount": "৳ 97,579",
+      "amountKey": "grand_total"
+    },
+    "/en/purchase/refunds": {
+      "title": "Purchase Refunds",
+      "addLabel": "",
+      "hideFilterToggle": true,
+      "filters": [
+        {
+          "key": "refunded_to",
+          "label": "Refunded To",
+          "placeholder": "Refunded To"
+        },
+        {
+          "key": "payment_method",
+          "label": "Payment Method",
+          "placeholder": "Payment Method"
+        },
+        {
+          "key": "status",
+          "label": "Status",
+          "placeholder": "Status"
+        },
+        {
+          "key": "range",
+          "label": "Select Range",
+          "placeholder": "Select Range",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Month",
+            "Last Month",
+            "This Year",
+            "Last Year",
+            "Custom"
+          ]
+        },
+        {
+          "key": "from",
+          "label": "From Date",
+          "type": "date",
+          "placeholder": "From Date"
+        },
+        {
+          "key": "to",
+          "label": "To Date",
+          "type": "date",
+          "placeholder": "To Date"
+        }
+      ],
+      "columns": [
+        {
+          "key": "refund_number",
+          "label": "REFUND NUMBER",
+          "type": "link"
+        },
+        {
+          "key": "date",
+          "label": "DATE"
+        },
+        {
+          "key": "supplier",
+          "label": "SUPPLIER"
+        },
+        {
+          "key": "payment_method",
+          "label": "PAYMENT METHOD"
+        },
+        {
+          "key": "refunded_to",
+          "label": "REFUNDED TO"
+        },
+        {
+          "key": "amount_refunded",
+          "label": "AMOUNT REFUNDED"
+        },
+        {
+          "key": "status",
+          "label": "STATUS",
+          "type": "status"
+        },
+        {
+          "key": "action",
+          "label": "ACTION",
+          "type": "action"
+        }
+      ],
+      "totalEntries": 5,
+      "totalAmount": "৳ 10,020",
+      "amountKey": "amount_refunded"
+    },
+    "/en/inventory/item-stock": {
+      "title": "Item Stock Summary",
+      "addLabel": "",
+      "hideFilterToggle": true,
+      "filters": [
+        {
+          "key": "select_item_manufacturer",
+          "label": "Select Item Manufacturer",
+          "placeholder": "Select Item Manufacturer"
+        },
+        {
+          "key": "select_item_brand",
+          "label": "Select Item Brand",
+          "placeholder": "Select Item Brand"
+        },
+        {
+          "key": "warehouses",
+          "label": "Warehouses",
+          "placeholder": "Warehouses"
+        },
+        {
+          "key": "select_status",
+          "label": "Select Status",
+          "placeholder": "Select Status"
+        }
+      ],
+      "columns": [
+        {
+          "key": "item",
+          "label": "ITEM"
+        },
+        {
+          "key": "code",
+          "label": "CODE",
+          "type": "link"
+        },
+        {
+          "key": "group",
+          "label": "GROUP"
+        },
+        {
+          "key": "brand",
+          "label": "BRAND"
+        },
+        {
+          "key": "available_stock",
+          "label": "AVAILABLE STOCK"
+        },
+        {
+          "key": "low_stock",
+          "label": "LOW STOCK"
+        },
+        {
+          "key": "status",
+          "label": "STATUS",
+          "type": "status"
+        }
+      ],
+      "totalEntries": 4551
+    },
+    "/en/hrm/employee/employees": {
+      "title": "Employees",
+      "addLabel": "Add Employee",
+      "hideFilterToggle": true,
+      "filters": [
+        {
+          "key": "select_employee_type",
+          "label": "Select Employee Type",
+          "placeholder": "Select Employee Type"
+        },
+        {
+          "key": "select_department",
+          "label": "Select Department",
+          "placeholder": "Select Department"
+        },
+        {
+          "key": "select_employment_status",
+          "label": "Select Employment Status",
+          "placeholder": "Select Employment Status"
+        },
+        {
+          "key": "range",
+          "label": "Select Range",
+          "placeholder": "Select Range",
+          "options": [
+            "Today",
+            "Yesterday",
+            "This Week",
+            "Last Week",
+            "This Month",
+            "Last Month",
+            "This Year",
+            "Last Year",
+            "Custom"
+          ]
+        },
+        {
+          "key": "from",
+          "label": "From Date",
+          "type": "date",
+          "placeholder": "From Date"
+        },
+        {
+          "key": "to",
+          "label": "To Date",
+          "type": "date",
+          "placeholder": "To Date"
+        }
+      ],
+      "columns": [
+        {
+          "key": "_check",
+          "label": "",
+          "type": "checkbox"
+        },
+        {
+          "key": "code",
+          "label": "CODE",
+          "type": "link"
+        },
+        {
+          "key": "name",
+          "label": "NAME"
+        },
+        {
+          "key": "department",
+          "label": "DEPARTMENT"
+        },
+        {
+          "key": "position",
+          "label": "POSITION"
+        },
+        {
+          "key": "employment_type",
+          "label": "EMPLOYMENT TYPE"
+        },
+        {
+          "key": "email",
+          "label": "EMAIL"
+        },
+        {
+          "key": "phone_number",
+          "label": "PHONE NUMBER"
+        },
+        {
+          "key": "joining_date",
+          "label": "JOINING DATE"
+        },
+        {
+          "key": "status",
+          "label": "STATUS",
+          "type": "status"
+        },
+        {
+          "key": "action",
+          "label": "ACTION",
+          "type": "action"
+        }
+      ],
+      "totalEntries": 73
+    },
+    "/en/acl/role/index": {
+      "title": "Roles",
+      "addLabel": "Create Role",
+      "hideFilterToggle": true,
+      "filters": [],
+      "columns": [
+        {
+          "key": "role_name",
+          "label": "ROLE NAME"
+        },
+        {
+          "key": "redirect_url",
+          "label": "REDIRECT URL"
+        },
+        {
+          "key": "action",
+          "label": "ACTION",
+          "type": "action"
+        }
+      ],
+      "totalEntries": 44
+    },
+    "/en/acl/user/index": {
+      "title": "Users",
+      "addLabel": "",
+      "hideFilterToggle": true,
+      "filters": [],
+      "columns": [
+        {
+          "key": "email",
+          "label": "EMAIL"
+        },
+        {
+          "key": "status",
+          "label": "STATUS",
+          "type": "status"
+        },
+        {
+          "key": "action",
+          "label": "ACTION",
+          "type": "action"
+        }
+      ],
+      "totalEntries": 22
     }
   },
   "rows": {
@@ -7437,6 +8500,3239 @@
         "address": "ADDRESS 25",
         "supplier_type": "SUPPLIER 25",
         "status": "Active"
+      }
+    ],
+    "/en/purchase/direct-purchases": [
+      {
+        "id": 1,
+        "order_number": "DP-000653",
+        "receipt_number": "GRN-000793",
+        "date": "6 Sep 2026",
+        "supplier": "Rahim",
+        "sub_total": "৳ 77,500",
+        "total_tax": "৳ 0",
+        "total_discount": "৳ 0",
+        "grand_total": "৳ 77,500",
+        "status": "Completed"
+      },
+      {
+        "id": 2,
+        "order_number": "DP-000652",
+        "receipt_number": "GRN-000792",
+        "date": "3 Sep 2026",
+        "supplier": "Rahim",
+        "sub_total": "৳ 11,000",
+        "total_tax": "৳ 0",
+        "total_discount": "৳ 0",
+        "grand_total": "৳ 11,000",
+        "status": "Completed"
+      },
+      {
+        "id": 3,
+        "order_number": "REF-2026-00001002",
+        "receipt_number": "REF-2026-00001002",
+        "date": "3 Jan 2026",
+        "supplier": "SUPPLIER 3",
+        "sub_total": "৳ 774",
+        "total_tax": "৳ 774",
+        "total_discount": "৳ 774",
+        "grand_total": "৳ 774",
+        "status": "Completed"
+      },
+      {
+        "id": 4,
+        "order_number": "REF-2026-00001003",
+        "receipt_number": "REF-2026-00001003",
+        "date": "4 Jan 2026",
+        "supplier": "SUPPLIER 4",
+        "sub_total": "৳ 911",
+        "total_tax": "৳ 911",
+        "total_discount": "৳ 911",
+        "grand_total": "৳ 911",
+        "status": "Completed"
+      },
+      {
+        "id": 5,
+        "order_number": "REF-2026-00001004",
+        "receipt_number": "REF-2026-00001004",
+        "date": "5 Jan 2026",
+        "supplier": "SUPPLIER 5",
+        "sub_total": "৳ 1,048",
+        "total_tax": "৳ 1,048",
+        "total_discount": "৳ 1,048",
+        "grand_total": "৳ 1,048",
+        "status": "Completed"
+      },
+      {
+        "id": 6,
+        "order_number": "REF-2026-00001005",
+        "receipt_number": "REF-2026-00001005",
+        "date": "6 Jan 2026",
+        "supplier": "SUPPLIER 6",
+        "sub_total": "৳ 1,185",
+        "total_tax": "৳ 1,185",
+        "total_discount": "৳ 1,185",
+        "grand_total": "৳ 1,185",
+        "status": "Completed"
+      },
+      {
+        "id": 7,
+        "order_number": "REF-2026-00001006",
+        "receipt_number": "REF-2026-00001006",
+        "date": "7 Jan 2026",
+        "supplier": "SUPPLIER 7",
+        "sub_total": "৳ 1,322",
+        "total_tax": "৳ 1,322",
+        "total_discount": "৳ 1,322",
+        "grand_total": "৳ 1,322",
+        "status": "Completed"
+      },
+      {
+        "id": 8,
+        "order_number": "REF-2026-00001007",
+        "receipt_number": "REF-2026-00001007",
+        "date": "8 Jan 2026",
+        "supplier": "SUPPLIER 8",
+        "sub_total": "৳ 1,459",
+        "total_tax": "৳ 1,459",
+        "total_discount": "৳ 1,459",
+        "grand_total": "৳ 1,459",
+        "status": "Completed"
+      },
+      {
+        "id": 9,
+        "order_number": "REF-2026-00001008",
+        "receipt_number": "REF-2026-00001008",
+        "date": "9 Jan 2026",
+        "supplier": "SUPPLIER 9",
+        "sub_total": "৳ 1,596",
+        "total_tax": "৳ 1,596",
+        "total_discount": "৳ 1,596",
+        "grand_total": "৳ 1,596",
+        "status": "Completed"
+      },
+      {
+        "id": 10,
+        "order_number": "REF-2026-00001009",
+        "receipt_number": "REF-2026-00001009",
+        "date": "10 Jan 2026",
+        "supplier": "SUPPLIER 10",
+        "sub_total": "৳ 1,733",
+        "total_tax": "৳ 1,733",
+        "total_discount": "৳ 1,733",
+        "grand_total": "৳ 1,733",
+        "status": "Completed"
+      },
+      {
+        "id": 11,
+        "order_number": "REF-2026-00001010",
+        "receipt_number": "REF-2026-00001010",
+        "date": "11 Jan 2026",
+        "supplier": "SUPPLIER 11",
+        "sub_total": "৳ 1,870",
+        "total_tax": "৳ 1,870",
+        "total_discount": "৳ 1,870",
+        "grand_total": "৳ 1,870",
+        "status": "Completed"
+      },
+      {
+        "id": 12,
+        "order_number": "REF-2026-00001011",
+        "receipt_number": "REF-2026-00001011",
+        "date": "12 Jan 2026",
+        "supplier": "SUPPLIER 12",
+        "sub_total": "৳ 2,007",
+        "total_tax": "৳ 2,007",
+        "total_discount": "৳ 2,007",
+        "grand_total": "৳ 2,007",
+        "status": "Completed"
+      },
+      {
+        "id": 13,
+        "order_number": "REF-2026-00001012",
+        "receipt_number": "REF-2026-00001012",
+        "date": "13 Jan 2026",
+        "supplier": "SUPPLIER 13",
+        "sub_total": "৳ 2,144",
+        "total_tax": "৳ 2,144",
+        "total_discount": "৳ 2,144",
+        "grand_total": "৳ 2,144",
+        "status": "Completed"
+      },
+      {
+        "id": 14,
+        "order_number": "REF-2026-00001013",
+        "receipt_number": "REF-2026-00001013",
+        "date": "14 Jan 2026",
+        "supplier": "SUPPLIER 14",
+        "sub_total": "৳ 2,281",
+        "total_tax": "৳ 2,281",
+        "total_discount": "৳ 2,281",
+        "grand_total": "৳ 2,281",
+        "status": "Completed"
+      },
+      {
+        "id": 15,
+        "order_number": "REF-2026-00001014",
+        "receipt_number": "REF-2026-00001014",
+        "date": "15 Jan 2026",
+        "supplier": "SUPPLIER 15",
+        "sub_total": "৳ 2,418",
+        "total_tax": "৳ 2,418",
+        "total_discount": "৳ 2,418",
+        "grand_total": "৳ 2,418",
+        "status": "Completed"
+      },
+      {
+        "id": 16,
+        "order_number": "REF-2026-00001015",
+        "receipt_number": "REF-2026-00001015",
+        "date": "16 Jan 2026",
+        "supplier": "SUPPLIER 16",
+        "sub_total": "৳ 2,555",
+        "total_tax": "৳ 2,555",
+        "total_discount": "৳ 2,555",
+        "grand_total": "৳ 2,555",
+        "status": "Completed"
+      },
+      {
+        "id": 17,
+        "order_number": "REF-2026-00001016",
+        "receipt_number": "REF-2026-00001016",
+        "date": "17 Jan 2026",
+        "supplier": "SUPPLIER 17",
+        "sub_total": "৳ 2,692",
+        "total_tax": "৳ 2,692",
+        "total_discount": "৳ 2,692",
+        "grand_total": "৳ 2,692",
+        "status": "Completed"
+      },
+      {
+        "id": 18,
+        "order_number": "REF-2026-00001017",
+        "receipt_number": "REF-2026-00001017",
+        "date": "18 Jan 2026",
+        "supplier": "SUPPLIER 18",
+        "sub_total": "৳ 2,829",
+        "total_tax": "৳ 2,829",
+        "total_discount": "৳ 2,829",
+        "grand_total": "৳ 2,829",
+        "status": "Completed"
+      },
+      {
+        "id": 19,
+        "order_number": "REF-2026-00001018",
+        "receipt_number": "REF-2026-00001018",
+        "date": "19 Jan 2026",
+        "supplier": "SUPPLIER 19",
+        "sub_total": "৳ 2,966",
+        "total_tax": "৳ 2,966",
+        "total_discount": "৳ 2,966",
+        "grand_total": "৳ 2,966",
+        "status": "Completed"
+      },
+      {
+        "id": 20,
+        "order_number": "REF-2026-00001019",
+        "receipt_number": "REF-2026-00001019",
+        "date": "20 Jan 2026",
+        "supplier": "SUPPLIER 20",
+        "sub_total": "৳ 3,103",
+        "total_tax": "৳ 3,103",
+        "total_discount": "৳ 3,103",
+        "grand_total": "৳ 3,103",
+        "status": "Completed"
+      },
+      {
+        "id": 21,
+        "order_number": "REF-2026-00001020",
+        "receipt_number": "REF-2026-00001020",
+        "date": "21 Jan 2026",
+        "supplier": "SUPPLIER 21",
+        "sub_total": "৳ 3,240",
+        "total_tax": "৳ 3,240",
+        "total_discount": "৳ 3,240",
+        "grand_total": "৳ 3,240",
+        "status": "Completed"
+      },
+      {
+        "id": 22,
+        "order_number": "REF-2026-00001021",
+        "receipt_number": "REF-2026-00001021",
+        "date": "22 Jan 2026",
+        "supplier": "SUPPLIER 22",
+        "sub_total": "৳ 3,377",
+        "total_tax": "৳ 3,377",
+        "total_discount": "৳ 3,377",
+        "grand_total": "৳ 3,377",
+        "status": "Completed"
+      },
+      {
+        "id": 23,
+        "order_number": "REF-2026-00001022",
+        "receipt_number": "REF-2026-00001022",
+        "date": "23 Jan 2026",
+        "supplier": "SUPPLIER 23",
+        "sub_total": "৳ 3,514",
+        "total_tax": "৳ 3,514",
+        "total_discount": "৳ 3,514",
+        "grand_total": "৳ 3,514",
+        "status": "Completed"
+      },
+      {
+        "id": 24,
+        "order_number": "REF-2026-00001023",
+        "receipt_number": "REF-2026-00001023",
+        "date": "24 Jan 2026",
+        "supplier": "SUPPLIER 24",
+        "sub_total": "৳ 3,651",
+        "total_tax": "৳ 3,651",
+        "total_discount": "৳ 3,651",
+        "grand_total": "৳ 3,651",
+        "status": "Completed"
+      },
+      {
+        "id": 25,
+        "order_number": "REF-2026-00001024",
+        "receipt_number": "REF-2026-00001024",
+        "date": "25 Jan 2026",
+        "supplier": "SUPPLIER 25",
+        "sub_total": "৳ 3,788",
+        "total_tax": "৳ 3,788",
+        "total_discount": "৳ 3,788",
+        "grand_total": "৳ 3,788",
+        "status": "Completed"
+      }
+    ],
+    "/en/purchase/requisitions": [
+      {
+        "id": 1,
+        "requisition_number": "R-000141",
+        "requested_by": "biznify@softifybd.com",
+        "requested_date": "1 Sep 2026",
+        "approved_date": "1 Sep 2026",
+        "amount": "৳ 400",
+        "status": "Closed"
+      },
+      {
+        "id": 2,
+        "requisition_number": "R-000140",
+        "requested_by": "demo@biznify.com.bd",
+        "requested_date": "13 Aug 2026",
+        "approved_date": "13 Aug 2026",
+        "amount": "৳ 40,000",
+        "status": "Closed"
+      },
+      {
+        "id": 3,
+        "requisition_number": "REF-2026-00001002",
+        "requested_by": "REQUESTED 3",
+        "requested_date": "3 Jan 2026",
+        "approved_date": "3 Jan 2026",
+        "amount": "৳ 774",
+        "status": "Draft"
+      },
+      {
+        "id": 4,
+        "requisition_number": "REF-2026-00001003",
+        "requested_by": "REQUESTED 4",
+        "requested_date": "4 Jan 2026",
+        "approved_date": "4 Jan 2026",
+        "amount": "৳ 911",
+        "status": "Closed"
+      },
+      {
+        "id": 5,
+        "requisition_number": "REF-2026-00001004",
+        "requested_by": "REQUESTED 5",
+        "requested_date": "5 Jan 2026",
+        "approved_date": "5 Jan 2026",
+        "amount": "৳ 1,048",
+        "status": "Approved"
+      },
+      {
+        "id": 6,
+        "requisition_number": "REF-2026-00001005",
+        "requested_by": "REQUESTED 6",
+        "requested_date": "6 Jan 2026",
+        "approved_date": "6 Jan 2026",
+        "amount": "৳ 1,185",
+        "status": "Draft"
+      },
+      {
+        "id": 7,
+        "requisition_number": "REF-2026-00001006",
+        "requested_by": "REQUESTED 7",
+        "requested_date": "7 Jan 2026",
+        "approved_date": "7 Jan 2026",
+        "amount": "৳ 1,322",
+        "status": "Closed"
+      },
+      {
+        "id": 8,
+        "requisition_number": "REF-2026-00001007",
+        "requested_by": "REQUESTED 8",
+        "requested_date": "8 Jan 2026",
+        "approved_date": "8 Jan 2026",
+        "amount": "৳ 1,459",
+        "status": "Approved"
+      },
+      {
+        "id": 9,
+        "requisition_number": "REF-2026-00001008",
+        "requested_by": "REQUESTED 9",
+        "requested_date": "9 Jan 2026",
+        "approved_date": "9 Jan 2026",
+        "amount": "৳ 1,596",
+        "status": "Draft"
+      },
+      {
+        "id": 10,
+        "requisition_number": "REF-2026-00001009",
+        "requested_by": "REQUESTED 10",
+        "requested_date": "10 Jan 2026",
+        "approved_date": "10 Jan 2026",
+        "amount": "৳ 1,733",
+        "status": "Closed"
+      },
+      {
+        "id": 11,
+        "requisition_number": "REF-2026-00001010",
+        "requested_by": "REQUESTED 11",
+        "requested_date": "11 Jan 2026",
+        "approved_date": "11 Jan 2026",
+        "amount": "৳ 1,870",
+        "status": "Approved"
+      },
+      {
+        "id": 12,
+        "requisition_number": "REF-2026-00001011",
+        "requested_by": "REQUESTED 12",
+        "requested_date": "12 Jan 2026",
+        "approved_date": "12 Jan 2026",
+        "amount": "৳ 2,007",
+        "status": "Draft"
+      },
+      {
+        "id": 13,
+        "requisition_number": "REF-2026-00001012",
+        "requested_by": "REQUESTED 13",
+        "requested_date": "13 Jan 2026",
+        "approved_date": "13 Jan 2026",
+        "amount": "৳ 2,144",
+        "status": "Closed"
+      },
+      {
+        "id": 14,
+        "requisition_number": "REF-2026-00001013",
+        "requested_by": "REQUESTED 14",
+        "requested_date": "14 Jan 2026",
+        "approved_date": "14 Jan 2026",
+        "amount": "৳ 2,281",
+        "status": "Approved"
+      },
+      {
+        "id": 15,
+        "requisition_number": "REF-2026-00001014",
+        "requested_by": "REQUESTED 15",
+        "requested_date": "15 Jan 2026",
+        "approved_date": "15 Jan 2026",
+        "amount": "৳ 2,418",
+        "status": "Draft"
+      },
+      {
+        "id": 16,
+        "requisition_number": "REF-2026-00001015",
+        "requested_by": "REQUESTED 16",
+        "requested_date": "16 Jan 2026",
+        "approved_date": "16 Jan 2026",
+        "amount": "৳ 2,555",
+        "status": "Closed"
+      },
+      {
+        "id": 17,
+        "requisition_number": "REF-2026-00001016",
+        "requested_by": "REQUESTED 17",
+        "requested_date": "17 Jan 2026",
+        "approved_date": "17 Jan 2026",
+        "amount": "৳ 2,692",
+        "status": "Approved"
+      },
+      {
+        "id": 18,
+        "requisition_number": "REF-2026-00001017",
+        "requested_by": "REQUESTED 18",
+        "requested_date": "18 Jan 2026",
+        "approved_date": "18 Jan 2026",
+        "amount": "৳ 2,829",
+        "status": "Draft"
+      },
+      {
+        "id": 19,
+        "requisition_number": "REF-2026-00001018",
+        "requested_by": "REQUESTED 19",
+        "requested_date": "19 Jan 2026",
+        "approved_date": "19 Jan 2026",
+        "amount": "৳ 2,966",
+        "status": "Closed"
+      },
+      {
+        "id": 20,
+        "requisition_number": "REF-2026-00001019",
+        "requested_by": "REQUESTED 20",
+        "requested_date": "20 Jan 2026",
+        "approved_date": "20 Jan 2026",
+        "amount": "৳ 3,103",
+        "status": "Approved"
+      },
+      {
+        "id": 21,
+        "requisition_number": "REF-2026-00001020",
+        "requested_by": "REQUESTED 21",
+        "requested_date": "21 Jan 2026",
+        "approved_date": "21 Jan 2026",
+        "amount": "৳ 3,240",
+        "status": "Draft"
+      },
+      {
+        "id": 22,
+        "requisition_number": "REF-2026-00001021",
+        "requested_by": "REQUESTED 22",
+        "requested_date": "22 Jan 2026",
+        "approved_date": "22 Jan 2026",
+        "amount": "৳ 3,377",
+        "status": "Closed"
+      },
+      {
+        "id": 23,
+        "requisition_number": "REF-2026-00001022",
+        "requested_by": "REQUESTED 23",
+        "requested_date": "23 Jan 2026",
+        "approved_date": "23 Jan 2026",
+        "amount": "৳ 3,514",
+        "status": "Approved"
+      },
+      {
+        "id": 24,
+        "requisition_number": "REF-2026-00001023",
+        "requested_by": "REQUESTED 24",
+        "requested_date": "24 Jan 2026",
+        "approved_date": "24 Jan 2026",
+        "amount": "৳ 3,651",
+        "status": "Draft"
+      },
+      {
+        "id": 25,
+        "requisition_number": "REF-2026-00001024",
+        "requested_by": "REQUESTED 25",
+        "requested_date": "25 Jan 2026",
+        "approved_date": "25 Jan 2026",
+        "amount": "৳ 3,788",
+        "status": "Closed"
+      }
+    ],
+    "/en/purchase/orders": [
+      {
+        "id": 1,
+        "order_number": "PO-000208",
+        "date": "1 Sep 2026",
+        "supplier": "Rahim",
+        "total": "৳ 400",
+        "status": "Approved"
+      },
+      {
+        "id": 2,
+        "order_number": "PO-000207",
+        "date": "1 Sep 2026",
+        "supplier": "Rahim",
+        "total": "৳ 400",
+        "status": "Approved"
+      },
+      {
+        "id": 3,
+        "order_number": "REF-2026-00001002",
+        "date": "3 Jan 2026",
+        "supplier": "SUPPLIER 3",
+        "total": "৳ 774",
+        "status": "Received"
+      },
+      {
+        "id": 4,
+        "order_number": "REF-2026-00001003",
+        "date": "4 Jan 2026",
+        "supplier": "SUPPLIER 4",
+        "total": "৳ 911",
+        "status": "Closed"
+      },
+      {
+        "id": 5,
+        "order_number": "REF-2026-00001004",
+        "date": "5 Jan 2026",
+        "supplier": "SUPPLIER 5",
+        "total": "৳ 1,048",
+        "status": "Approved"
+      },
+      {
+        "id": 6,
+        "order_number": "REF-2026-00001005",
+        "date": "6 Jan 2026",
+        "supplier": "SUPPLIER 6",
+        "total": "৳ 1,185",
+        "status": "Draft"
+      },
+      {
+        "id": 7,
+        "order_number": "REF-2026-00001006",
+        "date": "7 Jan 2026",
+        "supplier": "SUPPLIER 7",
+        "total": "৳ 1,322",
+        "status": "Received"
+      },
+      {
+        "id": 8,
+        "order_number": "REF-2026-00001007",
+        "date": "8 Jan 2026",
+        "supplier": "SUPPLIER 8",
+        "total": "৳ 1,459",
+        "status": "Closed"
+      },
+      {
+        "id": 9,
+        "order_number": "REF-2026-00001008",
+        "date": "9 Jan 2026",
+        "supplier": "SUPPLIER 9",
+        "total": "৳ 1,596",
+        "status": "Approved"
+      },
+      {
+        "id": 10,
+        "order_number": "REF-2026-00001009",
+        "date": "10 Jan 2026",
+        "supplier": "SUPPLIER 10",
+        "total": "৳ 1,733",
+        "status": "Draft"
+      },
+      {
+        "id": 11,
+        "order_number": "REF-2026-00001010",
+        "date": "11 Jan 2026",
+        "supplier": "SUPPLIER 11",
+        "total": "৳ 1,870",
+        "status": "Received"
+      },
+      {
+        "id": 12,
+        "order_number": "REF-2026-00001011",
+        "date": "12 Jan 2026",
+        "supplier": "SUPPLIER 12",
+        "total": "৳ 2,007",
+        "status": "Closed"
+      },
+      {
+        "id": 13,
+        "order_number": "REF-2026-00001012",
+        "date": "13 Jan 2026",
+        "supplier": "SUPPLIER 13",
+        "total": "৳ 2,144",
+        "status": "Approved"
+      },
+      {
+        "id": 14,
+        "order_number": "REF-2026-00001013",
+        "date": "14 Jan 2026",
+        "supplier": "SUPPLIER 14",
+        "total": "৳ 2,281",
+        "status": "Draft"
+      },
+      {
+        "id": 15,
+        "order_number": "REF-2026-00001014",
+        "date": "15 Jan 2026",
+        "supplier": "SUPPLIER 15",
+        "total": "৳ 2,418",
+        "status": "Received"
+      },
+      {
+        "id": 16,
+        "order_number": "REF-2026-00001015",
+        "date": "16 Jan 2026",
+        "supplier": "SUPPLIER 16",
+        "total": "৳ 2,555",
+        "status": "Closed"
+      },
+      {
+        "id": 17,
+        "order_number": "REF-2026-00001016",
+        "date": "17 Jan 2026",
+        "supplier": "SUPPLIER 17",
+        "total": "৳ 2,692",
+        "status": "Approved"
+      },
+      {
+        "id": 18,
+        "order_number": "REF-2026-00001017",
+        "date": "18 Jan 2026",
+        "supplier": "SUPPLIER 18",
+        "total": "৳ 2,829",
+        "status": "Draft"
+      },
+      {
+        "id": 19,
+        "order_number": "REF-2026-00001018",
+        "date": "19 Jan 2026",
+        "supplier": "SUPPLIER 19",
+        "total": "৳ 2,966",
+        "status": "Received"
+      },
+      {
+        "id": 20,
+        "order_number": "REF-2026-00001019",
+        "date": "20 Jan 2026",
+        "supplier": "SUPPLIER 20",
+        "total": "৳ 3,103",
+        "status": "Closed"
+      },
+      {
+        "id": 21,
+        "order_number": "REF-2026-00001020",
+        "date": "21 Jan 2026",
+        "supplier": "SUPPLIER 21",
+        "total": "৳ 3,240",
+        "status": "Approved"
+      },
+      {
+        "id": 22,
+        "order_number": "REF-2026-00001021",
+        "date": "22 Jan 2026",
+        "supplier": "SUPPLIER 22",
+        "total": "৳ 3,377",
+        "status": "Draft"
+      },
+      {
+        "id": 23,
+        "order_number": "REF-2026-00001022",
+        "date": "23 Jan 2026",
+        "supplier": "SUPPLIER 23",
+        "total": "৳ 3,514",
+        "status": "Received"
+      },
+      {
+        "id": 24,
+        "order_number": "REF-2026-00001023",
+        "date": "24 Jan 2026",
+        "supplier": "SUPPLIER 24",
+        "total": "৳ 3,651",
+        "status": "Closed"
+      },
+      {
+        "id": 25,
+        "order_number": "REF-2026-00001024",
+        "date": "25 Jan 2026",
+        "supplier": "SUPPLIER 25",
+        "total": "৳ 3,788",
+        "status": "Approved"
+      }
+    ],
+    "/en/purchase/receipts": [
+      {
+        "id": 1,
+        "receipt_number": "GRN-000793",
+        "order_number": "DP-000653",
+        "date": "6 Sep 2026",
+        "supplier": "Rahim",
+        "status": "Not Billable"
+      },
+      {
+        "id": 2,
+        "receipt_number": "GRN-000792",
+        "order_number": "DP-000652",
+        "date": "3 Sep 2026",
+        "supplier": "Rahim",
+        "status": "Not Billable"
+      },
+      {
+        "id": 3,
+        "receipt_number": "REF-2026-00001002",
+        "order_number": "REF-2026-00001002",
+        "date": "3 Jan 2026",
+        "supplier": "SUPPLIER 3",
+        "status": "Not Billable"
+      },
+      {
+        "id": 4,
+        "receipt_number": "REF-2026-00001003",
+        "order_number": "REF-2026-00001003",
+        "date": "4 Jan 2026",
+        "supplier": "SUPPLIER 4",
+        "status": "Billable"
+      },
+      {
+        "id": 5,
+        "receipt_number": "REF-2026-00001004",
+        "order_number": "REF-2026-00001004",
+        "date": "5 Jan 2026",
+        "supplier": "SUPPLIER 5",
+        "status": "Not Billable"
+      },
+      {
+        "id": 6,
+        "receipt_number": "REF-2026-00001005",
+        "order_number": "REF-2026-00001005",
+        "date": "6 Jan 2026",
+        "supplier": "SUPPLIER 6",
+        "status": "Billable"
+      },
+      {
+        "id": 7,
+        "receipt_number": "REF-2026-00001006",
+        "order_number": "REF-2026-00001006",
+        "date": "7 Jan 2026",
+        "supplier": "SUPPLIER 7",
+        "status": "Not Billable"
+      },
+      {
+        "id": 8,
+        "receipt_number": "REF-2026-00001007",
+        "order_number": "REF-2026-00001007",
+        "date": "8 Jan 2026",
+        "supplier": "SUPPLIER 8",
+        "status": "Billable"
+      },
+      {
+        "id": 9,
+        "receipt_number": "REF-2026-00001008",
+        "order_number": "REF-2026-00001008",
+        "date": "9 Jan 2026",
+        "supplier": "SUPPLIER 9",
+        "status": "Not Billable"
+      },
+      {
+        "id": 10,
+        "receipt_number": "REF-2026-00001009",
+        "order_number": "REF-2026-00001009",
+        "date": "10 Jan 2026",
+        "supplier": "SUPPLIER 10",
+        "status": "Billable"
+      },
+      {
+        "id": 11,
+        "receipt_number": "REF-2026-00001010",
+        "order_number": "REF-2026-00001010",
+        "date": "11 Jan 2026",
+        "supplier": "SUPPLIER 11",
+        "status": "Not Billable"
+      },
+      {
+        "id": 12,
+        "receipt_number": "REF-2026-00001011",
+        "order_number": "REF-2026-00001011",
+        "date": "12 Jan 2026",
+        "supplier": "SUPPLIER 12",
+        "status": "Billable"
+      },
+      {
+        "id": 13,
+        "receipt_number": "REF-2026-00001012",
+        "order_number": "REF-2026-00001012",
+        "date": "13 Jan 2026",
+        "supplier": "SUPPLIER 13",
+        "status": "Not Billable"
+      },
+      {
+        "id": 14,
+        "receipt_number": "REF-2026-00001013",
+        "order_number": "REF-2026-00001013",
+        "date": "14 Jan 2026",
+        "supplier": "SUPPLIER 14",
+        "status": "Billable"
+      },
+      {
+        "id": 15,
+        "receipt_number": "REF-2026-00001014",
+        "order_number": "REF-2026-00001014",
+        "date": "15 Jan 2026",
+        "supplier": "SUPPLIER 15",
+        "status": "Not Billable"
+      },
+      {
+        "id": 16,
+        "receipt_number": "REF-2026-00001015",
+        "order_number": "REF-2026-00001015",
+        "date": "16 Jan 2026",
+        "supplier": "SUPPLIER 16",
+        "status": "Billable"
+      },
+      {
+        "id": 17,
+        "receipt_number": "REF-2026-00001016",
+        "order_number": "REF-2026-00001016",
+        "date": "17 Jan 2026",
+        "supplier": "SUPPLIER 17",
+        "status": "Not Billable"
+      },
+      {
+        "id": 18,
+        "receipt_number": "REF-2026-00001017",
+        "order_number": "REF-2026-00001017",
+        "date": "18 Jan 2026",
+        "supplier": "SUPPLIER 18",
+        "status": "Billable"
+      },
+      {
+        "id": 19,
+        "receipt_number": "REF-2026-00001018",
+        "order_number": "REF-2026-00001018",
+        "date": "19 Jan 2026",
+        "supplier": "SUPPLIER 19",
+        "status": "Not Billable"
+      },
+      {
+        "id": 20,
+        "receipt_number": "REF-2026-00001019",
+        "order_number": "REF-2026-00001019",
+        "date": "20 Jan 2026",
+        "supplier": "SUPPLIER 20",
+        "status": "Billable"
+      },
+      {
+        "id": 21,
+        "receipt_number": "REF-2026-00001020",
+        "order_number": "REF-2026-00001020",
+        "date": "21 Jan 2026",
+        "supplier": "SUPPLIER 21",
+        "status": "Not Billable"
+      },
+      {
+        "id": 22,
+        "receipt_number": "REF-2026-00001021",
+        "order_number": "REF-2026-00001021",
+        "date": "22 Jan 2026",
+        "supplier": "SUPPLIER 22",
+        "status": "Billable"
+      },
+      {
+        "id": 23,
+        "receipt_number": "REF-2026-00001022",
+        "order_number": "REF-2026-00001022",
+        "date": "23 Jan 2026",
+        "supplier": "SUPPLIER 23",
+        "status": "Not Billable"
+      },
+      {
+        "id": 24,
+        "receipt_number": "REF-2026-00001023",
+        "order_number": "REF-2026-00001023",
+        "date": "24 Jan 2026",
+        "supplier": "SUPPLIER 24",
+        "status": "Billable"
+      },
+      {
+        "id": 25,
+        "receipt_number": "REF-2026-00001024",
+        "order_number": "REF-2026-00001024",
+        "date": "25 Jan 2026",
+        "supplier": "SUPPLIER 25",
+        "status": "Not Billable"
+      }
+    ],
+    "/en/purchase/bills": [
+      {
+        "id": 1,
+        "bill_number": "BL-2026-000262",
+        "date": "6 Sep 2026",
+        "order_number": "DP-000653",
+        "supplier": "Rahim",
+        "total": "৳ 77,500",
+        "paid": "৳ 0",
+        "due": "৳ 77,500",
+        "status": "Unpaid"
+      },
+      {
+        "id": 2,
+        "bill_number": "BL-2026-000261",
+        "date": "3 Sep 2026",
+        "order_number": "DP-000652",
+        "supplier": "Rahim",
+        "total": "৳ 11,000",
+        "paid": "৳ 11,000",
+        "due": "৳ 0",
+        "status": "Paid"
+      },
+      {
+        "id": 3,
+        "bill_number": "REF-2026-00001002",
+        "date": "3 Jan 2026",
+        "order_number": "REF-2026-00001002",
+        "supplier": "SUPPLIER 3",
+        "total": "৳ 774",
+        "paid": "৳ 774",
+        "due": "৳ 774",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 4,
+        "bill_number": "REF-2026-00001003",
+        "date": "4 Jan 2026",
+        "order_number": "REF-2026-00001003",
+        "supplier": "SUPPLIER 4",
+        "total": "৳ 911",
+        "paid": "৳ 911",
+        "due": "৳ 911",
+        "status": "Unpaid"
+      },
+      {
+        "id": 5,
+        "bill_number": "REF-2026-00001004",
+        "date": "5 Jan 2026",
+        "order_number": "REF-2026-00001004",
+        "supplier": "SUPPLIER 5",
+        "total": "৳ 1,048",
+        "paid": "৳ 1,048",
+        "due": "৳ 1,048",
+        "status": "Paid"
+      },
+      {
+        "id": 6,
+        "bill_number": "REF-2026-00001005",
+        "date": "6 Jan 2026",
+        "order_number": "REF-2026-00001005",
+        "supplier": "SUPPLIER 6",
+        "total": "৳ 1,185",
+        "paid": "৳ 1,185",
+        "due": "৳ 1,185",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 7,
+        "bill_number": "REF-2026-00001006",
+        "date": "7 Jan 2026",
+        "order_number": "REF-2026-00001006",
+        "supplier": "SUPPLIER 7",
+        "total": "৳ 1,322",
+        "paid": "৳ 1,322",
+        "due": "৳ 1,322",
+        "status": "Unpaid"
+      },
+      {
+        "id": 8,
+        "bill_number": "REF-2026-00001007",
+        "date": "8 Jan 2026",
+        "order_number": "REF-2026-00001007",
+        "supplier": "SUPPLIER 8",
+        "total": "৳ 1,459",
+        "paid": "৳ 1,459",
+        "due": "৳ 1,459",
+        "status": "Paid"
+      },
+      {
+        "id": 9,
+        "bill_number": "REF-2026-00001008",
+        "date": "9 Jan 2026",
+        "order_number": "REF-2026-00001008",
+        "supplier": "SUPPLIER 9",
+        "total": "৳ 1,596",
+        "paid": "৳ 1,596",
+        "due": "৳ 1,596",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 10,
+        "bill_number": "REF-2026-00001009",
+        "date": "10 Jan 2026",
+        "order_number": "REF-2026-00001009",
+        "supplier": "SUPPLIER 10",
+        "total": "৳ 1,733",
+        "paid": "৳ 1,733",
+        "due": "৳ 1,733",
+        "status": "Unpaid"
+      },
+      {
+        "id": 11,
+        "bill_number": "REF-2026-00001010",
+        "date": "11 Jan 2026",
+        "order_number": "REF-2026-00001010",
+        "supplier": "SUPPLIER 11",
+        "total": "৳ 1,870",
+        "paid": "৳ 1,870",
+        "due": "৳ 1,870",
+        "status": "Paid"
+      },
+      {
+        "id": 12,
+        "bill_number": "REF-2026-00001011",
+        "date": "12 Jan 2026",
+        "order_number": "REF-2026-00001011",
+        "supplier": "SUPPLIER 12",
+        "total": "৳ 2,007",
+        "paid": "৳ 2,007",
+        "due": "৳ 2,007",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 13,
+        "bill_number": "REF-2026-00001012",
+        "date": "13 Jan 2026",
+        "order_number": "REF-2026-00001012",
+        "supplier": "SUPPLIER 13",
+        "total": "৳ 2,144",
+        "paid": "৳ 2,144",
+        "due": "৳ 2,144",
+        "status": "Unpaid"
+      },
+      {
+        "id": 14,
+        "bill_number": "REF-2026-00001013",
+        "date": "14 Jan 2026",
+        "order_number": "REF-2026-00001013",
+        "supplier": "SUPPLIER 14",
+        "total": "৳ 2,281",
+        "paid": "৳ 2,281",
+        "due": "৳ 2,281",
+        "status": "Paid"
+      },
+      {
+        "id": 15,
+        "bill_number": "REF-2026-00001014",
+        "date": "15 Jan 2026",
+        "order_number": "REF-2026-00001014",
+        "supplier": "SUPPLIER 15",
+        "total": "৳ 2,418",
+        "paid": "৳ 2,418",
+        "due": "৳ 2,418",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 16,
+        "bill_number": "REF-2026-00001015",
+        "date": "16 Jan 2026",
+        "order_number": "REF-2026-00001015",
+        "supplier": "SUPPLIER 16",
+        "total": "৳ 2,555",
+        "paid": "৳ 2,555",
+        "due": "৳ 2,555",
+        "status": "Unpaid"
+      },
+      {
+        "id": 17,
+        "bill_number": "REF-2026-00001016",
+        "date": "17 Jan 2026",
+        "order_number": "REF-2026-00001016",
+        "supplier": "SUPPLIER 17",
+        "total": "৳ 2,692",
+        "paid": "৳ 2,692",
+        "due": "৳ 2,692",
+        "status": "Paid"
+      },
+      {
+        "id": 18,
+        "bill_number": "REF-2026-00001017",
+        "date": "18 Jan 2026",
+        "order_number": "REF-2026-00001017",
+        "supplier": "SUPPLIER 18",
+        "total": "৳ 2,829",
+        "paid": "৳ 2,829",
+        "due": "৳ 2,829",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 19,
+        "bill_number": "REF-2026-00001018",
+        "date": "19 Jan 2026",
+        "order_number": "REF-2026-00001018",
+        "supplier": "SUPPLIER 19",
+        "total": "৳ 2,966",
+        "paid": "৳ 2,966",
+        "due": "৳ 2,966",
+        "status": "Unpaid"
+      },
+      {
+        "id": 20,
+        "bill_number": "REF-2026-00001019",
+        "date": "20 Jan 2026",
+        "order_number": "REF-2026-00001019",
+        "supplier": "SUPPLIER 20",
+        "total": "৳ 3,103",
+        "paid": "৳ 3,103",
+        "due": "৳ 3,103",
+        "status": "Paid"
+      },
+      {
+        "id": 21,
+        "bill_number": "REF-2026-00001020",
+        "date": "21 Jan 2026",
+        "order_number": "REF-2026-00001020",
+        "supplier": "SUPPLIER 21",
+        "total": "৳ 3,240",
+        "paid": "৳ 3,240",
+        "due": "৳ 3,240",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 22,
+        "bill_number": "REF-2026-00001021",
+        "date": "22 Jan 2026",
+        "order_number": "REF-2026-00001021",
+        "supplier": "SUPPLIER 22",
+        "total": "৳ 3,377",
+        "paid": "৳ 3,377",
+        "due": "৳ 3,377",
+        "status": "Unpaid"
+      },
+      {
+        "id": 23,
+        "bill_number": "REF-2026-00001022",
+        "date": "23 Jan 2026",
+        "order_number": "REF-2026-00001022",
+        "supplier": "SUPPLIER 23",
+        "total": "৳ 3,514",
+        "paid": "৳ 3,514",
+        "due": "৳ 3,514",
+        "status": "Paid"
+      },
+      {
+        "id": 24,
+        "bill_number": "REF-2026-00001023",
+        "date": "24 Jan 2026",
+        "order_number": "REF-2026-00001023",
+        "supplier": "SUPPLIER 24",
+        "total": "৳ 3,651",
+        "paid": "৳ 3,651",
+        "due": "৳ 3,651",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 25,
+        "bill_number": "REF-2026-00001024",
+        "date": "25 Jan 2026",
+        "order_number": "REF-2026-00001024",
+        "supplier": "SUPPLIER 25",
+        "total": "৳ 3,788",
+        "paid": "৳ 3,788",
+        "due": "৳ 3,788",
+        "status": "Unpaid"
+      }
+    ],
+    "/en/purchase/returns": [
+      {
+        "id": 1,
+        "return_number": "PR-000070",
+        "order_number": "DP-000607",
+        "return_date": "30 Jul 2026",
+        "supplier": "MR Trading",
+        "amount": "৳ 1,260",
+        "status": "Approved"
+      },
+      {
+        "id": 2,
+        "return_number": "PR-000069",
+        "order_number": "DP-000579",
+        "return_date": "13 Jul 2026",
+        "supplier": "Coca-Cola",
+        "amount": "৳ 100",
+        "status": "Approved"
+      },
+      {
+        "id": 3,
+        "return_number": "REF-2026-00001002",
+        "order_number": "REF-2026-00001002",
+        "return_date": "3 Jan 2026",
+        "supplier": "SUPPLIER 3",
+        "amount": "৳ 774",
+        "status": "Approved"
+      },
+      {
+        "id": 4,
+        "return_number": "REF-2026-00001003",
+        "order_number": "REF-2026-00001003",
+        "return_date": "4 Jan 2026",
+        "supplier": "SUPPLIER 4",
+        "amount": "৳ 911",
+        "status": "Approved"
+      },
+      {
+        "id": 5,
+        "return_number": "REF-2026-00001004",
+        "order_number": "REF-2026-00001004",
+        "return_date": "5 Jan 2026",
+        "supplier": "SUPPLIER 5",
+        "amount": "৳ 1,048",
+        "status": "Approved"
+      },
+      {
+        "id": 6,
+        "return_number": "REF-2026-00001005",
+        "order_number": "REF-2026-00001005",
+        "return_date": "6 Jan 2026",
+        "supplier": "SUPPLIER 6",
+        "amount": "৳ 1,185",
+        "status": "Approved"
+      },
+      {
+        "id": 7,
+        "return_number": "REF-2026-00001006",
+        "order_number": "REF-2026-00001006",
+        "return_date": "7 Jan 2026",
+        "supplier": "SUPPLIER 7",
+        "amount": "৳ 1,322",
+        "status": "Approved"
+      },
+      {
+        "id": 8,
+        "return_number": "REF-2026-00001007",
+        "order_number": "REF-2026-00001007",
+        "return_date": "8 Jan 2026",
+        "supplier": "SUPPLIER 8",
+        "amount": "৳ 1,459",
+        "status": "Approved"
+      },
+      {
+        "id": 9,
+        "return_number": "REF-2026-00001008",
+        "order_number": "REF-2026-00001008",
+        "return_date": "9 Jan 2026",
+        "supplier": "SUPPLIER 9",
+        "amount": "৳ 1,596",
+        "status": "Approved"
+      },
+      {
+        "id": 10,
+        "return_number": "REF-2026-00001009",
+        "order_number": "REF-2026-00001009",
+        "return_date": "10 Jan 2026",
+        "supplier": "SUPPLIER 10",
+        "amount": "৳ 1,733",
+        "status": "Approved"
+      },
+      {
+        "id": 11,
+        "return_number": "REF-2026-00001010",
+        "order_number": "REF-2026-00001010",
+        "return_date": "11 Jan 2026",
+        "supplier": "SUPPLIER 11",
+        "amount": "৳ 1,870",
+        "status": "Approved"
+      },
+      {
+        "id": 12,
+        "return_number": "REF-2026-00001011",
+        "order_number": "REF-2026-00001011",
+        "return_date": "12 Jan 2026",
+        "supplier": "SUPPLIER 12",
+        "amount": "৳ 2,007",
+        "status": "Approved"
+      },
+      {
+        "id": 13,
+        "return_number": "REF-2026-00001012",
+        "order_number": "REF-2026-00001012",
+        "return_date": "13 Jan 2026",
+        "supplier": "SUPPLIER 13",
+        "amount": "৳ 2,144",
+        "status": "Approved"
+      },
+      {
+        "id": 14,
+        "return_number": "REF-2026-00001013",
+        "order_number": "REF-2026-00001013",
+        "return_date": "14 Jan 2026",
+        "supplier": "SUPPLIER 14",
+        "amount": "৳ 2,281",
+        "status": "Approved"
+      },
+      {
+        "id": 15,
+        "return_number": "REF-2026-00001014",
+        "order_number": "REF-2026-00001014",
+        "return_date": "15 Jan 2026",
+        "supplier": "SUPPLIER 15",
+        "amount": "৳ 2,418",
+        "status": "Approved"
+      },
+      {
+        "id": 16,
+        "return_number": "REF-2026-00001015",
+        "order_number": "REF-2026-00001015",
+        "return_date": "16 Jan 2026",
+        "supplier": "SUPPLIER 16",
+        "amount": "৳ 2,555",
+        "status": "Approved"
+      },
+      {
+        "id": 17,
+        "return_number": "REF-2026-00001016",
+        "order_number": "REF-2026-00001016",
+        "return_date": "17 Jan 2026",
+        "supplier": "SUPPLIER 17",
+        "amount": "৳ 2,692",
+        "status": "Approved"
+      },
+      {
+        "id": 18,
+        "return_number": "REF-2026-00001017",
+        "order_number": "REF-2026-00001017",
+        "return_date": "18 Jan 2026",
+        "supplier": "SUPPLIER 18",
+        "amount": "৳ 2,829",
+        "status": "Approved"
+      },
+      {
+        "id": 19,
+        "return_number": "REF-2026-00001018",
+        "order_number": "REF-2026-00001018",
+        "return_date": "19 Jan 2026",
+        "supplier": "SUPPLIER 19",
+        "amount": "৳ 2,966",
+        "status": "Approved"
+      },
+      {
+        "id": 20,
+        "return_number": "REF-2026-00001019",
+        "order_number": "REF-2026-00001019",
+        "return_date": "20 Jan 2026",
+        "supplier": "SUPPLIER 20",
+        "amount": "৳ 3,103",
+        "status": "Approved"
+      },
+      {
+        "id": 21,
+        "return_number": "REF-2026-00001020",
+        "order_number": "REF-2026-00001020",
+        "return_date": "21 Jan 2026",
+        "supplier": "SUPPLIER 21",
+        "amount": "৳ 3,240",
+        "status": "Approved"
+      },
+      {
+        "id": 22,
+        "return_number": "REF-2026-00001021",
+        "order_number": "REF-2026-00001021",
+        "return_date": "22 Jan 2026",
+        "supplier": "SUPPLIER 22",
+        "amount": "৳ 3,377",
+        "status": "Approved"
+      },
+      {
+        "id": 23,
+        "return_number": "REF-2026-00001022",
+        "order_number": "REF-2026-00001022",
+        "return_date": "23 Jan 2026",
+        "supplier": "SUPPLIER 23",
+        "amount": "৳ 3,514",
+        "status": "Approved"
+      },
+      {
+        "id": 24,
+        "return_number": "REF-2026-00001023",
+        "order_number": "REF-2026-00001023",
+        "return_date": "24 Jan 2026",
+        "supplier": "SUPPLIER 24",
+        "amount": "৳ 3,651",
+        "status": "Approved"
+      },
+      {
+        "id": 25,
+        "return_number": "REF-2026-00001024",
+        "order_number": "REF-2026-00001024",
+        "return_date": "25 Jan 2026",
+        "supplier": "SUPPLIER 25",
+        "amount": "৳ 3,788",
+        "status": "Approved"
+      }
+    ],
+    "/en/purchase/batch-payments": [
+      {
+        "id": 1,
+        "batch_number": "B-000090",
+        "date": "1 Sep 2026",
+        "supplier": "Rahim",
+        "payment_method": "NRB Bank",
+        "paid": "৳ 199,240",
+        "discount": "৳ 0",
+        "total": "৳ 199,240"
+      },
+      {
+        "id": 2,
+        "batch_number": "B-000089",
+        "date": "27 Aug 2026",
+        "supplier": "hbehb",
+        "payment_method": "ক্যাশ",
+        "paid": "৳ 50,000",
+        "discount": "৳ 0",
+        "total": "৳ 50,000"
+      },
+      {
+        "id": 3,
+        "batch_number": "REF-2026-00001002",
+        "date": "3 Jan 2026",
+        "supplier": "SUPPLIER 3",
+        "payment_method": "PAYMENT 3",
+        "paid": "৳ 774",
+        "discount": "DISCOUNT 3",
+        "total": "৳ 774"
+      },
+      {
+        "id": 4,
+        "batch_number": "REF-2026-00001003",
+        "date": "4 Jan 2026",
+        "supplier": "SUPPLIER 4",
+        "payment_method": "PAYMENT 4",
+        "paid": "৳ 911",
+        "discount": "DISCOUNT 4",
+        "total": "৳ 911"
+      },
+      {
+        "id": 5,
+        "batch_number": "REF-2026-00001004",
+        "date": "5 Jan 2026",
+        "supplier": "SUPPLIER 5",
+        "payment_method": "PAYMENT 5",
+        "paid": "৳ 1,048",
+        "discount": "DISCOUNT 5",
+        "total": "৳ 1,048"
+      },
+      {
+        "id": 6,
+        "batch_number": "REF-2026-00001005",
+        "date": "6 Jan 2026",
+        "supplier": "SUPPLIER 6",
+        "payment_method": "PAYMENT 6",
+        "paid": "৳ 1,185",
+        "discount": "DISCOUNT 6",
+        "total": "৳ 1,185"
+      },
+      {
+        "id": 7,
+        "batch_number": "REF-2026-00001006",
+        "date": "7 Jan 2026",
+        "supplier": "SUPPLIER 7",
+        "payment_method": "PAYMENT 7",
+        "paid": "৳ 1,322",
+        "discount": "DISCOUNT 7",
+        "total": "৳ 1,322"
+      },
+      {
+        "id": 8,
+        "batch_number": "REF-2026-00001007",
+        "date": "8 Jan 2026",
+        "supplier": "SUPPLIER 8",
+        "payment_method": "PAYMENT 8",
+        "paid": "৳ 1,459",
+        "discount": "DISCOUNT 8",
+        "total": "৳ 1,459"
+      },
+      {
+        "id": 9,
+        "batch_number": "REF-2026-00001008",
+        "date": "9 Jan 2026",
+        "supplier": "SUPPLIER 9",
+        "payment_method": "PAYMENT 9",
+        "paid": "৳ 1,596",
+        "discount": "DISCOUNT 9",
+        "total": "৳ 1,596"
+      },
+      {
+        "id": 10,
+        "batch_number": "REF-2026-00001009",
+        "date": "10 Jan 2026",
+        "supplier": "SUPPLIER 10",
+        "payment_method": "PAYMENT 10",
+        "paid": "৳ 1,733",
+        "discount": "DISCOUNT 10",
+        "total": "৳ 1,733"
+      },
+      {
+        "id": 11,
+        "batch_number": "REF-2026-00001010",
+        "date": "11 Jan 2026",
+        "supplier": "SUPPLIER 11",
+        "payment_method": "PAYMENT 11",
+        "paid": "৳ 1,870",
+        "discount": "DISCOUNT 11",
+        "total": "৳ 1,870"
+      },
+      {
+        "id": 12,
+        "batch_number": "REF-2026-00001011",
+        "date": "12 Jan 2026",
+        "supplier": "SUPPLIER 12",
+        "payment_method": "PAYMENT 12",
+        "paid": "৳ 2,007",
+        "discount": "DISCOUNT 12",
+        "total": "৳ 2,007"
+      },
+      {
+        "id": 13,
+        "batch_number": "REF-2026-00001012",
+        "date": "13 Jan 2026",
+        "supplier": "SUPPLIER 13",
+        "payment_method": "PAYMENT 13",
+        "paid": "৳ 2,144",
+        "discount": "DISCOUNT 13",
+        "total": "৳ 2,144"
+      },
+      {
+        "id": 14,
+        "batch_number": "REF-2026-00001013",
+        "date": "14 Jan 2026",
+        "supplier": "SUPPLIER 14",
+        "payment_method": "PAYMENT 14",
+        "paid": "৳ 2,281",
+        "discount": "DISCOUNT 14",
+        "total": "৳ 2,281"
+      },
+      {
+        "id": 15,
+        "batch_number": "REF-2026-00001014",
+        "date": "15 Jan 2026",
+        "supplier": "SUPPLIER 15",
+        "payment_method": "PAYMENT 15",
+        "paid": "৳ 2,418",
+        "discount": "DISCOUNT 15",
+        "total": "৳ 2,418"
+      },
+      {
+        "id": 16,
+        "batch_number": "REF-2026-00001015",
+        "date": "16 Jan 2026",
+        "supplier": "SUPPLIER 16",
+        "payment_method": "PAYMENT 16",
+        "paid": "৳ 2,555",
+        "discount": "DISCOUNT 16",
+        "total": "৳ 2,555"
+      },
+      {
+        "id": 17,
+        "batch_number": "REF-2026-00001016",
+        "date": "17 Jan 2026",
+        "supplier": "SUPPLIER 17",
+        "payment_method": "PAYMENT 17",
+        "paid": "৳ 2,692",
+        "discount": "DISCOUNT 17",
+        "total": "৳ 2,692"
+      },
+      {
+        "id": 18,
+        "batch_number": "REF-2026-00001017",
+        "date": "18 Jan 2026",
+        "supplier": "SUPPLIER 18",
+        "payment_method": "PAYMENT 18",
+        "paid": "৳ 2,829",
+        "discount": "DISCOUNT 18",
+        "total": "৳ 2,829"
+      },
+      {
+        "id": 19,
+        "batch_number": "REF-2026-00001018",
+        "date": "19 Jan 2026",
+        "supplier": "SUPPLIER 19",
+        "payment_method": "PAYMENT 19",
+        "paid": "৳ 2,966",
+        "discount": "DISCOUNT 19",
+        "total": "৳ 2,966"
+      },
+      {
+        "id": 20,
+        "batch_number": "REF-2026-00001019",
+        "date": "20 Jan 2026",
+        "supplier": "SUPPLIER 20",
+        "payment_method": "PAYMENT 20",
+        "paid": "৳ 3,103",
+        "discount": "DISCOUNT 20",
+        "total": "৳ 3,103"
+      },
+      {
+        "id": 21,
+        "batch_number": "REF-2026-00001020",
+        "date": "21 Jan 2026",
+        "supplier": "SUPPLIER 21",
+        "payment_method": "PAYMENT 21",
+        "paid": "৳ 3,240",
+        "discount": "DISCOUNT 21",
+        "total": "৳ 3,240"
+      },
+      {
+        "id": 22,
+        "batch_number": "REF-2026-00001021",
+        "date": "22 Jan 2026",
+        "supplier": "SUPPLIER 22",
+        "payment_method": "PAYMENT 22",
+        "paid": "৳ 3,377",
+        "discount": "DISCOUNT 22",
+        "total": "৳ 3,377"
+      },
+      {
+        "id": 23,
+        "batch_number": "REF-2026-00001022",
+        "date": "23 Jan 2026",
+        "supplier": "SUPPLIER 23",
+        "payment_method": "PAYMENT 23",
+        "paid": "৳ 3,514",
+        "discount": "DISCOUNT 23",
+        "total": "৳ 3,514"
+      },
+      {
+        "id": 24,
+        "batch_number": "REF-2026-00001023",
+        "date": "24 Jan 2026",
+        "supplier": "SUPPLIER 24",
+        "payment_method": "PAYMENT 24",
+        "paid": "৳ 3,651",
+        "discount": "DISCOUNT 24",
+        "total": "৳ 3,651"
+      },
+      {
+        "id": 25,
+        "batch_number": "REF-2026-00001024",
+        "date": "25 Jan 2026",
+        "supplier": "SUPPLIER 25",
+        "payment_method": "PAYMENT 25",
+        "paid": "৳ 3,788",
+        "discount": "DISCOUNT 25",
+        "total": "৳ 3,788"
+      }
+    ],
+    "/en/purchase/payments": [
+      {
+        "id": 1,
+        "payment_number": "3 Sep 2026",
+        "date": "BL-2026-000261",
+        "bill_number": "3 Sep 2026",
+        "bill_date": "Rahim",
+        "supplier": "ক্যাশ",
+        "payment_method": "৳ 11,000",
+        "paid": "৳ 0",
+        "discount": "৳ 11,000",
+        "total": "Verified",
+        "status": ""
+      },
+      {
+        "id": 2,
+        "payment_number": "2 Sep 2026",
+        "date": "BL-2026-000260",
+        "bill_number": "2 Sep 2026",
+        "bill_date": "Rahim",
+        "supplier": "Counter Cash",
+        "payment_method": "৳ 50,000",
+        "paid": "৳ 0",
+        "discount": "৳ 50,000",
+        "total": "In-Process",
+        "status": ""
+      },
+      {
+        "id": 3,
+        "payment_number": "REF-2026-00001002",
+        "date": "3 Jan 2026",
+        "bill_number": "REF-2026-00001002",
+        "bill_date": "3 Jan 2026",
+        "supplier": "SUPPLIER 3",
+        "payment_method": "PAYMENT 3",
+        "paid": "৳ 774",
+        "discount": "DISCOUNT 3",
+        "total": "৳ 774",
+        "status": "Verified"
+      },
+      {
+        "id": 4,
+        "payment_number": "REF-2026-00001003",
+        "date": "4 Jan 2026",
+        "bill_number": "REF-2026-00001003",
+        "bill_date": "4 Jan 2026",
+        "supplier": "SUPPLIER 4",
+        "payment_method": "PAYMENT 4",
+        "paid": "৳ 911",
+        "discount": "DISCOUNT 4",
+        "total": "৳ 911",
+        "status": "In-Process"
+      },
+      {
+        "id": 5,
+        "payment_number": "REF-2026-00001004",
+        "date": "5 Jan 2026",
+        "bill_number": "REF-2026-00001004",
+        "bill_date": "5 Jan 2026",
+        "supplier": "SUPPLIER 5",
+        "payment_method": "PAYMENT 5",
+        "paid": "৳ 1,048",
+        "discount": "DISCOUNT 5",
+        "total": "৳ 1,048",
+        "status": "Verified"
+      },
+      {
+        "id": 6,
+        "payment_number": "REF-2026-00001005",
+        "date": "6 Jan 2026",
+        "bill_number": "REF-2026-00001005",
+        "bill_date": "6 Jan 2026",
+        "supplier": "SUPPLIER 6",
+        "payment_method": "PAYMENT 6",
+        "paid": "৳ 1,185",
+        "discount": "DISCOUNT 6",
+        "total": "৳ 1,185",
+        "status": "In-Process"
+      },
+      {
+        "id": 7,
+        "payment_number": "REF-2026-00001006",
+        "date": "7 Jan 2026",
+        "bill_number": "REF-2026-00001006",
+        "bill_date": "7 Jan 2026",
+        "supplier": "SUPPLIER 7",
+        "payment_method": "PAYMENT 7",
+        "paid": "৳ 1,322",
+        "discount": "DISCOUNT 7",
+        "total": "৳ 1,322",
+        "status": "Verified"
+      },
+      {
+        "id": 8,
+        "payment_number": "REF-2026-00001007",
+        "date": "8 Jan 2026",
+        "bill_number": "REF-2026-00001007",
+        "bill_date": "8 Jan 2026",
+        "supplier": "SUPPLIER 8",
+        "payment_method": "PAYMENT 8",
+        "paid": "৳ 1,459",
+        "discount": "DISCOUNT 8",
+        "total": "৳ 1,459",
+        "status": "In-Process"
+      },
+      {
+        "id": 9,
+        "payment_number": "REF-2026-00001008",
+        "date": "9 Jan 2026",
+        "bill_number": "REF-2026-00001008",
+        "bill_date": "9 Jan 2026",
+        "supplier": "SUPPLIER 9",
+        "payment_method": "PAYMENT 9",
+        "paid": "৳ 1,596",
+        "discount": "DISCOUNT 9",
+        "total": "৳ 1,596",
+        "status": "Verified"
+      },
+      {
+        "id": 10,
+        "payment_number": "REF-2026-00001009",
+        "date": "10 Jan 2026",
+        "bill_number": "REF-2026-00001009",
+        "bill_date": "10 Jan 2026",
+        "supplier": "SUPPLIER 10",
+        "payment_method": "PAYMENT 10",
+        "paid": "৳ 1,733",
+        "discount": "DISCOUNT 10",
+        "total": "৳ 1,733",
+        "status": "In-Process"
+      },
+      {
+        "id": 11,
+        "payment_number": "REF-2026-00001010",
+        "date": "11 Jan 2026",
+        "bill_number": "REF-2026-00001010",
+        "bill_date": "11 Jan 2026",
+        "supplier": "SUPPLIER 11",
+        "payment_method": "PAYMENT 11",
+        "paid": "৳ 1,870",
+        "discount": "DISCOUNT 11",
+        "total": "৳ 1,870",
+        "status": "Verified"
+      },
+      {
+        "id": 12,
+        "payment_number": "REF-2026-00001011",
+        "date": "12 Jan 2026",
+        "bill_number": "REF-2026-00001011",
+        "bill_date": "12 Jan 2026",
+        "supplier": "SUPPLIER 12",
+        "payment_method": "PAYMENT 12",
+        "paid": "৳ 2,007",
+        "discount": "DISCOUNT 12",
+        "total": "৳ 2,007",
+        "status": "In-Process"
+      },
+      {
+        "id": 13,
+        "payment_number": "REF-2026-00001012",
+        "date": "13 Jan 2026",
+        "bill_number": "REF-2026-00001012",
+        "bill_date": "13 Jan 2026",
+        "supplier": "SUPPLIER 13",
+        "payment_method": "PAYMENT 13",
+        "paid": "৳ 2,144",
+        "discount": "DISCOUNT 13",
+        "total": "৳ 2,144",
+        "status": "Verified"
+      },
+      {
+        "id": 14,
+        "payment_number": "REF-2026-00001013",
+        "date": "14 Jan 2026",
+        "bill_number": "REF-2026-00001013",
+        "bill_date": "14 Jan 2026",
+        "supplier": "SUPPLIER 14",
+        "payment_method": "PAYMENT 14",
+        "paid": "৳ 2,281",
+        "discount": "DISCOUNT 14",
+        "total": "৳ 2,281",
+        "status": "In-Process"
+      },
+      {
+        "id": 15,
+        "payment_number": "REF-2026-00001014",
+        "date": "15 Jan 2026",
+        "bill_number": "REF-2026-00001014",
+        "bill_date": "15 Jan 2026",
+        "supplier": "SUPPLIER 15",
+        "payment_method": "PAYMENT 15",
+        "paid": "৳ 2,418",
+        "discount": "DISCOUNT 15",
+        "total": "৳ 2,418",
+        "status": "Verified"
+      },
+      {
+        "id": 16,
+        "payment_number": "REF-2026-00001015",
+        "date": "16 Jan 2026",
+        "bill_number": "REF-2026-00001015",
+        "bill_date": "16 Jan 2026",
+        "supplier": "SUPPLIER 16",
+        "payment_method": "PAYMENT 16",
+        "paid": "৳ 2,555",
+        "discount": "DISCOUNT 16",
+        "total": "৳ 2,555",
+        "status": "In-Process"
+      },
+      {
+        "id": 17,
+        "payment_number": "REF-2026-00001016",
+        "date": "17 Jan 2026",
+        "bill_number": "REF-2026-00001016",
+        "bill_date": "17 Jan 2026",
+        "supplier": "SUPPLIER 17",
+        "payment_method": "PAYMENT 17",
+        "paid": "৳ 2,692",
+        "discount": "DISCOUNT 17",
+        "total": "৳ 2,692",
+        "status": "Verified"
+      },
+      {
+        "id": 18,
+        "payment_number": "REF-2026-00001017",
+        "date": "18 Jan 2026",
+        "bill_number": "REF-2026-00001017",
+        "bill_date": "18 Jan 2026",
+        "supplier": "SUPPLIER 18",
+        "payment_method": "PAYMENT 18",
+        "paid": "৳ 2,829",
+        "discount": "DISCOUNT 18",
+        "total": "৳ 2,829",
+        "status": "In-Process"
+      },
+      {
+        "id": 19,
+        "payment_number": "REF-2026-00001018",
+        "date": "19 Jan 2026",
+        "bill_number": "REF-2026-00001018",
+        "bill_date": "19 Jan 2026",
+        "supplier": "SUPPLIER 19",
+        "payment_method": "PAYMENT 19",
+        "paid": "৳ 2,966",
+        "discount": "DISCOUNT 19",
+        "total": "৳ 2,966",
+        "status": "Verified"
+      },
+      {
+        "id": 20,
+        "payment_number": "REF-2026-00001019",
+        "date": "20 Jan 2026",
+        "bill_number": "REF-2026-00001019",
+        "bill_date": "20 Jan 2026",
+        "supplier": "SUPPLIER 20",
+        "payment_method": "PAYMENT 20",
+        "paid": "৳ 3,103",
+        "discount": "DISCOUNT 20",
+        "total": "৳ 3,103",
+        "status": "In-Process"
+      },
+      {
+        "id": 21,
+        "payment_number": "REF-2026-00001020",
+        "date": "21 Jan 2026",
+        "bill_number": "REF-2026-00001020",
+        "bill_date": "21 Jan 2026",
+        "supplier": "SUPPLIER 21",
+        "payment_method": "PAYMENT 21",
+        "paid": "৳ 3,240",
+        "discount": "DISCOUNT 21",
+        "total": "৳ 3,240",
+        "status": "Verified"
+      },
+      {
+        "id": 22,
+        "payment_number": "REF-2026-00001021",
+        "date": "22 Jan 2026",
+        "bill_number": "REF-2026-00001021",
+        "bill_date": "22 Jan 2026",
+        "supplier": "SUPPLIER 22",
+        "payment_method": "PAYMENT 22",
+        "paid": "৳ 3,377",
+        "discount": "DISCOUNT 22",
+        "total": "৳ 3,377",
+        "status": "In-Process"
+      },
+      {
+        "id": 23,
+        "payment_number": "REF-2026-00001022",
+        "date": "23 Jan 2026",
+        "bill_number": "REF-2026-00001022",
+        "bill_date": "23 Jan 2026",
+        "supplier": "SUPPLIER 23",
+        "payment_method": "PAYMENT 23",
+        "paid": "৳ 3,514",
+        "discount": "DISCOUNT 23",
+        "total": "৳ 3,514",
+        "status": "Verified"
+      },
+      {
+        "id": 24,
+        "payment_number": "REF-2026-00001023",
+        "date": "24 Jan 2026",
+        "bill_number": "REF-2026-00001023",
+        "bill_date": "24 Jan 2026",
+        "supplier": "SUPPLIER 24",
+        "payment_method": "PAYMENT 24",
+        "paid": "৳ 3,651",
+        "discount": "DISCOUNT 24",
+        "total": "৳ 3,651",
+        "status": "In-Process"
+      },
+      {
+        "id": 25,
+        "payment_number": "REF-2026-00001024",
+        "date": "25 Jan 2026",
+        "bill_number": "REF-2026-00001024",
+        "bill_date": "25 Jan 2026",
+        "supplier": "SUPPLIER 25",
+        "payment_method": "PAYMENT 25",
+        "paid": "৳ 3,788",
+        "discount": "DISCOUNT 25",
+        "total": "৳ 3,788",
+        "status": "Verified"
+      }
+    ],
+    "/en/purchase/supplier-credits": [
+      {
+        "id": 1,
+        "credit_number": "DM-2026-000026",
+        "date": "30 Jul 2026",
+        "supplier": "MR Trading",
+        "type": "Purchase Return",
+        "reference": "PR-000070",
+        "grand_total": "৳ 1,260",
+        "adjusted_amount": "৳ 0",
+        "adjustable_amount": "৳ 1,260",
+        "status": "Unpaid"
+      },
+      {
+        "id": 2,
+        "credit_number": "DM-2026-000025",
+        "date": "13 Jul 2026",
+        "supplier": "Coca-Cola",
+        "type": "Purchase Return",
+        "reference": "PR-000069",
+        "grand_total": "৳ 100",
+        "adjusted_amount": "৳ 0",
+        "adjustable_amount": "৳ 100",
+        "status": "Unpaid"
+      },
+      {
+        "id": 3,
+        "credit_number": "REF-2026-00001002",
+        "date": "3 Jan 2026",
+        "supplier": "SUPPLIER 3",
+        "type": "TYPE 3",
+        "reference": "REF-2026-00001002",
+        "grand_total": "৳ 774",
+        "adjusted_amount": "৳ 774",
+        "adjustable_amount": "৳ 774",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 4,
+        "credit_number": "REF-2026-00001003",
+        "date": "4 Jan 2026",
+        "supplier": "SUPPLIER 4",
+        "type": "TYPE 4",
+        "reference": "REF-2026-00001003",
+        "grand_total": "৳ 911",
+        "adjusted_amount": "৳ 911",
+        "adjustable_amount": "৳ 911",
+        "status": "Unpaid"
+      },
+      {
+        "id": 5,
+        "credit_number": "REF-2026-00001004",
+        "date": "5 Jan 2026",
+        "supplier": "SUPPLIER 5",
+        "type": "TYPE 5",
+        "reference": "REF-2026-00001004",
+        "grand_total": "৳ 1,048",
+        "adjusted_amount": "৳ 1,048",
+        "adjustable_amount": "৳ 1,048",
+        "status": "Paid"
+      },
+      {
+        "id": 6,
+        "credit_number": "REF-2026-00001005",
+        "date": "6 Jan 2026",
+        "supplier": "SUPPLIER 6",
+        "type": "TYPE 6",
+        "reference": "REF-2026-00001005",
+        "grand_total": "৳ 1,185",
+        "adjusted_amount": "৳ 1,185",
+        "adjustable_amount": "৳ 1,185",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 7,
+        "credit_number": "REF-2026-00001006",
+        "date": "7 Jan 2026",
+        "supplier": "SUPPLIER 7",
+        "type": "TYPE 7",
+        "reference": "REF-2026-00001006",
+        "grand_total": "৳ 1,322",
+        "adjusted_amount": "৳ 1,322",
+        "adjustable_amount": "৳ 1,322",
+        "status": "Unpaid"
+      },
+      {
+        "id": 8,
+        "credit_number": "REF-2026-00001007",
+        "date": "8 Jan 2026",
+        "supplier": "SUPPLIER 8",
+        "type": "TYPE 8",
+        "reference": "REF-2026-00001007",
+        "grand_total": "৳ 1,459",
+        "adjusted_amount": "৳ 1,459",
+        "adjustable_amount": "৳ 1,459",
+        "status": "Paid"
+      },
+      {
+        "id": 9,
+        "credit_number": "REF-2026-00001008",
+        "date": "9 Jan 2026",
+        "supplier": "SUPPLIER 9",
+        "type": "TYPE 9",
+        "reference": "REF-2026-00001008",
+        "grand_total": "৳ 1,596",
+        "adjusted_amount": "৳ 1,596",
+        "adjustable_amount": "৳ 1,596",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 10,
+        "credit_number": "REF-2026-00001009",
+        "date": "10 Jan 2026",
+        "supplier": "SUPPLIER 10",
+        "type": "TYPE 10",
+        "reference": "REF-2026-00001009",
+        "grand_total": "৳ 1,733",
+        "adjusted_amount": "৳ 1,733",
+        "adjustable_amount": "৳ 1,733",
+        "status": "Unpaid"
+      },
+      {
+        "id": 11,
+        "credit_number": "REF-2026-00001010",
+        "date": "11 Jan 2026",
+        "supplier": "SUPPLIER 11",
+        "type": "TYPE 11",
+        "reference": "REF-2026-00001010",
+        "grand_total": "৳ 1,870",
+        "adjusted_amount": "৳ 1,870",
+        "adjustable_amount": "৳ 1,870",
+        "status": "Paid"
+      },
+      {
+        "id": 12,
+        "credit_number": "REF-2026-00001011",
+        "date": "12 Jan 2026",
+        "supplier": "SUPPLIER 12",
+        "type": "TYPE 12",
+        "reference": "REF-2026-00001011",
+        "grand_total": "৳ 2,007",
+        "adjusted_amount": "৳ 2,007",
+        "adjustable_amount": "৳ 2,007",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 13,
+        "credit_number": "REF-2026-00001012",
+        "date": "13 Jan 2026",
+        "supplier": "SUPPLIER 13",
+        "type": "TYPE 13",
+        "reference": "REF-2026-00001012",
+        "grand_total": "৳ 2,144",
+        "adjusted_amount": "৳ 2,144",
+        "adjustable_amount": "৳ 2,144",
+        "status": "Unpaid"
+      },
+      {
+        "id": 14,
+        "credit_number": "REF-2026-00001013",
+        "date": "14 Jan 2026",
+        "supplier": "SUPPLIER 14",
+        "type": "TYPE 14",
+        "reference": "REF-2026-00001013",
+        "grand_total": "৳ 2,281",
+        "adjusted_amount": "৳ 2,281",
+        "adjustable_amount": "৳ 2,281",
+        "status": "Paid"
+      },
+      {
+        "id": 15,
+        "credit_number": "REF-2026-00001014",
+        "date": "15 Jan 2026",
+        "supplier": "SUPPLIER 15",
+        "type": "TYPE 15",
+        "reference": "REF-2026-00001014",
+        "grand_total": "৳ 2,418",
+        "adjusted_amount": "৳ 2,418",
+        "adjustable_amount": "৳ 2,418",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 16,
+        "credit_number": "REF-2026-00001015",
+        "date": "16 Jan 2026",
+        "supplier": "SUPPLIER 16",
+        "type": "TYPE 16",
+        "reference": "REF-2026-00001015",
+        "grand_total": "৳ 2,555",
+        "adjusted_amount": "৳ 2,555",
+        "adjustable_amount": "৳ 2,555",
+        "status": "Unpaid"
+      },
+      {
+        "id": 17,
+        "credit_number": "REF-2026-00001016",
+        "date": "17 Jan 2026",
+        "supplier": "SUPPLIER 17",
+        "type": "TYPE 17",
+        "reference": "REF-2026-00001016",
+        "grand_total": "৳ 2,692",
+        "adjusted_amount": "৳ 2,692",
+        "adjustable_amount": "৳ 2,692",
+        "status": "Paid"
+      },
+      {
+        "id": 18,
+        "credit_number": "REF-2026-00001017",
+        "date": "18 Jan 2026",
+        "supplier": "SUPPLIER 18",
+        "type": "TYPE 18",
+        "reference": "REF-2026-00001017",
+        "grand_total": "৳ 2,829",
+        "adjusted_amount": "৳ 2,829",
+        "adjustable_amount": "৳ 2,829",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 19,
+        "credit_number": "REF-2026-00001018",
+        "date": "19 Jan 2026",
+        "supplier": "SUPPLIER 19",
+        "type": "TYPE 19",
+        "reference": "REF-2026-00001018",
+        "grand_total": "৳ 2,966",
+        "adjusted_amount": "৳ 2,966",
+        "adjustable_amount": "৳ 2,966",
+        "status": "Unpaid"
+      },
+      {
+        "id": 20,
+        "credit_number": "REF-2026-00001019",
+        "date": "20 Jan 2026",
+        "supplier": "SUPPLIER 20",
+        "type": "TYPE 20",
+        "reference": "REF-2026-00001019",
+        "grand_total": "৳ 3,103",
+        "adjusted_amount": "৳ 3,103",
+        "adjustable_amount": "৳ 3,103",
+        "status": "Paid"
+      },
+      {
+        "id": 21,
+        "credit_number": "REF-2026-00001020",
+        "date": "21 Jan 2026",
+        "supplier": "SUPPLIER 21",
+        "type": "TYPE 21",
+        "reference": "REF-2026-00001020",
+        "grand_total": "৳ 3,240",
+        "adjusted_amount": "৳ 3,240",
+        "adjustable_amount": "৳ 3,240",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 22,
+        "credit_number": "REF-2026-00001021",
+        "date": "22 Jan 2026",
+        "supplier": "SUPPLIER 22",
+        "type": "TYPE 22",
+        "reference": "REF-2026-00001021",
+        "grand_total": "৳ 3,377",
+        "adjusted_amount": "৳ 3,377",
+        "adjustable_amount": "৳ 3,377",
+        "status": "Unpaid"
+      },
+      {
+        "id": 23,
+        "credit_number": "REF-2026-00001022",
+        "date": "23 Jan 2026",
+        "supplier": "SUPPLIER 23",
+        "type": "TYPE 23",
+        "reference": "REF-2026-00001022",
+        "grand_total": "৳ 3,514",
+        "adjusted_amount": "৳ 3,514",
+        "adjustable_amount": "৳ 3,514",
+        "status": "Paid"
+      },
+      {
+        "id": 24,
+        "credit_number": "REF-2026-00001023",
+        "date": "24 Jan 2026",
+        "supplier": "SUPPLIER 24",
+        "type": "TYPE 24",
+        "reference": "REF-2026-00001023",
+        "grand_total": "৳ 3,651",
+        "adjusted_amount": "৳ 3,651",
+        "adjustable_amount": "৳ 3,651",
+        "status": "Partially Paid"
+      },
+      {
+        "id": 25,
+        "credit_number": "REF-2026-00001024",
+        "date": "25 Jan 2026",
+        "supplier": "SUPPLIER 25",
+        "type": "TYPE 25",
+        "reference": "REF-2026-00001024",
+        "grand_total": "৳ 3,788",
+        "adjusted_amount": "৳ 3,788",
+        "adjustable_amount": "৳ 3,788",
+        "status": "Unpaid"
+      }
+    ],
+    "/en/purchase/refunds": [
+      {
+        "id": 1,
+        "refund_number": "PRF-000005",
+        "date": "10 Jun 2026",
+        "supplier": "Masud Rahman",
+        "payment_method": "ক্যাশ",
+        "refunded_to": "Biznify Dev Team",
+        "amount_refunded": "৳ 2,000",
+        "status": "Refunded"
+      },
+      {
+        "id": 2,
+        "refund_number": "PRF-000004",
+        "date": "24 Feb 2026",
+        "supplier": "ash bazar",
+        "payment_method": "Green it cash",
+        "refunded_to": "Demo",
+        "amount_refunded": "৳ 2,000",
+        "status": "Refunded"
+      },
+      {
+        "id": 3,
+        "refund_number": "REF-2026-00001002",
+        "date": "3 Jan 2026",
+        "supplier": "SUPPLIER 3",
+        "payment_method": "PAYMENT 3",
+        "refunded_to": "REFUNDED 3",
+        "amount_refunded": "৳ 774",
+        "status": "Refunded"
+      },
+      {
+        "id": 4,
+        "refund_number": "REF-2026-00001003",
+        "date": "4 Jan 2026",
+        "supplier": "SUPPLIER 4",
+        "payment_method": "PAYMENT 4",
+        "refunded_to": "REFUNDED 4",
+        "amount_refunded": "৳ 911",
+        "status": "Refunded"
+      },
+      {
+        "id": 5,
+        "refund_number": "REF-2026-00001004",
+        "date": "5 Jan 2026",
+        "supplier": "SUPPLIER 5",
+        "payment_method": "PAYMENT 5",
+        "refunded_to": "REFUNDED 5",
+        "amount_refunded": "৳ 1,048",
+        "status": "Refunded"
+      },
+      {
+        "id": 6,
+        "refund_number": "REF-2026-00001005",
+        "date": "6 Jan 2026",
+        "supplier": "SUPPLIER 6",
+        "payment_method": "PAYMENT 6",
+        "refunded_to": "REFUNDED 6",
+        "amount_refunded": "৳ 1,185",
+        "status": "Refunded"
+      },
+      {
+        "id": 7,
+        "refund_number": "REF-2026-00001006",
+        "date": "7 Jan 2026",
+        "supplier": "SUPPLIER 7",
+        "payment_method": "PAYMENT 7",
+        "refunded_to": "REFUNDED 7",
+        "amount_refunded": "৳ 1,322",
+        "status": "Refunded"
+      },
+      {
+        "id": 8,
+        "refund_number": "REF-2026-00001007",
+        "date": "8 Jan 2026",
+        "supplier": "SUPPLIER 8",
+        "payment_method": "PAYMENT 8",
+        "refunded_to": "REFUNDED 8",
+        "amount_refunded": "৳ 1,459",
+        "status": "Refunded"
+      },
+      {
+        "id": 9,
+        "refund_number": "REF-2026-00001008",
+        "date": "9 Jan 2026",
+        "supplier": "SUPPLIER 9",
+        "payment_method": "PAYMENT 9",
+        "refunded_to": "REFUNDED 9",
+        "amount_refunded": "৳ 1,596",
+        "status": "Refunded"
+      },
+      {
+        "id": 10,
+        "refund_number": "REF-2026-00001009",
+        "date": "10 Jan 2026",
+        "supplier": "SUPPLIER 10",
+        "payment_method": "PAYMENT 10",
+        "refunded_to": "REFUNDED 10",
+        "amount_refunded": "৳ 1,733",
+        "status": "Refunded"
+      },
+      {
+        "id": 11,
+        "refund_number": "REF-2026-00001010",
+        "date": "11 Jan 2026",
+        "supplier": "SUPPLIER 11",
+        "payment_method": "PAYMENT 11",
+        "refunded_to": "REFUNDED 11",
+        "amount_refunded": "৳ 1,870",
+        "status": "Refunded"
+      },
+      {
+        "id": 12,
+        "refund_number": "REF-2026-00001011",
+        "date": "12 Jan 2026",
+        "supplier": "SUPPLIER 12",
+        "payment_method": "PAYMENT 12",
+        "refunded_to": "REFUNDED 12",
+        "amount_refunded": "৳ 2,007",
+        "status": "Refunded"
+      }
+    ],
+    "/en/inventory/item-stock": [
+      {
+        "id": 1,
+        "item": "TP Link",
+        "code": "I-004787",
+        "group": "N/A",
+        "brand": "TP Link",
+        "available_stock": "49 pc",
+        "low_stock": "10 pc",
+        "status": "Active"
+      },
+      {
+        "id": 2,
+        "item": "Vsol-Xpon-ONU",
+        "code": "I-004786",
+        "group": "N/A",
+        "brand": "N/A",
+        "available_stock": "9 pc",
+        "low_stock": "0 pc",
+        "status": "Active"
+      },
+      {
+        "id": 3,
+        "item": "ITEM 3",
+        "code": "CODE 3",
+        "group": "GROUP 3",
+        "brand": "BRAND 3",
+        "available_stock": "AVAILABLE 3",
+        "low_stock": "LOW 3",
+        "status": "Active"
+      },
+      {
+        "id": 4,
+        "item": "ITEM 4",
+        "code": "CODE 4",
+        "group": "GROUP 4",
+        "brand": "BRAND 4",
+        "available_stock": "AVAILABLE 4",
+        "low_stock": "LOW 4",
+        "status": "Active"
+      },
+      {
+        "id": 5,
+        "item": "ITEM 5",
+        "code": "CODE 5",
+        "group": "GROUP 5",
+        "brand": "BRAND 5",
+        "available_stock": "AVAILABLE 5",
+        "low_stock": "LOW 5",
+        "status": "Active"
+      },
+      {
+        "id": 6,
+        "item": "ITEM 6",
+        "code": "CODE 6",
+        "group": "GROUP 6",
+        "brand": "BRAND 6",
+        "available_stock": "AVAILABLE 6",
+        "low_stock": "LOW 6",
+        "status": "Active"
+      },
+      {
+        "id": 7,
+        "item": "ITEM 7",
+        "code": "CODE 7",
+        "group": "GROUP 7",
+        "brand": "BRAND 7",
+        "available_stock": "AVAILABLE 7",
+        "low_stock": "LOW 7",
+        "status": "Active"
+      },
+      {
+        "id": 8,
+        "item": "ITEM 8",
+        "code": "CODE 8",
+        "group": "GROUP 8",
+        "brand": "BRAND 8",
+        "available_stock": "AVAILABLE 8",
+        "low_stock": "LOW 8",
+        "status": "Active"
+      },
+      {
+        "id": 9,
+        "item": "ITEM 9",
+        "code": "CODE 9",
+        "group": "GROUP 9",
+        "brand": "BRAND 9",
+        "available_stock": "AVAILABLE 9",
+        "low_stock": "LOW 9",
+        "status": "Active"
+      },
+      {
+        "id": 10,
+        "item": "ITEM 10",
+        "code": "CODE 10",
+        "group": "GROUP 10",
+        "brand": "BRAND 10",
+        "available_stock": "AVAILABLE 10",
+        "low_stock": "LOW 10",
+        "status": "Active"
+      },
+      {
+        "id": 11,
+        "item": "ITEM 11",
+        "code": "CODE 11",
+        "group": "GROUP 11",
+        "brand": "BRAND 11",
+        "available_stock": "AVAILABLE 11",
+        "low_stock": "LOW 11",
+        "status": "Active"
+      },
+      {
+        "id": 12,
+        "item": "ITEM 12",
+        "code": "CODE 12",
+        "group": "GROUP 12",
+        "brand": "BRAND 12",
+        "available_stock": "AVAILABLE 12",
+        "low_stock": "LOW 12",
+        "status": "Active"
+      },
+      {
+        "id": 13,
+        "item": "ITEM 13",
+        "code": "CODE 13",
+        "group": "GROUP 13",
+        "brand": "BRAND 13",
+        "available_stock": "AVAILABLE 13",
+        "low_stock": "LOW 13",
+        "status": "Active"
+      },
+      {
+        "id": 14,
+        "item": "ITEM 14",
+        "code": "CODE 14",
+        "group": "GROUP 14",
+        "brand": "BRAND 14",
+        "available_stock": "AVAILABLE 14",
+        "low_stock": "LOW 14",
+        "status": "Active"
+      },
+      {
+        "id": 15,
+        "item": "ITEM 15",
+        "code": "CODE 15",
+        "group": "GROUP 15",
+        "brand": "BRAND 15",
+        "available_stock": "AVAILABLE 15",
+        "low_stock": "LOW 15",
+        "status": "Active"
+      },
+      {
+        "id": 16,
+        "item": "ITEM 16",
+        "code": "CODE 16",
+        "group": "GROUP 16",
+        "brand": "BRAND 16",
+        "available_stock": "AVAILABLE 16",
+        "low_stock": "LOW 16",
+        "status": "Active"
+      },
+      {
+        "id": 17,
+        "item": "ITEM 17",
+        "code": "CODE 17",
+        "group": "GROUP 17",
+        "brand": "BRAND 17",
+        "available_stock": "AVAILABLE 17",
+        "low_stock": "LOW 17",
+        "status": "Active"
+      },
+      {
+        "id": 18,
+        "item": "ITEM 18",
+        "code": "CODE 18",
+        "group": "GROUP 18",
+        "brand": "BRAND 18",
+        "available_stock": "AVAILABLE 18",
+        "low_stock": "LOW 18",
+        "status": "Active"
+      },
+      {
+        "id": 19,
+        "item": "ITEM 19",
+        "code": "CODE 19",
+        "group": "GROUP 19",
+        "brand": "BRAND 19",
+        "available_stock": "AVAILABLE 19",
+        "low_stock": "LOW 19",
+        "status": "Active"
+      },
+      {
+        "id": 20,
+        "item": "ITEM 20",
+        "code": "CODE 20",
+        "group": "GROUP 20",
+        "brand": "BRAND 20",
+        "available_stock": "AVAILABLE 20",
+        "low_stock": "LOW 20",
+        "status": "Active"
+      },
+      {
+        "id": 21,
+        "item": "ITEM 21",
+        "code": "CODE 21",
+        "group": "GROUP 21",
+        "brand": "BRAND 21",
+        "available_stock": "AVAILABLE 21",
+        "low_stock": "LOW 21",
+        "status": "Active"
+      },
+      {
+        "id": 22,
+        "item": "ITEM 22",
+        "code": "CODE 22",
+        "group": "GROUP 22",
+        "brand": "BRAND 22",
+        "available_stock": "AVAILABLE 22",
+        "low_stock": "LOW 22",
+        "status": "Active"
+      },
+      {
+        "id": 23,
+        "item": "ITEM 23",
+        "code": "CODE 23",
+        "group": "GROUP 23",
+        "brand": "BRAND 23",
+        "available_stock": "AVAILABLE 23",
+        "low_stock": "LOW 23",
+        "status": "Active"
+      },
+      {
+        "id": 24,
+        "item": "ITEM 24",
+        "code": "CODE 24",
+        "group": "GROUP 24",
+        "brand": "BRAND 24",
+        "available_stock": "AVAILABLE 24",
+        "low_stock": "LOW 24",
+        "status": "Active"
+      },
+      {
+        "id": 25,
+        "item": "ITEM 25",
+        "code": "CODE 25",
+        "group": "GROUP 25",
+        "brand": "BRAND 25",
+        "available_stock": "AVAILABLE 25",
+        "low_stock": "LOW 25",
+        "status": "Active"
+      }
+    ],
+    "/en/hrm/employee/employees": [
+      {
+        "id": 1,
+        "code": "Anik Chowdhury",
+        "name": "Sales",
+        "department": "Sales",
+        "position": "Full Time",
+        "employment_type": "anik.softifybd@gmail.com",
+        "email": "01894431223",
+        "phone_number": "1 Aug 2026",
+        "joining_date": "Active",
+        "status": ""
+      },
+      {
+        "id": 2,
+        "code": "Showmik Hossain",
+        "name": "Digital Marketing",
+        "department": "Sales",
+        "position": "Full Time",
+        "employment_type": "showmik@gmail.coom",
+        "email": "01700000000",
+        "phone_number": "1 Jun 2026",
+        "joining_date": "Active",
+        "status": ""
+      },
+      {
+        "id": 3,
+        "code": "CODE 3",
+        "name": "NAME 3",
+        "department": "DEPARTMENT 3",
+        "position": "POSITION 3",
+        "employment_type": "EMPLOYMENT 3",
+        "email": "EMAIL 3",
+        "phone_number": "REF-2026-00001002",
+        "joining_date": "3 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 4,
+        "code": "CODE 4",
+        "name": "NAME 4",
+        "department": "DEPARTMENT 4",
+        "position": "POSITION 4",
+        "employment_type": "EMPLOYMENT 4",
+        "email": "EMAIL 4",
+        "phone_number": "REF-2026-00001003",
+        "joining_date": "4 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 5,
+        "code": "CODE 5",
+        "name": "NAME 5",
+        "department": "DEPARTMENT 5",
+        "position": "POSITION 5",
+        "employment_type": "EMPLOYMENT 5",
+        "email": "EMAIL 5",
+        "phone_number": "REF-2026-00001004",
+        "joining_date": "5 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 6,
+        "code": "CODE 6",
+        "name": "NAME 6",
+        "department": "DEPARTMENT 6",
+        "position": "POSITION 6",
+        "employment_type": "EMPLOYMENT 6",
+        "email": "EMAIL 6",
+        "phone_number": "REF-2026-00001005",
+        "joining_date": "6 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 7,
+        "code": "CODE 7",
+        "name": "NAME 7",
+        "department": "DEPARTMENT 7",
+        "position": "POSITION 7",
+        "employment_type": "EMPLOYMENT 7",
+        "email": "EMAIL 7",
+        "phone_number": "REF-2026-00001006",
+        "joining_date": "7 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 8,
+        "code": "CODE 8",
+        "name": "NAME 8",
+        "department": "DEPARTMENT 8",
+        "position": "POSITION 8",
+        "employment_type": "EMPLOYMENT 8",
+        "email": "EMAIL 8",
+        "phone_number": "REF-2026-00001007",
+        "joining_date": "8 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 9,
+        "code": "CODE 9",
+        "name": "NAME 9",
+        "department": "DEPARTMENT 9",
+        "position": "POSITION 9",
+        "employment_type": "EMPLOYMENT 9",
+        "email": "EMAIL 9",
+        "phone_number": "REF-2026-00001008",
+        "joining_date": "9 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 10,
+        "code": "CODE 10",
+        "name": "NAME 10",
+        "department": "DEPARTMENT 10",
+        "position": "POSITION 10",
+        "employment_type": "EMPLOYMENT 10",
+        "email": "EMAIL 10",
+        "phone_number": "REF-2026-00001009",
+        "joining_date": "10 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 11,
+        "code": "CODE 11",
+        "name": "NAME 11",
+        "department": "DEPARTMENT 11",
+        "position": "POSITION 11",
+        "employment_type": "EMPLOYMENT 11",
+        "email": "EMAIL 11",
+        "phone_number": "REF-2026-00001010",
+        "joining_date": "11 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 12,
+        "code": "CODE 12",
+        "name": "NAME 12",
+        "department": "DEPARTMENT 12",
+        "position": "POSITION 12",
+        "employment_type": "EMPLOYMENT 12",
+        "email": "EMAIL 12",
+        "phone_number": "REF-2026-00001011",
+        "joining_date": "12 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 13,
+        "code": "CODE 13",
+        "name": "NAME 13",
+        "department": "DEPARTMENT 13",
+        "position": "POSITION 13",
+        "employment_type": "EMPLOYMENT 13",
+        "email": "EMAIL 13",
+        "phone_number": "REF-2026-00001012",
+        "joining_date": "13 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 14,
+        "code": "CODE 14",
+        "name": "NAME 14",
+        "department": "DEPARTMENT 14",
+        "position": "POSITION 14",
+        "employment_type": "EMPLOYMENT 14",
+        "email": "EMAIL 14",
+        "phone_number": "REF-2026-00001013",
+        "joining_date": "14 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 15,
+        "code": "CODE 15",
+        "name": "NAME 15",
+        "department": "DEPARTMENT 15",
+        "position": "POSITION 15",
+        "employment_type": "EMPLOYMENT 15",
+        "email": "EMAIL 15",
+        "phone_number": "REF-2026-00001014",
+        "joining_date": "15 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 16,
+        "code": "CODE 16",
+        "name": "NAME 16",
+        "department": "DEPARTMENT 16",
+        "position": "POSITION 16",
+        "employment_type": "EMPLOYMENT 16",
+        "email": "EMAIL 16",
+        "phone_number": "REF-2026-00001015",
+        "joining_date": "16 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 17,
+        "code": "CODE 17",
+        "name": "NAME 17",
+        "department": "DEPARTMENT 17",
+        "position": "POSITION 17",
+        "employment_type": "EMPLOYMENT 17",
+        "email": "EMAIL 17",
+        "phone_number": "REF-2026-00001016",
+        "joining_date": "17 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 18,
+        "code": "CODE 18",
+        "name": "NAME 18",
+        "department": "DEPARTMENT 18",
+        "position": "POSITION 18",
+        "employment_type": "EMPLOYMENT 18",
+        "email": "EMAIL 18",
+        "phone_number": "REF-2026-00001017",
+        "joining_date": "18 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 19,
+        "code": "CODE 19",
+        "name": "NAME 19",
+        "department": "DEPARTMENT 19",
+        "position": "POSITION 19",
+        "employment_type": "EMPLOYMENT 19",
+        "email": "EMAIL 19",
+        "phone_number": "REF-2026-00001018",
+        "joining_date": "19 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 20,
+        "code": "CODE 20",
+        "name": "NAME 20",
+        "department": "DEPARTMENT 20",
+        "position": "POSITION 20",
+        "employment_type": "EMPLOYMENT 20",
+        "email": "EMAIL 20",
+        "phone_number": "REF-2026-00001019",
+        "joining_date": "20 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 21,
+        "code": "CODE 21",
+        "name": "NAME 21",
+        "department": "DEPARTMENT 21",
+        "position": "POSITION 21",
+        "employment_type": "EMPLOYMENT 21",
+        "email": "EMAIL 21",
+        "phone_number": "REF-2026-00001020",
+        "joining_date": "21 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 22,
+        "code": "CODE 22",
+        "name": "NAME 22",
+        "department": "DEPARTMENT 22",
+        "position": "POSITION 22",
+        "employment_type": "EMPLOYMENT 22",
+        "email": "EMAIL 22",
+        "phone_number": "REF-2026-00001021",
+        "joining_date": "22 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 23,
+        "code": "CODE 23",
+        "name": "NAME 23",
+        "department": "DEPARTMENT 23",
+        "position": "POSITION 23",
+        "employment_type": "EMPLOYMENT 23",
+        "email": "EMAIL 23",
+        "phone_number": "REF-2026-00001022",
+        "joining_date": "23 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 24,
+        "code": "CODE 24",
+        "name": "NAME 24",
+        "department": "DEPARTMENT 24",
+        "position": "POSITION 24",
+        "employment_type": "EMPLOYMENT 24",
+        "email": "EMAIL 24",
+        "phone_number": "REF-2026-00001023",
+        "joining_date": "24 Jan 2026",
+        "status": "Active"
+      },
+      {
+        "id": 25,
+        "code": "CODE 25",
+        "name": "NAME 25",
+        "department": "DEPARTMENT 25",
+        "position": "POSITION 25",
+        "employment_type": "EMPLOYMENT 25",
+        "email": "EMAIL 25",
+        "phone_number": "REF-2026-00001024",
+        "joining_date": "25 Jan 2026",
+        "status": "Active"
+      }
+    ],
+    "/en/acl/role/index": [
+      {
+        "id": 1,
+        "role_name": "Administrator",
+        "redirect_url": "/dashboard"
+      },
+      {
+        "id": 2,
+        "role_name": "Minhaj",
+        "redirect_url": "/accounting/dashboard"
+      },
+      {
+        "id": 3,
+        "role_name": "ROLE 3",
+        "redirect_url": "REDIRECT 3"
+      },
+      {
+        "id": 4,
+        "role_name": "ROLE 4",
+        "redirect_url": "REDIRECT 4"
+      },
+      {
+        "id": 5,
+        "role_name": "ROLE 5",
+        "redirect_url": "REDIRECT 5"
+      },
+      {
+        "id": 6,
+        "role_name": "ROLE 6",
+        "redirect_url": "REDIRECT 6"
+      },
+      {
+        "id": 7,
+        "role_name": "ROLE 7",
+        "redirect_url": "REDIRECT 7"
+      },
+      {
+        "id": 8,
+        "role_name": "ROLE 8",
+        "redirect_url": "REDIRECT 8"
+      },
+      {
+        "id": 9,
+        "role_name": "ROLE 9",
+        "redirect_url": "REDIRECT 9"
+      },
+      {
+        "id": 10,
+        "role_name": "ROLE 10",
+        "redirect_url": "REDIRECT 10"
+      },
+      {
+        "id": 11,
+        "role_name": "ROLE 11",
+        "redirect_url": "REDIRECT 11"
+      },
+      {
+        "id": 12,
+        "role_name": "ROLE 12",
+        "redirect_url": "REDIRECT 12"
+      },
+      {
+        "id": 13,
+        "role_name": "ROLE 13",
+        "redirect_url": "REDIRECT 13"
+      },
+      {
+        "id": 14,
+        "role_name": "ROLE 14",
+        "redirect_url": "REDIRECT 14"
+      },
+      {
+        "id": 15,
+        "role_name": "ROLE 15",
+        "redirect_url": "REDIRECT 15"
+      },
+      {
+        "id": 16,
+        "role_name": "ROLE 16",
+        "redirect_url": "REDIRECT 16"
+      },
+      {
+        "id": 17,
+        "role_name": "ROLE 17",
+        "redirect_url": "REDIRECT 17"
+      },
+      {
+        "id": 18,
+        "role_name": "ROLE 18",
+        "redirect_url": "REDIRECT 18"
+      },
+      {
+        "id": 19,
+        "role_name": "ROLE 19",
+        "redirect_url": "REDIRECT 19"
+      },
+      {
+        "id": 20,
+        "role_name": "ROLE 20",
+        "redirect_url": "REDIRECT 20"
+      },
+      {
+        "id": 21,
+        "role_name": "ROLE 21",
+        "redirect_url": "REDIRECT 21"
+      },
+      {
+        "id": 22,
+        "role_name": "ROLE 22",
+        "redirect_url": "REDIRECT 22"
+      },
+      {
+        "id": 23,
+        "role_name": "ROLE 23",
+        "redirect_url": "REDIRECT 23"
+      },
+      {
+        "id": 24,
+        "role_name": "ROLE 24",
+        "redirect_url": "REDIRECT 24"
+      },
+      {
+        "id": 25,
+        "role_name": "ROLE 25",
+        "redirect_url": "REDIRECT 25"
+      }
+    ],
+    "/en/acl/user/index": [
+      {
+        "id": 1,
+        "email": "dev.biznify@softifybd.com",
+        "status": "Active"
+      },
+      {
+        "id": 2,
+        "email": "demo@biznify.com.bd",
+        "status": "Active"
+      },
+      {
+        "id": 3,
+        "email": "EMAIL 3",
+        "status": "Active"
+      },
+      {
+        "id": 4,
+        "email": "EMAIL 4",
+        "status": "Inactive"
+      },
+      {
+        "id": 5,
+        "email": "EMAIL 5",
+        "status": "Active"
+      },
+      {
+        "id": 6,
+        "email": "EMAIL 6",
+        "status": "Inactive"
+      },
+      {
+        "id": 7,
+        "email": "EMAIL 7",
+        "status": "Active"
+      },
+      {
+        "id": 8,
+        "email": "EMAIL 8",
+        "status": "Inactive"
+      },
+      {
+        "id": 9,
+        "email": "EMAIL 9",
+        "status": "Active"
+      },
+      {
+        "id": 10,
+        "email": "EMAIL 10",
+        "status": "Inactive"
+      },
+      {
+        "id": 11,
+        "email": "EMAIL 11",
+        "status": "Active"
+      },
+      {
+        "id": 12,
+        "email": "EMAIL 12",
+        "status": "Inactive"
+      },
+      {
+        "id": 13,
+        "email": "EMAIL 13",
+        "status": "Active"
+      },
+      {
+        "id": 14,
+        "email": "EMAIL 14",
+        "status": "Inactive"
+      },
+      {
+        "id": 15,
+        "email": "EMAIL 15",
+        "status": "Active"
+      },
+      {
+        "id": 16,
+        "email": "EMAIL 16",
+        "status": "Inactive"
+      },
+      {
+        "id": 17,
+        "email": "EMAIL 17",
+        "status": "Active"
+      },
+      {
+        "id": 18,
+        "email": "EMAIL 18",
+        "status": "Inactive"
+      },
+      {
+        "id": 19,
+        "email": "EMAIL 19",
+        "status": "Active"
+      },
+      {
+        "id": 20,
+        "email": "EMAIL 20",
+        "status": "Inactive"
+      },
+      {
+        "id": 21,
+        "email": "EMAIL 21",
+        "status": "Active"
+      },
+      {
+        "id": 22,
+        "email": "EMAIL 22",
+        "status": "Inactive"
       }
     ]
   }

@@ -144,7 +144,7 @@ export function schemaToOverride(s) {
   const filters = filtersFromSchema(s);
   return {
     title: s.title || undefined,
-    addLabel: s.addBtn || undefined,
+    addLabel: s.addBtn || "",
     hideFilterToggle: true,
     filters,
     columns,

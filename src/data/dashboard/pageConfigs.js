@@ -526,6 +526,9 @@ function buildPageConfigs() {
         module: map[href]?.module || "App",
         ...map[href],
         ...o,
+        addLabel: Object.prototype.hasOwnProperty.call(o, "addLabel")
+          ? o.addLabel
+          : map[href]?.addLabel,
         rows: liveRows[href] || map[href]?.rows || mockRows(o.columns, 15),
       };
     }

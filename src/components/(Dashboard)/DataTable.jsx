@@ -15,7 +15,9 @@ function StatusPill({ value }) {
     cls = "bg-[#ffc107] text-[#212529]";
   else if (["inactive", "rejected", "cancelled", "unpaid"].includes(v))
     cls = "bg-[#dc3545] text-white";
-  else if (["ordered", "invoiced"].includes(v)) cls = "bg-[#17a2b8] text-white";
+  else if (["ordered", "invoiced", "closed", "received", "billable"].includes(v))
+    cls = "bg-[#17a2b8] text-white";
+  else if (["not billable"].includes(v)) cls = "bg-slate-500 text-white";
 
   return (
     <span
