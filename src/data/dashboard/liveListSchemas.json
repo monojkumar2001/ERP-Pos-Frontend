@@ -1,0 +1,1491 @@
+{
+  "/en/accounting/expenses": {
+    "path": "/en/accounting/expenses",
+    "title": "Expenses",
+    "addBtn": "Add Expense",
+    "ths": [
+      "REFERENCE NUMBER",
+      "DATE",
+      "TIME",
+      "DESCRIPTION",
+      "EXPENSE FROM",
+      "AMOUNT",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Select Expense From",
+      "Select Expense To",
+      "Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Select Expense From",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Expense To",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Status",
+        "multi": true,
+        "values": [
+          "Approved",
+          "Draft"
+        ]
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 179 entries",
+    "totalAmt": "Total Amount ৳ 125,991",
+    "firstRows": [
+      [
+        "DV-2026-00000044",
+        "1 Sep 2026",
+        "02:54 PM",
+        "testing",
+        "Bank Asia",
+        "৳ 200",
+        "Approved",
+        ""
+      ],
+      [
+        "DV-2026-00000043",
+        "1 Sep 2026",
+        "11:58 AM",
+        "Test",
+        "ADDD",
+        "৳ 50",
+        "Approved",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Approved",
+      "Draft"
+    ]
+  },
+  "/en/accounting/incomes": {
+    "path": "/en/accounting/incomes",
+    "title": "Incomes",
+    "addBtn": "Add Income",
+    "ths": [
+      "REFERENCE NUMBER",
+      "DATE",
+      "TIME",
+      "DESCRIPTION",
+      "INCOME TO",
+      "AMOUNT",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Select Income To",
+      "Select Income From",
+      "Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Select Income To",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Income From",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Status",
+        "multi": true,
+        "values": [
+          "Approved",
+          "Draft"
+        ]
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 40 entries",
+    "totalAmt": "Total Amount ৳ 654,055",
+    "firstRows": [
+      [
+        "CV-2026-00000014",
+        "1 Sep 2026",
+        "02:54 PM",
+        "testing",
+        "Brack Bank",
+        "৳ 500",
+        "Approved",
+        ""
+      ],
+      [
+        "CV-2026-00000013",
+        "20 Aug 2026",
+        "01:10 AM",
+        "df",
+        "Cash on Handss",
+        "৳ 5",
+        "Approved",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Approved",
+      "Draft"
+    ]
+  },
+  "/en/accounting/transfer-money": {
+    "path": "/en/accounting/transfer-money",
+    "title": "Internal Transfer",
+    "addBtn": "Add Transfer",
+    "ths": [
+      "REFERENCE NUMBER",
+      "DATE",
+      "TIME",
+      "DESCRIPTION",
+      "TRANSFER FROM",
+      "AMOUNT",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Select Transfer From",
+      "Select Transfer To",
+      "Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Select Transfer From",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Transfer To",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Status",
+        "multi": true,
+        "values": [
+          "Approved",
+          "Draft"
+        ]
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 35 entries",
+    "totalAmt": "Total Amount ৳ 3,412,300",
+    "firstRows": [
+      [
+        "TM-2026-00000009",
+        "01 Sep 2026",
+        "02:55 PM",
+        "t",
+        "Bank Asia",
+        "৳ 1,000",
+        "Approved",
+        ""
+      ],
+      [
+        "TM-2026-00000008",
+        "12 Aug 2026",
+        "03:17 PM",
+        "hand",
+        "Cash on Handss",
+        "৳ 200",
+        "Approved",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Approved",
+      "Draft"
+    ]
+  },
+  "/en/accounting/recurring-journal": {
+    "path": "/en/accounting/recurring-journal",
+    "title": "Recurring Journals",
+    "addBtn": "Add Recurring Journal",
+    "ths": [
+      "DATE",
+      "ACCOUNT TYPE",
+      "DEBIT ACCOUNT",
+      "CREDIT ACCOUNT",
+      "AMOUNT",
+      "RECURRING INTERVAL",
+      "LAST TRANSACTION DATE",
+      "APPROVAL STATUS",
+      "OPERATIONAL STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Approval Status",
+      "Operational Status"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Approval Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Operational Status",
+        "multi": false,
+        "values": [
+          "Active"
+        ]
+      }
+    ],
+    "footer": "Showing 1 to 9 of 9 entries",
+    "totalAmt": "Total Amount ৳ 231,400",
+    "firstRows": [
+      [
+        "1 Sep 2026",
+        "Liabilities",
+        "বিদ্যুৎ বিল",
+        "Goods Received Not Invoiced",
+        "৳ 400",
+        "5 Days",
+        "6 Sep 2026",
+        "Approve",
+        "Active",
+        ""
+      ],
+      [
+        "17 May 2026",
+        "Liabilities",
+        "Bank Service Charges",
+        "Brac Bank Loan",
+        "৳ 1,000",
+        "1 Months",
+        "17 Aug 2026",
+        "Approve",
+        "Active",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Approve",
+      "Active"
+    ]
+  },
+  "/en/item-config/items": {
+    "path": "/en/item-config/items",
+    "title": "Items",
+    "addBtn": "Add Single Item",
+    "ths": [
+      "NAME",
+      "CODE",
+      "CATEGORIES",
+      "TYPE",
+      "BRAND",
+      "COLOR",
+      "SIZE",
+      "SALE PRICE",
+      "AVAILABLE STOCK",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Search",
+      "ex: Pos, Ecommerce",
+      "ex: Product, Service",
+      "ex: Apple, Samsung",
+      "ex: Active, Inactive"
+    ],
+    "ngSelects": [
+      {
+        "ph": "ex: Pos, Ecommerce",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "ex: Product, Service",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "ex: Apple, Samsung",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "ex: Active, Inactive",
+        "multi": false,
+        "values": [
+          "Active"
+        ]
+      }
+    ],
+    "footer": "Showing 1 to 25 of 3894 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "TP Link",
+        "I-004787",
+        "N/A",
+        "Product",
+        "TP Link",
+        "N/A",
+        "N/A",
+        "৳ 2,200",
+        "49 pc",
+        "Active",
+        ""
+      ],
+      [
+        "Vsol-Xpon-ONU (Serialized)",
+        "I-004786",
+        "N/A",
+        "Product",
+        "N/A",
+        "N/A",
+        "N/A",
+        "৳ 1,150",
+        "9 pc",
+        "Active",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Active"
+    ]
+  },
+  "/en/item-config/manufacturers": {
+    "path": "/en/item-config/manufacturers",
+    "title": "Manufacturers",
+    "addBtn": "Add New",
+    "ths": [
+      "MANUFACTURER",
+      "DESCRIPTION",
+      "DISCOUNT",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [],
+    "ngSelects": [],
+    "footer": "Showing 1 to 25 of 182 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "selim",
+        "N/A",
+        "N/A",
+        "Active",
+        ""
+      ],
+      [
+        "matador",
+        "N/A",
+        "N/A",
+        "Active",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Active"
+    ]
+  },
+  "/en/item-config/brands": {
+    "path": "/en/item-config/brands",
+    "title": "Brands",
+    "addBtn": "Add New",
+    "ths": [
+      "BRAND",
+      "DISCOUNT",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [],
+    "ngSelects": [],
+    "footer": "Showing 1 to 25 of 223 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "Yamaha",
+        "N/A",
+        "Active",
+        ""
+      ],
+      [
+        "akij",
+        "N/A",
+        "Active",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Active"
+    ]
+  },
+  "/en/item-config/price-list": {
+    "path": "/en/item-config/price-list",
+    "title": "Price List",
+    "addBtn": "Add Price List",
+    "ths": [
+      "NAME",
+      "TRANSACTION TYPE",
+      "PRICEBOOK TYPE",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [],
+    "ngSelects": [],
+    "footer": "Showing 1 to 4 of 4 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "oil",
+        "Sales",
+        "All Items",
+        "Active",
+        ""
+      ],
+      [
+        "Import",
+        "Sales",
+        "Individual Items",
+        "Active",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Active"
+    ]
+  },
+  "/en/item-config/colors": {
+    "path": "/en/item-config/colors",
+    "title": "Colors",
+    "addBtn": "Add New",
+    "ths": [
+      "COLOR CODE",
+      "NAME",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [],
+    "ngSelects": [],
+    "footer": "Showing 1 to 25 of 40 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "06mm Gird Design Black Color High-density Vinyl",
+        "",
+        "Active",
+        ""
+      ],
+      [
+        "175",
+        "",
+        "Active",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Active"
+    ]
+  },
+  "/en/item-config/item-sizes": {
+    "path": "/en/item-config/item-sizes",
+    "title": "Item Sizes",
+    "addBtn": "Add New",
+    "ths": [
+      "SIZE TYPE",
+      "ADDED SIZES",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [],
+    "ngSelects": [],
+    "footer": "Showing 1 to 25 of 104 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "41",
+        "41, 42, 34",
+        "Active",
+        ""
+      ],
+      [
+        "46\"",
+        "XXL",
+        "Active",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Active"
+    ]
+  },
+  "/en/item-config/item-attributes": {
+    "path": "/en/item-config/item-attributes",
+    "title": "Item Attributes",
+    "addBtn": "Add New",
+    "ths": [
+      "ATTRIBUTE SET",
+      "ADDED ATTRIBUTES",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [],
+    "ngSelects": [],
+    "footer": "Showing 1 to 25 of 76 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "@HAIR COLOR",
+        "@HAIR BLACK, @HAIR BROWN, Natural",
+        "Active",
+        ""
+      ],
+      [
+        "5/7 GG",
+        "TRICOT 2- 52 C, TRICOT 3- 52 C",
+        "Active",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Active"
+    ]
+  },
+  "/en/sales/customer-types": {
+    "path": "/en/sales/customer-types",
+    "title": "Customer Types",
+    "addBtn": "Add",
+    "ths": [
+      "NAME",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [],
+    "ngSelects": [],
+    "footer": "Showing 1 to 25 of 36 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "Service Point",
+        "Active",
+        ""
+      ],
+      [
+        "Sales Repr.",
+        "Active",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Active"
+    ]
+  },
+  "/en/sales/customers": {
+    "path": "/en/sales/customers",
+    "title": "Customers",
+    "addBtn": "Add Customer",
+    "ths": [
+      "NAME",
+      "PHONE NUMBER",
+      "EMAIL",
+      "CUSTOMER SINCE",
+      "CUSTOMER CODE",
+      "CUSTOMER TYPE",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": true,
+    "placeholders": [
+      "ex: VIP, Retailer",
+      "ex: Active, Inactive",
+      "ex: Yes, No"
+    ],
+    "ngSelects": [
+      {
+        "ph": "ex: VIP, Retailer",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "ex: Active, Inactive",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "ex: Yes, No",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 3371 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "Astha Networks",
+        "01710895122",
+        "N/A",
+        "3 Sep 2026",
+        "CMID-2026-000084",
+        "N/A",
+        "Active",
+        ""
+      ],
+      [
+        "Head Quarters",
+        "01711853236",
+        "N/A",
+        "2 Sep 2026",
+        "CMID-2026-000083",
+        "Service Point",
+        "Active",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Active",
+      "Inactive"
+    ]
+  },
+  "/en/sales/sales-direct-sales": {
+    "path": "/en/sales/sales-direct-sales",
+    "title": "Direct Invoices",
+    "addBtn": "Add Direct Invoice",
+    "ths": [
+      "ORDER NUMBER",
+      "SALE DATE",
+      "CUSTOMER",
+      "SUB TOTAL",
+      "TOTAL TAX",
+      "TOTAL DISCOUNT",
+      "GRAND TOTAL",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 965 entries",
+    "totalAmt": "Grand Total ৳ 92,329.82",
+    "firstRows": [
+      [
+        "DSO-001000",
+        "6 Sep 2026",
+        "Walk in Customer.",
+        "৳ 2,300",
+        "৳ 0",
+        "৳ 0",
+        "৳ 2,300",
+        "Completed",
+        ""
+      ],
+      [
+        "DSO-000999",
+        "3 Sep 2026",
+        "rggfg",
+        "৳ 1,150",
+        "৳ 0",
+        "৳ 0",
+        "৳ 1,150",
+        "Completed",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Completed"
+    ]
+  },
+  "/en/sales/quotation-list": {
+    "path": "/en/sales/quotation-list",
+    "title": "Quotations",
+    "addBtn": "Add Quotation",
+    "ths": [
+      "QUOTATION NUMBER",
+      "QUOTATION DATE",
+      "VALID TILL DATE",
+      "CUSTOMER",
+      "CREATED BY",
+      "AMOUNT",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Select Status",
+      "Select Quotation Range",
+      "From Date",
+      "To Date",
+      "Select Valid Till Date Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Select Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Quotation Range",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Valid Till Date Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 123 entries",
+    "totalAmt": "Grand Total ৳ 449,024.18",
+    "firstRows": [
+      [
+        "Q-000128",
+        "6 Sep 2026",
+        "6 Sep 2026",
+        "SR Samiul",
+        "Demo",
+        "৳ 9,395",
+        "Approved",
+        ""
+      ],
+      [
+        "Q-000127",
+        "6 Sep 2026",
+        "6 Sep 2026",
+        "Astha Networks",
+        "Demo",
+        "৳ 2,200",
+        "Draft",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Approved",
+      "Draft",
+      "Ordered"
+    ]
+  },
+  "/en/sales/sales-orders": {
+    "path": "/en/sales/sales-orders",
+    "title": "Sales Orders",
+    "addBtn": "Add Order",
+    "ths": [
+      "ORDER NUMBER",
+      "ECOMMERCE ORDER",
+      "DATE",
+      "QUOTATION NUMBER",
+      "CUSTOMER",
+      "SUB TOTAL",
+      "TOTAL TAX",
+      "GRAND TOTAL",
+      "ORDER STATUS",
+      "DELIVERY STATUS",
+      "INVOICE STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Order Status",
+      "Delivery Status",
+      "Invoice Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Order Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Delivery Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Invoice Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 322 entries",
+    "totalAmt": "Grand Total ৳ 762,555",
+    "firstRows": [
+      [
+        "SO-000387",
+        "N/A",
+        "1 Sep 2026",
+        "N/A",
+        "Kazir Point",
+        "৳ 700",
+        "৳ 0",
+        "৳ 700",
+        "Approved",
+        "Pending",
+        "Not Invoiced",
+        ""
+      ],
+      [
+        "SO-000386",
+        "N/A",
+        "31 Aug 2026",
+        "N/A",
+        "selim saheb",
+        "৳ 700",
+        "৳ 0",
+        "৳ 700",
+        "Draft",
+        "Pending",
+        "Not Invoiced",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Approved",
+      "Pending",
+      "Not Invoiced",
+      "Draft",
+      "Completed",
+      "Delivered",
+      "Invoiced"
+    ]
+  },
+  "/en/sales/sales-deliveries": {
+    "path": "/en/sales/sales-deliveries",
+    "title": "Sales Deliveries",
+    "addBtn": "",
+    "ths": [
+      "DELIVERY NUMBER",
+      "DELIVERY DATE",
+      "ORDER NUMBER",
+      "CUSTOMER",
+      "DELIVERY TYPE",
+      "DELIVERY CHARGE",
+      "DELIVERY CHANNEL",
+      "CHANNEL CHARGE",
+      "CONSIGNMENT ID",
+      "DELIVERY STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Status",
+      "Select Range",
+      "From Date",
+      "To Date",
+      "Select Delivery Channel"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Delivery Channel",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 1200 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "DEL-001269",
+        "6 Sep 2026",
+        "DSO-001000",
+        "Walk in Customer.",
+        "Store Pickup",
+        "N/A",
+        "N/A",
+        "৳ 0",
+        "N/A",
+        "Delivered",
+        ""
+      ],
+      [
+        "DEL-001268",
+        "3 Sep 2026",
+        "DSO-000999",
+        "rggfg",
+        "Store Pickup",
+        "N/A",
+        "N/A",
+        "৳ 0",
+        "N/A",
+        "Delivered",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Delivered"
+    ]
+  },
+  "/en/sales/sales-invoices": {
+    "path": "/en/sales/sales-invoices",
+    "title": "Sales Invoices",
+    "addBtn": "",
+    "ths": [
+      "INVOICE NUMBER",
+      "DATE",
+      "ORDER NUMBER",
+      "CUSTOMER",
+      "TOTAL",
+      "AMOUNT PAID",
+      "DUE AMOUNT",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Invoice Type",
+      "Invoice Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Invoice Type",
+        "multi": true,
+        "values": []
+      },
+      {
+        "ph": "Invoice Status",
+        "multi": true,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 1645 entries",
+    "totalAmt": "Grand Total ৳ 34,019.83",
+    "firstRows": [
+      [
+        "INV-2026-000308",
+        "6 Sep 2026",
+        "DSO-001000",
+        "Walk in Customer.",
+        "৳ 2,300",
+        "৳ 2,300",
+        "৳ 0",
+        "Paid",
+        ""
+      ],
+      [
+        "INV-2026-000307",
+        "3 Sep 2026",
+        "DSO-000999",
+        "rggfg",
+        "৳ 1,150",
+        "৳ 1,150",
+        "৳ 0",
+        "Paid",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Paid",
+      "Partially Paid",
+      "Unpaid"
+    ]
+  },
+  "/en/sales/sales-returns": {
+    "path": "/en/sales/sales-returns",
+    "title": "Returns",
+    "addBtn": "",
+    "ths": [
+      "RETURN NUMBER",
+      "RETURN DATE",
+      "REFERENCE",
+      "ORDER NUMBER",
+      "CUSTOMER",
+      "RETURN AMOUNT",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Return Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Return Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 99 entries",
+    "totalAmt": "Grand Total ৳ 206,371.05",
+    "firstRows": [
+      [
+        "SR-000105",
+        "19 Aug 2026",
+        "INV-2026-000281",
+        "DSO-000974",
+        "SR Samiul",
+        "৳ 480",
+        "Approved",
+        ""
+      ],
+      [
+        "SR-000104",
+        "19 Aug 2026",
+        "INV-2026-000283",
+        "DSO-000976",
+        "SR Samiul",
+        "৳ 5,600",
+        "Approved",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Approved"
+    ]
+  },
+  "/en/sales/batch-payments": {
+    "path": "/en/sales/batch-payments",
+    "title": "Batch Payments Log",
+    "addBtn": "",
+    "ths": [
+      "BATCH NUMBER",
+      "DATE",
+      "CUSTOMER",
+      "PAYMENT METHOD",
+      "TRANSACTION ID",
+      "PAID AMOUNT",
+      "DISCOUNT AMOUNT",
+      "TOTAL AMOUNT",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Payment Method",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Payment Method",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 47 entries",
+    "totalAmt": "Grand Total ৳ 922,978.5",
+    "firstRows": [
+      [
+        "B-000047",
+        "10 Aug 2026",
+        "ENA Chemical",
+        "Pos Cash",
+        "N/A",
+        "৳ 2,170",
+        "৳ 0",
+        "৳ 2,170",
+        ""
+      ],
+      [
+        "B-000046",
+        "25 Jul 2026",
+        "নিজাম মিয়া",
+        "NRB Bank",
+        "N/A",
+        "৳ 50,000",
+        "৳ 0",
+        "৳ 50,000",
+        ""
+      ]
+    ],
+    "statuses": []
+  },
+  "/en/sales/sales-payments": {
+    "path": "/en/sales/sales-payments",
+    "title": "Payments",
+    "addBtn": "",
+    "ths": [
+      "PAYMENT NUMBER",
+      "DATE",
+      "INVOICE NUMBER",
+      "INVOICE DATE",
+      "CUSTOMER",
+      "PAYMENT METHOD",
+      "PAID",
+      "DISCOUNT",
+      "TOTAL",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": true,
+    "placeholders": [
+      "Payment Method",
+      "Payment Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Payment Method",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Payment Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 1406 entries",
+    "totalAmt": "Grand Total ৳ 37,659.83",
+    "firstRows": [
+      [
+        "SP-001437",
+        "6 Sep 2026",
+        "INV-2026-000308",
+        "6 Sep 2026",
+        "Walk in Customer.",
+        "Counter Cash",
+        "৳ 2,300",
+        "৳ 0",
+        "৳ 2,300",
+        "Verified",
+        ""
+      ],
+      [
+        "SP-001436",
+        "3 Sep 2026",
+        "INV-2026-000307",
+        "3 Sep 2026",
+        "rggfg",
+        "Counter Cash",
+        "৳ 1,150",
+        "৳ 0",
+        "৳ 1,150",
+        "Verified",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Verified",
+      "In-Process"
+    ]
+  },
+  "/en/sales/customer-debits": {
+    "path": "/en/sales/customer-debits",
+    "title": "Customer Debits",
+    "addBtn": "Add Customer Debit",
+    "ths": [
+      "CREDIT NUMBER",
+      "DATE",
+      "CUSTOMER",
+      "TYPE",
+      "REFERENCE",
+      "TOTAL AMOUNT",
+      "ADJUSTED AMOUNT",
+      "ADJUSTABLE AMOUNT",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Status",
+      "Reference Type",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Status",
+        "multi": true,
+        "values": []
+      },
+      {
+        "ph": "Reference Type",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 232 entries",
+    "totalAmt": "Grand Total ৳ 214,519.99",
+    "firstRows": [
+      [
+        "CM-2026-000082",
+        "19 Aug 2026",
+        "SR Samiul",
+        "Sales Return",
+        "SR-000105",
+        "৳ 480",
+        "৳ 0",
+        "৳ 480",
+        "Unpaid",
+        ""
+      ],
+      [
+        "CM-2026-000081",
+        "19 Aug 2026",
+        "SR Samiul",
+        "Sales Return",
+        "SR-000104",
+        "৳ 5,600",
+        "৳ 0",
+        "৳ 5,600",
+        "Unpaid",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Unpaid",
+      "Paid"
+    ]
+  },
+  "/en/sales/refunds": {
+    "path": "/en/sales/refunds",
+    "title": "Sales Refunds",
+    "addBtn": "",
+    "ths": [
+      "REFUND NUMBER",
+      "DATE",
+      "CUSTOMER",
+      "PAYMENT METHOD",
+      "REFUNDED BY",
+      "AMOUNT REFUNDED",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Select Sales Person",
+      "Payment Method",
+      "Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Select Sales Person",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Payment Method",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Status",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 55 entries",
+    "totalAmt": "Grand Total ৳ 56,817.12",
+    "firstRows": [
+      [
+        "SRF-000057",
+        "5 Aug 2026",
+        "Walk In Customer",
+        "Bogura Outlet",
+        "Demo",
+        "৳ 1,111",
+        "Refunded",
+        ""
+      ],
+      [
+        "SRF-000056",
+        "2 Aug 2026",
+        "WholeSale - MTrvlr",
+        "Bogura Outlet",
+        "Demo",
+        "৳ 45",
+        "Refunded",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Refunded"
+    ]
+  },
+  "/en/purchase/supplier-types": {
+    "path": "/en/purchase/supplier-types",
+    "title": "Supplier Types",
+    "addBtn": "Add Supplier Type",
+    "ths": [
+      "NAME",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [],
+    "ngSelects": [],
+    "footer": "Showing 1 to 25 of 36 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "paper supplier",
+        "Active",
+        ""
+      ],
+      [
+        "bag suppier",
+        "Active",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Active"
+    ]
+  },
+  "/en/purchase/suppliers": {
+    "path": "/en/purchase/suppliers",
+    "title": "Suppliers",
+    "addBtn": "Add Supplier",
+    "ths": [
+      "NAME",
+      "PHONE NUMBER",
+      "EMAIL",
+      "ADDRESS",
+      "SUPPLIER TYPE",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": true,
+    "placeholders": [
+      "ex: Whole Seller, Distributors",
+      "ex: Active, Inactive"
+    ],
+    "ngSelects": [
+      {
+        "ph": "ex: Whole Seller, Distributors",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "ex: Active, Inactive",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 147 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "karim saheb",
+        "N/A",
+        "N/A",
+        "N/A",
+        "paper supplier",
+        "Active",
+        ""
+      ],
+      [
+        "hbehb",
+        "N/A",
+        "N/A",
+        "N/A",
+        "bag suppier",
+        "Active",
+        ""
+      ]
+    ],
+    "statuses": [
+      "Active"
+    ]
+  }
+}
