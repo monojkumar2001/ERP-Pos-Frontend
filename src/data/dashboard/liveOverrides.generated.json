@@ -781,7 +781,8 @@
       ],
       "totalEntries": 965,
       "totalAmount": "৳ 92,329.82",
-      "amountKey": "sub_total"
+      "amountKey": "sub_total",
+      "addHref": "/en/sales/sales-direct-sale-create"
     },
     "/en/sales/quotation-list": {
       "title": "Quotations",
@@ -878,7 +879,8 @@
       ],
       "totalEntries": 123,
       "totalAmount": "৳ 449,024.18",
-      "amountKey": "amount"
+      "amountKey": "amount",
+      "addHref": "/en/sales/quotation-create"
     },
     "/en/sales/sales-orders": {
       "title": "Sales Orders",
@@ -984,7 +986,8 @@
       ],
       "totalEntries": 322,
       "totalAmount": "৳ 762,555",
-      "amountKey": "sub_total"
+      "amountKey": "sub_total",
+      "addHref": "/en/sales/sales-order-create"
     },
     "/en/sales/sales-deliveries": {
       "title": "Sales Deliveries",
@@ -1543,7 +1546,8 @@
       ],
       "totalEntries": 232,
       "totalAmount": "৳ 214,519.99",
-      "amountKey": "total_amount"
+      "amountKey": "total_amount",
+      "addHref": "/en/sales/customer-debit-create"
     },
     "/en/sales/refunds": {
       "title": "Sales Refunds",
@@ -1713,7 +1717,8 @@
           "type": "action"
         }
       ],
-      "totalEntries": 147
+      "totalEntries": 147,
+      "addHref": "/en/purchase/supplier-create"
     },
     "/en/purchase/direct-purchases": {
       "title": "Direct Bills",

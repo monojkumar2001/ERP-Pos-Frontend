@@ -1,6 +1,6 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 function StatusPill({ value }) {
   const v = String(value).toLowerCase();
@@ -28,16 +28,75 @@ function StatusPill({ value }) {
   );
 }
 
+function RowActionMenu({ row, actions, open, onClose }) {
+  const ref = useRef(null);
+
+  useEffect(() => {
+    if (!open) return;
+    const onDoc = (e) => {
+      if (ref.current && !ref.current.contains(e.target)) onClose();
+    };
+    document.addEventListener("mousedown", onDoc);
+    return () => document.removeEventListener("mousedown", onDoc);
+  }, [open, onClose]);
+
+  if (!open) return null;
+
+  const items = actions || [
+    { key: "edit", label: "Edit" },
+    {
+      key: "inactive",
+      label: String(row.status).toLowerCase() === "inactive" ? "Make Active" : "Make Inactive",
+    },
+    { key: "delete", label: "Delete" },
+  ];
+
+  return (
+    <div
+      ref={ref}
+      className="absolute right-8 top-1/2 z-20 min-w-[160px] -translate-y-1/2 rounded-md border border-slate-200 bg-white py-1 shadow-lg"
+    >
+      {items.map((item) => {
+        const disabled =
+          typeof item.getDisabled === "function"
+            ? item.getDisabled(row)
+            : Boolean(item.disabled);
+        return (
+        <button
+          key={item.key}
+          type="button"
+          disabled={disabled}
+          className={`block w-full px-3 py-2 text-left text-[13px] ${
+            disabled
+              ? "cursor-not-allowed text-slate-300"
+              : "text-[#1a557a] hover:bg-[#f0f7fb]"
+          }`}
+          onClick={() => {
+            if (disabled) return;
+            item.onClick?.(row);
+            onClose();
+          }}
+        >
+          {typeof item.label === "function" ? item.label(row) : item.label}
+        </button>
+        );
+      })}
+    </div>
+  );
+}
+
 export default function DataTable({
   columns = [],
   rows = [],
   totalEntries,
   totalAmount,
   amountKey = "amount",
+  rowActions,
 }) {
   const [pageSize, setPageSize] = useState(25);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
+  const [openActionId, setOpenActionId] = useState(null);
 
   const filtered = useMemo(() => {
     if (!search.trim()) return rows;
@@ -119,7 +178,7 @@ export default function DataTable({
                   return (
                     <td
                       key={col.key}
-                      className={`px-3 py-2 text-slate-700 ${
+                      className={`relative px-3 py-2 text-slate-700 ${
                         col.key === amountKey ? "text-center" : ""
                       } ${col.type === "description" || col.key === "description" ? "max-w-[280px] truncate" : ""}`}
                     >
@@ -128,13 +187,24 @@ export default function DataTable({
                       ) : col.type === "status" ? (
                         <StatusPill value={val} />
                       ) : col.type === "action" ? (
-                        <button
-                          type="button"
-                          className="rounded p-1 text-slate-500 hover:bg-slate-100"
-                          aria-label="Actions"
-                        >
-                          <span className="material-icons text-[18px]">more_vert</span>
-                        </button>
+                        <div className="relative inline-block">
+                          <button
+                            type="button"
+                            className="rounded p-1 text-slate-500 hover:bg-slate-100"
+                            aria-label="Actions"
+                            onClick={() =>
+                              setOpenActionId(openActionId === row.id ? null : row.id)
+                            }
+                          >
+                            <span className="material-icons text-[18px]">more_vert</span>
+                          </button>
+                          <RowActionMenu
+                            row={row}
+                            actions={rowActions}
+                            open={openActionId === row.id}
+                            onClose={() => setOpenActionId(null)}
+                          />
+                        </div>
                       ) : col.type === "link" ? (
                         val === "N/A" || !val ? (
                           <span className="text-slate-400">N/A</span>

@@ -47,13 +47,38 @@ export default function Topbar() {
             { label: "Home", href: "/en/dashboard" },
             { label: "Chart Of Accounts", href: pathname },
           ]
-      : [
-          { label: "Home", href: "/en/dashboard" },
-          {
-            label: config?.title || pathname.split("/").filter(Boolean).pop(),
-            href: pathname,
-          },
-        ];
+        : pathname.includes("/item-config/price-list-")
+          ? [
+              { label: "Home", href: "/en/dashboard" },
+              { label: "Price List", href: "/en/item-config/price-list" },
+              {
+                label: config?.title || pathname.split("/").filter(Boolean).pop(),
+                href: pathname,
+              },
+            ]
+          : pathname === "/en/item-config/add-item" ||
+              pathname === "/en/item-config/add-item-group"
+            ? [
+                { label: "Home", href: "/en/dashboard" },
+                {
+                  label:
+                    pathname === "/en/item-config/add-item-group"
+                      ? "Item Groups"
+                      : "Items",
+                  href: "/en/item-config/items",
+                },
+                {
+                  label: config?.title || "Add",
+                  href: pathname,
+                },
+              ]
+            : [
+                { label: "Home", href: "/en/dashboard" },
+                {
+                  label: config?.title || pathname.split("/").filter(Boolean).pop(),
+                  href: pathname,
+                },
+              ];
 
   const initial = (user?.name || company?.name || "B").charAt(0).toUpperCase();
 

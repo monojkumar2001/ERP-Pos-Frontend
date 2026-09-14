@@ -64,7 +64,8 @@ export function GoogleButton() {
       type="button"
       className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-transparent bg-[#f5fbfa] px-2.5 py-2.5 text-base font-semibold leading-[1.4] text-[#282b2b] transition hover:border-[#00a78b]"
     >
-      <Image
+      {/* eslint-disable-next-line @next/next/no-img-element */}
+      <img
         src={`${AUTH_IMG}/images/icons/google.svg`}
         alt="google"
         width={24}

@@ -1,11 +1,278 @@
 "use client";
 
-import { useState } from "react";
+import { useMemo, useState } from "react";
 import Link from "next/link";
 import PageHeader from "./PageHeader";
 
+function FieldInput({ field, value, onChange, requiredOverride }) {
+  const required = requiredOverride ?? field.required;
+  const inputClass =
+    "h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#2980b9]";
+
+  if (field.type === "textarea") {
+    return (
+      <textarea
+        required={required}
+        rows={3}
+        value={value || ""}
+        placeholder={field.placeholder}
+        onChange={(e) => onChange(e.target.value)}
+        className="w-full rounded border border-slate-200 px-3 py-2 text-[13px] outline-none focus:border-[#2980b9]"
+      />
+    );
+  }
+
+  if (field.type === "select") {
+    return (
+      <select
+        required={required}
+        value={value || ""}
+        onChange={(e) => onChange(e.target.value)}
+        className={inputClass}
+      >
+        <option value="">{field.placeholder || "Select..."}</option>
+        {(field.options || []).map((o) => (
+          <option key={o} value={o}>
+            {o}
+          </option>
+        ))}
+      </select>
+    );
+  }
+
+  if (field.type === "radio") {
+    return (
+      <div className="flex flex-wrap gap-4">
+        {(field.options || []).map((o) => (
+          <label key={o} className="flex items-center gap-2 text-[13px] text-slate-700">
+            <input
+              type="radio"
+              name={field.key}
+              value={o}
+              checked={value === o}
+              onChange={() => onChange(o)}
+              className="accent-[#2980b9]"
+            />
+            {o}
+          </label>
+        ))}
+      </div>
+    );
+  }
+
+  return (
+    <input
+      type={field.type || "text"}
+      required={required}
+      value={value || ""}
+      placeholder={field.placeholder}
+      onChange={(e) => onChange(e.target.value)}
+      className={inputClass}
+    />
+  );
+}
+
+function FieldBlock({ field, value, onChange, requiredOverride }) {
+  if (field.type === "checkbox") {
+    return (
+      <label className="flex items-center gap-2 text-[13px] font-medium text-slate-700">
+        <input
+          type="checkbox"
+          checked={Boolean(value)}
+          onChange={(e) => onChange(e.target.checked)}
+          className="accent-[#2980b9]"
+        />
+        {field.label}
+      </label>
+    );
+  }
+
+  if (field.type === "toggle") {
+    return (
+      <label className="inline-flex cursor-pointer items-center gap-3 text-[13px] font-medium text-[#1a557a]">
+        <span>{field.label}</span>
+        <button
+          type="button"
+          role="switch"
+          aria-checked={Boolean(value)}
+          onClick={() => onChange(!value)}
+          className={`relative h-6 w-11 rounded-full transition-colors ${
+            value ? "bg-[#2980b9]" : "bg-slate-300"
+          }`}
+        >
+          <span
+            className={`absolute top-0.5 left-0.5 h-5 w-5 rounded-full bg-white shadow transition-transform ${
+              value ? "translate-x-5" : ""
+            }`}
+          />
+        </button>
+      </label>
+    );
+  }
+
+  return (
+    <div>
+      <label className="mb-1 block text-[13px] font-medium text-[#1a557a]">
+        {field.label}
+        {(requiredOverride ?? field.required) && <span className="text-red-500"> *</span>}
+      </label>
+      <FieldInput
+        field={field}
+        value={value}
+        onChange={onChange}
+        requiredOverride={requiredOverride}
+      />
+    </div>
+  );
+}
+
+function PhotoUpload({ label }) {
+  return (
+    <div>
+      <label className="mb-1 block text-[13px] font-medium text-[#1a557a]">{label}</label>
+      <div className="flex min-h-[220px] flex-col items-center justify-center rounded-lg border-2 border-dashed border-[#9ec4e0] bg-[#f3f9fc] px-4 py-6 text-center">
+        <span className="material-icons mb-2 text-[36px] text-[#2980b9]">cloud_upload</span>
+        <p className="m-0 text-[13px] text-slate-600">Drag and drop file here</p>
+        <p className="my-2 text-[12px] text-slate-400">or</p>
+        <button
+          type="button"
+          className="rounded bg-[#2980b9] px-4 py-2 text-[13px] font-medium text-white hover:bg-[#2472a4]"
+        >
+          Upload Photo
+        </button>
+        <p className="mt-3 mb-0 text-[11px] leading-relaxed text-slate-500">
+          Maximum file size 2MB
+          <br />
+          Supported Formates: JPG, JPEG, PNG &amp; ICO
+        </p>
+      </div>
+    </div>
+  );
+}
+
+function EntityForm({ config, values, setValues, onSubmit, backHref }) {
+  const fields = config.fields || [];
+  const toggleField = fields.find((f) => f.section === "toggle");
+  const showContact = toggleField ? Boolean(values[toggleField.key]) : false;
+  const basicFields = fields.filter((f) => f.section === "basic");
+  const balanceFields = fields.filter((f) => f.section === "balance");
+  const toggleFields = fields.filter((f) => f.section === "toggle");
+  const contactFields = fields.filter((f) => f.section === "contact");
+  const requiredBasic = basicFields.filter((f) => f.required);
+  const canSave = requiredBasic.every((f) => String(values[f.key] || "").trim());
+  const extraTitle =
+    config.extraSectionTitle ||
+    (toggleField?.label?.toLowerCase().includes("address")
+      ? "Address Information"
+      : "Contact Information");
+
+  const setVal = (key, val) => setValues((prev) => ({ ...prev, [key]: val }));
+
+  return (
+    <form onSubmit={onSubmit} className="rounded-lg border border-[#e5e7eb] bg-white shadow-sm">
+      <div className="flex items-center justify-between border-b border-slate-100 px-5 py-4">
+        <h2 className="m-0 text-[20px] font-semibold text-[#1a557a]">{config.title}</h2>
+        <Link href={backHref} className="rounded p-1 text-slate-500 hover:bg-slate-100" aria-label="Close">
+          <span className="material-icons text-[22px]">close</span>
+        </Link>
+      </div>
+
+      <div className="space-y-6 px-5 py-5">
+        <div>
+          <h3 className="mb-4 text-[15px] font-semibold text-[#1a557a]">Basic Information</h3>
+          <div className="grid gap-5 lg:grid-cols-[1fr_280px]">
+            <div className="grid gap-4 sm:grid-cols-2">
+              {basicFields.map((f) => (
+                <FieldBlock
+                  key={f.key}
+                  field={f}
+                  value={values[f.key]}
+                  onChange={(v) => setVal(f.key, v)}
+                />
+              ))}
+            </div>
+            {config.imageLabel ? <PhotoUpload label={config.imageLabel} /> : null}
+          </div>
+        </div>
+
+        {balanceFields.length > 0 && (
+          <div className="border-t border-slate-100 pt-5">
+            <div className="max-w-md space-y-4">
+              {balanceFields.map((f) => (
+                <FieldBlock
+                  key={f.key}
+                  field={f}
+                  value={values[f.key]}
+                  onChange={(v) => setVal(f.key, v)}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+
+        {toggleFields.map((f) => (
+          <FieldBlock
+            key={f.key}
+            field={f}
+            value={values[f.key]}
+            onChange={(v) => setVal(f.key, v)}
+          />
+        ))}
+
+        {showContact && (
+          <div className="rounded-lg bg-[#f3f9fc] p-4">
+            <h3 className="mb-4 text-[15px] font-semibold text-[#1a557a]">{extraTitle}</h3>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {contactFields.map((f) => (
+                <FieldBlock
+                  key={f.key}
+                  field={f}
+                  value={values[f.key]}
+                  onChange={(v) => setVal(f.key, v)}
+                  requiredOverride={showContact ? f.required : false}
+                />
+              ))}
+            </div>
+          </div>
+        )}
+      </div>
+
+      <div className="flex justify-end gap-2 border-t border-slate-100 px-5 py-4">
+        <Link
+          href={backHref}
+          className="inline-flex h-9 items-center rounded-full border border-[#2980b9] bg-white px-5 text-[13px] font-medium text-[#2980b9] hover:bg-[#f0f7fb]"
+        >
+          Cancel
+        </Link>
+        <button
+          type="submit"
+          disabled={!canSave}
+          className="h-9 rounded-full bg-[#2980b9] px-5 text-[13px] font-medium text-white hover:bg-[#2472a4] disabled:cursor-not-allowed disabled:bg-slate-300"
+        >
+          Save
+        </button>
+      </div>
+    </form>
+  );
+}
+
 export default function FormPage({ config }) {
   const [saved, setSaved] = useState(false);
+  const [values, setValues] = useState(() => {
+    const init = {};
+    (config?.fields || []).forEach((f) => {
+      if (f.type === "checkbox" || f.type === "toggle") init[f.key] = Boolean(f.defaultValue);
+      else init[f.key] = f.defaultValue || "";
+    });
+    return init;
+  });
+
+  const isEntity = config?.layout === "entity";
+
+  const backHref = useMemo(
+    () => config?.backHref || "/en/dashboard",
+    [config?.backHref]
+  );
 
   if (!config) return null;
 
@@ -14,6 +281,29 @@ export default function FormPage({ config }) {
     setSaved(true);
   };
 
+  if (isEntity) {
+    return (
+      <div>
+        {saved ? (
+          <div className="rounded-lg border border-green-200 bg-green-50 p-6 text-center text-green-700">
+            Saved successfully (demo).{" "}
+            <Link href={backHref} className="font-semibold underline">
+              Back to list
+            </Link>
+          </div>
+        ) : (
+          <EntityForm
+            config={config}
+            values={values}
+            setValues={setValues}
+            onSubmit={onSubmit}
+            backHref={backHref}
+          />
+        )}
+      </div>
+    );
+  }
+
   return (
     <div>
       <PageHeader title={config.title} showExport={false} />
@@ -21,44 +311,19 @@ export default function FormPage({ config }) {
         {saved ? (
           <div className="rounded bg-green-50 p-4 text-center text-green-700">
             Saved successfully (demo).{" "}
-            <Link href="/en/dashboard" className="font-semibold underline">
-              Back to dashboard
+            <Link href={backHref} className="font-semibold underline">
+              Back to list
             </Link>
           </div>
         ) : (
           <form onSubmit={onSubmit} className="space-y-4">
             {config.fields?.map((f) => (
-              <div key={f.key}>
-                <label className="mb-1 block text-[13px] font-medium text-slate-700">
-                  {f.label}
-                  {f.required && <span className="text-red-500"> *</span>}
-                </label>
-                {f.type === "textarea" ? (
-                  <textarea
-                    required={f.required}
-                    rows={3}
-                    className="w-full rounded border border-slate-200 px-3 py-2 text-[13px] outline-none focus:border-[#2980b9]"
-                  />
-                ) : f.type === "select" ? (
-                  <select
-                    required={f.required}
-                    className="h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#2980b9]"
-                  >
-                    <option value="">Select...</option>
-                    {(f.options || []).map((o) => (
-                      <option key={o} value={o}>
-                        {o}
-                      </option>
-                    ))}
-                  </select>
-                ) : (
-                  <input
-                    type={f.type || "text"}
-                    required={f.required}
-                    className="h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#2980b9]"
-                  />
-                )}
-              </div>
+              <FieldBlock
+                key={f.key}
+                field={f}
+                value={values[f.key]}
+                onChange={(val) => setValues((prev) => ({ ...prev, [f.key]: val }))}
+              />
             ))}
             <div className="flex gap-2 pt-2">
               <button
@@ -68,7 +333,7 @@ export default function FormPage({ config }) {
                 Save
               </button>
               <Link
-                href="/en/dashboard"
+                href={backHref}
                 className="inline-flex h-10 items-center rounded border border-slate-200 px-5 text-[13px] text-slate-600 hover:bg-slate-50"
               >
                 Cancel
