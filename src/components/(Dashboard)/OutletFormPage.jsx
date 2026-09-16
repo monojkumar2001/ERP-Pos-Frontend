@@ -1,12 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { useMemo, useState } from "react";
-
-const WAREHOUSES = ["Food Cart", "Jamalkhan", "Default", "Mirpur", "Main Warehouse"];
+import { useRouter } from "next/navigation";
+import { useEffect, useMemo, useState } from "react";
+import { masterApi, unwrapApiData } from "../../lib/api";
 const CASH_METHODS = ["Pos Cash", "Cash Jamalkhan", "Bogura Outlet", "Dinajpur Outlet", "Narayanganj outllet", "Cash"];
-const BANK_METHODS = ["DBBL Bank", "City Bank", "Brac Bank", "Islami Bank"];
-const MOBILE_METHODS = ["Bkash Merchant", "Rocket", "Nagad", "Upay"];
+const BANK_METHODS = ["DBBL Bank", "City Bank", "City Bank POS", "Brac Bank", "Islami Bank"];
+const MOBILE_METHODS = ["Bkash", "Bkash Merchant", "Rocket", "Nagad", "Upay"];
 
 function FieldLabel({ children, required }) {
   return (
@@ -21,7 +21,7 @@ function TextInput({ className = "", ...props }) {
   return (
     <input
       {...props}
-      className={`h-10 w-full rounded border border-slate-200 bg-white px-3 text-[13px] text-slate-700 outline-none placeholder:text-slate-400 focus:border-[#2980b9] ${className}`}
+      className={`h-10 w-full rounded border border-slate-200 bg-white px-3 text-[13px] text-slate-700 outline-none placeholder:text-slate-400 focus:border-[#00a78b] ${className}`}
     />
   );
 }
@@ -32,7 +32,7 @@ function SelectInput({ options = [], placeholder, value, onChange, disabled }) {
       value={value}
       disabled={disabled}
       onChange={(e) => onChange(e.target.value)}
-      className="h-10 w-full rounded border border-slate-200 bg-white px-3 text-[13px] text-slate-700 outline-none focus:border-[#2980b9] disabled:bg-slate-50 disabled:text-slate-400"
+      className="h-10 w-full rounded border border-slate-200 bg-white px-3 text-[13px] text-slate-700 outline-none focus:border-[#00a78b] disabled:bg-slate-50 disabled:text-slate-400"
     >
       <option value="">{placeholder}</option>
       {options.map((o) => (
@@ -55,14 +55,14 @@ function MultiSelect({ options = [], placeholder, value = [], onChange }) {
           selected.map((item) => (
             <span
               key={item}
-              className="inline-flex items-center gap-1 rounded bg-[#eaf4fb] px-2 py-0.5 text-[12px] text-[#2980b9]"
+              className="inline-flex items-center gap-1 rounded bg-[#eaf4fb] px-2 py-0.5 text-[12px] text-[#00a78b]"
             >
               {item}
               <button
                 type="button"
                 aria-label={`Remove ${item}`}
                 onClick={() => onChange(selected.filter((x) => x !== item))}
-                className="text-[#2980b9] hover:text-red-500"
+                className="text-[#00a78b] hover:text-red-500"
               >
                 ×
               </button>
@@ -76,7 +76,7 @@ function MultiSelect({ options = [], placeholder, value = [], onChange }) {
           const v = e.target.value;
           if (v && !selected.includes(v)) onChange([...selected, v]);
         }}
-        className="h-10 w-full rounded border border-slate-200 bg-white px-3 text-[13px] outline-none focus:border-[#2980b9]"
+        className="h-10 w-full rounded border border-slate-200 bg-white px-3 text-[13px] outline-none focus:border-[#00a78b]"
       >
         <option value="">{placeholder}</option>
         {options
@@ -101,11 +101,11 @@ function ToggleRow({ label, checked, onChange }) {
         aria-checked={checked}
         onClick={() => onChange(!checked)}
         className={`relative h-6 w-11 rounded-full transition-colors ${
-          checked ? "bg-[#2980b9]" : "bg-slate-300"
+          checked ? "bg-[#00a78b]" : "bg-slate-300"
         }`}
       >
         <span
-          className={`absolute top-0.5 left-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px] text-[#2980b9] shadow transition-transform ${
+          className={`absolute top-0.5 left-0.5 flex h-5 w-5 items-center justify-center rounded-full bg-white text-[10px] text-[#00a78b] shadow transition-transform ${
             checked ? "translate-x-5" : ""
           }`}
         >
@@ -117,10 +117,12 @@ function ToggleRow({ label, checked, onChange }) {
 }
 
 export default function OutletFormPage({ config }) {
+  const router = useRouter();
   const isEdit = config?.formMode === "edit";
   const backHref = config?.backHref || "/en/pos/outlets";
   const initial = config?.initialValues || {};
 
+  const [warehouses, setWarehouses] = useState([]);
   const [form, setForm] = useState({
     name: initial.name || "",
     number: initial.number || "",
@@ -136,6 +138,38 @@ export default function OutletFormPage({ config }) {
     mobile_banking: initial.mobile_banking || [],
   });
   const [saved, setSaved] = useState(false);
+  const [saveError, setSaveError] = useState("");
+  const [saving, setSaving] = useState(false);
+
+  useEffect(() => {
+    masterApi.warehouses
+      .list()
+      .then((data) => setWarehouses(data.rows || []))
+      .catch(() => setWarehouses([]));
+  }, []);
+
+  useEffect(() => {
+    if (!isEdit || !initial.id) return;
+    masterApi.outlets
+      .get(initial.id)
+      .then((res) => {
+        const o = unwrapApiData(res);
+        setForm({
+          name: o.name || "",
+          number: o.number || o.phone || "",
+          address: o.address || "",
+          warehouse: o.warehouse || "",
+          cash_account: o.cash_account || "",
+          add_banking: Boolean(o.add_banking),
+          banking_methods: o.banking_methods || [],
+          add_mobile_banking: Boolean(
+            Array.isArray(o.mobile_banking) && o.mobile_banking.length > 0
+          ),
+          mobile_banking: o.mobile_banking || [],
+        });
+      })
+      .catch(() => {});
+  }, [isEdit, initial.id]);
 
   const set = (key) => (val) => setForm((prev) => ({ ...prev, [key]: val }));
 
@@ -164,7 +198,7 @@ export default function OutletFormPage({ config }) {
       <div className="overflow-hidden rounded-lg border border-[#e5e7eb] bg-white shadow-sm">
         <div className="flex items-center justify-between border-b border-slate-200 px-5 py-3">
           <h1 className="m-0 text-[20px] font-semibold text-[#1a557a]">
-            {isEdit ? "Edit POS Outlet" : "Add POS Outlet"}
+            {isEdit ? "Edit POS Outlet" : "Create POS Outlet"}
           </h1>
           <Link
             href={backHref}
@@ -204,11 +238,11 @@ export default function OutletFormPage({ config }) {
             </div>
           </div>
 
-          <div className="grid gap-4 md:grid-cols-2">
+          <div className="grid gap-4 md:grid-cols-3">
             <div>
               <FieldLabel required>Warehouse</FieldLabel>
               <SelectInput
-                options={WAREHOUSES}
+                options={warehouses.map((w) => w.name)}
                 placeholder="Select Warehouse"
                 value={form.warehouse}
                 onChange={set("warehouse")}
@@ -231,11 +265,18 @@ export default function OutletFormPage({ config }) {
           </div>
 
           <div className="space-y-4 border-t border-slate-100 pt-4">
-            <ToggleRow
-              label="Add Banking Method"
-              checked={form.add_banking}
-              onChange={set("add_banking")}
-            />
+            <div className="flex flex-wrap gap-8">
+              <ToggleRow
+                label="Add Banking Method"
+                checked={form.add_banking}
+                onChange={set("add_banking")}
+              />
+              <ToggleRow
+                label="Add Mobile Banking Method"
+                checked={form.add_mobile_banking}
+                onChange={set("add_mobile_banking")}
+              />
+            </div>
             {form.add_banking && (
               <div className="max-w-xl">
                 <FieldLabel required>Banking Method</FieldLabel>
@@ -245,14 +286,11 @@ export default function OutletFormPage({ config }) {
                   value={form.banking_methods}
                   onChange={set("banking_methods")}
                 />
+                <p className="mt-1.5 mb-0 text-[12px] text-slate-500">
+                  You can select multiple banking method.
+                </p>
               </div>
             )}
-
-            <ToggleRow
-              label="Add Mobile Banking Method"
-              checked={form.add_mobile_banking}
-              onChange={set("add_mobile_banking")}
-            />
             {form.add_mobile_banking && (
               <div className="max-w-xl">
                 <FieldLabel required>Mobile Banking Method</FieldLabel>
@@ -270,21 +308,53 @@ export default function OutletFormPage({ config }) {
           </div>
         </div>
 
-        <div className="flex justify-end gap-2 border-t border-slate-200 px-5 py-3">
-          <Link
-            href={backHref}
-            className="inline-flex h-9 items-center rounded border border-[#2980b9] bg-white px-5 text-[13px] font-medium text-[#2980b9] hover:bg-[#f0f7fb]"
-          >
-            Cancel
-          </Link>
-          <button
-            type="button"
-            disabled={!canSave}
-            onClick={() => setSaved(true)}
-            className="h-9 rounded bg-[#2980b9] px-5 text-[13px] font-medium text-white hover:bg-[#2472a4] disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            Save
-          </button>
+        <div className="flex flex-col gap-2 border-t border-slate-200 px-5 py-3">
+          {saveError && (
+            <div className="rounded border border-red-200 bg-red-50 px-3 py-2 text-[13px] text-red-700">
+              {saveError}
+            </div>
+          )}
+          <div className="flex justify-end gap-2">
+            <Link
+              href={backHref}
+              className="inline-flex h-9 items-center rounded border border-[#00a78b] bg-white px-5 text-[13px] font-medium text-[#00a78b] hover:bg-[#f0f7fb]"
+            >
+              Cancel
+            </Link>
+            <button
+              type="button"
+              disabled={!canSave || saving}
+              onClick={async () => {
+                setSaveError("");
+                setSaving(true);
+                const warehouseId = warehouses.find((w) => w.name === form.warehouse)?.id;
+                const payload = {
+                  name: form.name.trim(),
+                  number: form.number || undefined,
+                  address: form.address || undefined,
+                  warehouse_id: warehouseId,
+                  cash_account: form.cash_account,
+                  mobile_banking: form.add_mobile_banking ? form.mobile_banking : [],
+                };
+                try {
+                  if (isEdit && initial.id) {
+                    await masterApi.outlets.update(initial.id, payload);
+                  } else {
+                    await masterApi.outlets.create(payload);
+                  }
+                  setSaved(true);
+                  router.push(backHref);
+                } catch (err) {
+                  setSaveError(err.message || "Failed to save outlet");
+                } finally {
+                  setSaving(false);
+                }
+              }}
+              className="h-9 rounded bg-[#00a78b] px-5 text-[13px] font-medium text-white hover:bg-[#008f77] disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {saving ? "Saving…" : "Save"}
+            </button>
+          </div>
         </div>
       </div>
     </div>

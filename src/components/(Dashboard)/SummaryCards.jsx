@@ -1,5 +1,5 @@
 const TONE = {
-  blue: { wrap: "bg-[#eaf4fb]", icon: "text-[#2980b9]", glyph: "work_outline" },
+  blue: { wrap: "bg-[#eaf4fb]", icon: "text-[#00a78b]", glyph: "work_outline" },
   pink: { wrap: "bg-[#fde8ef]", icon: "text-[#e83e8c]", glyph: "monitor_heart" },
   green: { wrap: "bg-[#e8f8ef]", icon: "text-[#28a745]", glyph: "percent" },
   purple: { wrap: "bg-[#f0eaff]", icon: "text-[#6f42c1]", glyph: "add" },

@@ -1,62 +1,6 @@
 import Link from "next/link";
 import PageHeader from "./PageHeader";
 
-export function ReportsPage() {
-  const groups = [
-    {
-      title: "Sales Reports",
-      items: ["Sales Summary", "Invoice Report", "Customer Balance", "Sales Return"],
-    },
-    {
-      title: "Purchase Reports",
-      items: ["Purchase Summary", "Bill Report", "Supplier Balance", "Purchase Return"],
-    },
-    {
-      title: "Inventory Reports",
-      items: ["Stock Summary", "Stock Movement", "Low Stock", "Warehouse Stock"],
-    },
-    {
-      title: "Accounting Reports",
-      items: ["Trial Balance", "Profit & Loss", "Balance Sheet", "Ledger"],
-    },
-    {
-      title: "HRM Reports",
-      items: ["Attendance Report", "Payroll Report", "Leave Report", "Employee List"],
-    },
-  ];
-
-  return (
-    <div>
-      <PageHeader title="Reports" showExport={false} />
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
-        {groups.map((g) => (
-          <div
-            key={g.title}
-            className="rounded-lg border border-[#e5e7eb] bg-white p-4 shadow-sm"
-          >
-            <h3 className="m-0 mb-3 text-[15px] font-semibold text-[#2980b9]">{g.title}</h3>
-            <ul className="m-0 space-y-2 p-0 list-none">
-              {g.items.map((item) => (
-                <li key={item}>
-                  <button
-                    type="button"
-                    className="flex w-full items-center gap-2 rounded border border-slate-100 px-3 py-2 text-left text-[13px] hover:border-[#2980b9] hover:bg-[#f0f7fb]"
-                  >
-                    <span className="material-icons text-[16px] text-[#2980b9]">
-                      description
-                    </span>
-                    {item}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-}
-
 export function ManufacturingOverviewPage() {
   return (
     <div>
@@ -91,7 +35,7 @@ export function ManufacturingOverviewPage() {
             <Link
               key={href}
               href={href}
-              className="rounded border border-[#2980b9] px-3 py-2 text-[13px] text-[#2980b9] hover:bg-[#2980b9] hover:text-white"
+              className="rounded border border-[#00a78b] px-3 py-2 text-[13px] text-[#00a78b] hover:bg-[#00a78b] hover:text-white"
             >
               {label}
             </Link>
@@ -136,7 +80,7 @@ export function AttendanceSheetPage() {
         </div>
         <button
           type="button"
-          className="h-10 rounded bg-[#2980b9] px-4 text-[13px] font-medium text-white"
+          className="h-10 rounded bg-[#00a78b] px-4 text-[13px] font-medium text-white"
         >
           Load Sheet
         </button>
@@ -144,7 +88,7 @@ export function AttendanceSheetPage() {
       <div className="overflow-hidden rounded-lg border border-[#e5e7eb] bg-white shadow-sm">
         <table className="w-full text-left text-[13px]">
           <thead>
-            <tr style={{ backgroundColor: "#2980b9" }}>
+            <tr style={{ backgroundColor: "#00a78b" }}>
               {["EMPLOYEE", "PRESENT", "ABSENT", "LEAVE", "LATE", "NOTE"].map((h) => (
                 <th key={h} className="px-3 py-3 text-[11px] font-semibold text-white">
                   {h}
@@ -162,7 +106,7 @@ export function AttendanceSheetPage() {
                       type="radio"
                       name={`att-${name}`}
                       defaultChecked={s === "Present"}
-                      className="accent-[#2980b9]"
+                      className="accent-[#00a78b]"
                     />
                   </td>
                 ))}
@@ -213,7 +157,7 @@ export function BarcodePage() {
           </div>
           <button
             type="button"
-            className="h-10 rounded bg-[#2980b9] px-5 text-[13px] font-medium text-white"
+            className="h-10 rounded bg-[#00a78b] px-5 text-[13px] font-medium text-white"
           >
             Generate Barcode
           </button>
