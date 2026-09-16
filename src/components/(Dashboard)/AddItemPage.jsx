@@ -1,7 +1,9 @@
 "use client";
 
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 import { useMemo, useState } from "react";
+import { masterApi } from "../../lib/api";
 
 const UNITS = ["pc", "kg", "ltr", "box", "dozen"];
 const MANUFACTURERS = ["selim", "matador", "paper brand"];
@@ -29,7 +31,7 @@ function FieldLabel({ children, required, hint }) {
     <label className="mb-1.5 flex items-center gap-1 text-[13px] font-medium text-[#1a557a]">
       {children}
       {required && <span className="text-red-500">*</span>}
-      {hint && <i className="far fa-info-circle text-[12px] text-[#2980b9]" />}
+      {hint && <i className="far fa-info-circle text-[12px] text-[#00a78b]" />}
     </label>
   );
 }
@@ -38,7 +40,7 @@ function TextInput({ className = "", ...props }) {
   return (
     <input
       {...props}
-      className={`h-10 w-full rounded border border-slate-200 bg-white px-3 text-[13px] text-slate-700 outline-none placeholder:text-slate-400 focus:border-[#2980b9] ${className}`}
+      className={`h-10 w-full rounded border border-slate-200 bg-white px-3 text-[13px] text-slate-700 outline-none placeholder:text-slate-400 focus:border-[#00a78b] ${className}`}
     />
   );
 }
@@ -48,7 +50,7 @@ function SelectInput({ options = [], placeholder, value, onChange }) {
     <select
       value={value}
       onChange={(e) => onChange(e.target.value)}
-      className="h-10 w-full rounded border border-slate-200 bg-white px-3 text-[13px] text-slate-700 outline-none focus:border-[#2980b9]"
+      className="h-10 w-full rounded border border-slate-200 bg-white px-3 text-[13px] text-slate-700 outline-none focus:border-[#00a78b]"
     >
       <option value="">{placeholder}</option>
       {options.map((o) => (
@@ -72,7 +74,7 @@ function CheckRow({ label, checked, disabled, onChange }) {
         checked={checked}
         disabled={disabled}
         onChange={(e) => onChange(e.target.checked)}
-        className="h-4 w-4 accent-[#2980b9]"
+        className="h-4 w-4 accent-[#00a78b]"
       />
       {label}
     </label>
@@ -104,7 +106,7 @@ function RichToolbar() {
         <button
           key={icon}
           type="button"
-          className="rounded p-1 text-slate-500 hover:bg-white hover:text-[#2980b9]"
+          className="rounded p-1 text-slate-500 hover:bg-white hover:text-[#00a78b]"
           aria-label={label}
         >
           <span className="material-icons text-[18px]">{icon}</span>
@@ -148,7 +150,7 @@ function ModalShell({ title, onClose, children, onSave }) {
           <button
             type="button"
             onClick={onSave}
-            className="h-9 rounded-full bg-[#2980b9] px-4 text-[13px] font-medium text-white hover:bg-[#2472a4]"
+            className="h-9 rounded-full bg-[#00a78b] px-4 text-[13px] font-medium text-white hover:bg-[#008f77]"
           >
             Save
           </button>
@@ -159,6 +161,7 @@ function ModalShell({ title, onClose, children, onSave }) {
 }
 
 export default function AddItemPage() {
+  const router = useRouter();
   const [form, setForm] = useState({
     itemType: "Product",
     name: "",
@@ -199,6 +202,8 @@ export default function AddItemPage() {
   const [pendingCategories, setPendingCategories] = useState([]);
   const [attributes, setAttributes] = useState([]);
   const [saved, setSaved] = useState(false);
+  const [saveError, setSaveError] = useState("");
+  const [saving, setSaving] = useState(false);
 
   const set = (key) => (val) => setForm((prev) => ({ ...prev, [key]: val }));
 
@@ -213,6 +218,35 @@ export default function AddItemPage() {
   const generateSku = () => {
     const n = String(Math.floor(1000 + Math.random() * 9000));
     setForm((prev) => ({ ...prev, sku: `I-00${n}` }));
+  };
+
+  const handleSave = async () => {
+    setSaveError("");
+    setSaving(true);
+    try {
+      await masterApi.items.create({
+        name: form.name.trim(),
+        sku: form.sku || undefined,
+        code: form.sku || undefined,
+        manufacturer: form.manufacturer || undefined,
+        brand: form.brand || undefined,
+        color: form.color || undefined,
+        size: form.size || undefined,
+        category: form.categories[0] || undefined,
+        categories: form.categories.join(", ") || undefined,
+        sale_price: form.sellingPrice ? Number(form.sellingPrice) : undefined,
+        purchase_price: form.purchasingPrice ? Number(form.purchasingPrice) : undefined,
+        base_unit: form.unit || undefined,
+        description: form.shortDescription || form.longDescription || undefined,
+        status: "Active",
+      });
+      setSaved(true);
+      router.push("/en/item-config/items");
+    } catch (err) {
+      setSaveError(err.message || "Failed to save item");
+    } finally {
+      setSaving(false);
+    }
   };
 
   if (saved) {
@@ -255,7 +289,7 @@ export default function AddItemPage() {
                         name="itemType"
                         checked={form.itemType === t}
                         onChange={() => set("itemType")(t)}
-                        className="accent-[#2980b9]"
+                        className="accent-[#00a78b]"
                       />
                       {t}
                     </label>
@@ -279,7 +313,7 @@ export default function AddItemPage() {
                   onChange={(e) => set("shortDescription")(e.target.value)}
                   placeholder="Write a short description about this item..."
                   rows={3}
-                  className="w-full rounded border border-slate-200 px-3 py-2 text-[13px] outline-none focus:border-[#2980b9]"
+                  className="w-full rounded border border-slate-200 px-3 py-2 text-[13px] outline-none focus:border-[#00a78b]"
                 />
               </div>
 
@@ -386,7 +420,7 @@ export default function AddItemPage() {
                       { id: Date.now(), set: "", attr: "" },
                     ])
                   }
-                  className="mt-2 inline-flex h-9 items-center rounded border border-[#2980b9] px-3 text-[13px] font-medium text-[#2980b9] hover:bg-[#f0f7fb]"
+                  className="mt-2 inline-flex h-9 items-center rounded border border-[#00a78b] px-3 text-[13px] font-medium text-[#00a78b] hover:bg-[#f0f7fb]"
                 >
                   + Add Attribute
                 </button>
@@ -411,7 +445,7 @@ export default function AddItemPage() {
                       : form.categories.map((c) => (
                           <span
                             key={c}
-                            className="rounded bg-[#eaf4fb] px-2 py-0.5 text-[12px] text-[#2980b9]"
+                            className="rounded bg-[#eaf4fb] px-2 py-0.5 text-[12px] text-[#00a78b]"
                           >
                             {c}
                           </span>
@@ -423,7 +457,7 @@ export default function AddItemPage() {
                       setPendingCategories(form.categories);
                       setCategoryModal(true);
                     }}
-                    className="inline-flex h-10 shrink-0 items-center rounded border border-[#2980b9] px-3 text-[13px] font-medium text-[#2980b9] hover:bg-[#f0f7fb]"
+                    className="inline-flex h-10 shrink-0 items-center rounded border border-[#00a78b] px-3 text-[13px] font-medium text-[#00a78b] hover:bg-[#f0f7fb]"
                   >
                     Select Categories
                   </button>
@@ -443,7 +477,7 @@ export default function AddItemPage() {
                     <button
                       type="button"
                       onClick={generateSku}
-                      className="absolute right-1 top-1/2 -translate-y-1/2 rounded border border-[#2980b9] px-3 py-1.5 text-[12px] font-medium text-[#2980b9] hover:bg-[#f0f7fb]"
+                      className="absolute right-1 top-1/2 -translate-y-1/2 rounded border border-[#00a78b] px-3 py-1.5 text-[12px] font-medium text-[#00a78b] hover:bg-[#f0f7fb]"
                     >
                       Generate
                     </button>
@@ -463,10 +497,10 @@ export default function AddItemPage() {
 
             <div>
               <div className="flex min-h-[360px] flex-col items-center justify-center rounded-lg border-2 border-dashed border-[#bfd3e4] bg-[#f7fbfe] px-4 py-8 text-center">
-                <span className="material-icons mb-2 text-[42px] text-[#2980b9]">cloud_upload</span>
+                <span className="material-icons mb-2 text-[42px] text-[#00a78b]">cloud_upload</span>
                 <p className="m-0 text-[13px] text-slate-600">Drag and drop files here</p>
                 <p className="my-2 text-[12px] text-slate-400">or</p>
-                <label className="cursor-pointer rounded bg-[#2980b9] px-4 py-2 text-[13px] font-medium text-white hover:bg-[#2472a4]">
+                <label className="cursor-pointer rounded bg-[#00a78b] px-4 py-2 text-[13px] font-medium text-white hover:bg-[#008f77]">
                   Browse for files
                   <input type="file" accept=".jpg,.jpeg,.png" multiple className="hidden" />
                 </label>
@@ -655,21 +689,28 @@ export default function AddItemPage() {
           </div>
         </div>
 
-        <div className="flex justify-end gap-2 border-t border-slate-200 px-5 py-3">
-          <Link
-            href="/en/item-config/items"
-            className="inline-flex h-9 items-center rounded border border-[#2980b9] bg-white px-5 text-[13px] font-medium text-[#2980b9] hover:bg-[#f0f7fb]"
-          >
-            Cancel
-          </Link>
-          <button
-            type="button"
-            disabled={!canSave}
-            onClick={() => setSaved(true)}
-            className="h-9 rounded bg-[#2980b9] px-5 text-[13px] font-medium text-white hover:bg-[#2472a4] disabled:cursor-not-allowed disabled:opacity-50"
-          >
-            Save
-          </button>
+        <div className="flex flex-col gap-2 border-t border-slate-200 px-5 py-3">
+          {saveError && (
+            <div className="rounded border border-red-200 bg-red-50 px-3 py-2 text-[13px] text-red-700">
+              {saveError}
+            </div>
+          )}
+          <div className="flex justify-end gap-2">
+            <Link
+              href="/en/item-config/items"
+              className="inline-flex h-9 items-center rounded border border-[#00a78b] bg-white px-5 text-[13px] font-medium text-[#00a78b] hover:bg-[#f0f7fb]"
+            >
+              Cancel
+            </Link>
+            <button
+              type="button"
+              disabled={!canSave || saving}
+              onClick={handleSave}
+              className="h-9 rounded bg-[#00a78b] px-5 text-[13px] font-medium text-white hover:bg-[#008f77] disabled:cursor-not-allowed disabled:opacity-50"
+            >
+              {saving ? "Saving…" : "Save"}
+            </button>
+          </div>
         </div>
       </div>
 
@@ -693,7 +734,7 @@ export default function AddItemPage() {
                       e.target.checked ? [...prev, c] : prev.filter((x) => x !== c)
                     );
                   }}
-                  className="accent-[#2980b9]"
+                  className="accent-[#00a78b]"
                 />
                 {c}
               </label>

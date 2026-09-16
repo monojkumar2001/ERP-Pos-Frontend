@@ -17,14 +17,20 @@ function keyFromLabel(label) {
     .replace(/^_|_$/g, "");
 }
 
-function colFromHeader(label, idx) {
+function colFromHeader(label, idx, schema = {}) {
   if (label === "ACTION") return { key: "action", label, type: "action" };
   if (label === "STATUS") return { key: "status", label, type: "status" };
   const key = keyFromLabel(label) || `col_${idx}`;
+  const forcedLinks = (schema.linkCols || []).map((l) =>
+    String(l).toUpperCase()
+  );
   const linkish =
-    /NUMBER|NO\.?$|^NAME$|REFERENCE|INVOICE|ORDER|QUOTATION|BILL|^CODE$|^SKU$/i.test(
+    forcedLinks.includes(String(label).toUpperCase()) ||
+    ((/NUMBER|NO\.?$|^NAME$|^ITEM$|REFERENCE|INVOICE|ORDER|QUOTATION|BILL|^CODE$|^SKU$/i.test(
       label
-    ) && idx <= 1;
+    ) &&
+      idx <= 1) &&
+      !/TYPE|REASON|DATE|STATUS|WAREHOUSE/i.test(label));
   return linkish ? { key, label, type: "link" } : { key, label };
 }
 
@@ -138,13 +144,24 @@ export function schemaToOverride(s) {
     if (s.hasCheckbox && idx === 0 && !label) {
       return { key: "_check", label: "", type: "checkbox" };
     }
-    return colFromHeader(label, idx);
+    return colFromHeader(label, idx, s);
   });
   const amountCol = columns.find((c) => /amount|total/i.test(c.key));
   const filters = filtersFromSchema(s);
+  if ((s.checkboxFilters || []).length) {
+    for (const label of s.checkboxFilters) {
+      filters.push({
+        key: keyFromLabel(label),
+        label,
+        type: "checkbox",
+        placeholder: label,
+      });
+    }
+  }
   return {
     title: s.title || undefined,
     addLabel: s.addBtn || "",
+    secondaryAddLabel: s.secondaryAddBtn || undefined,
     hideFilterToggle: true,
     filters,
     columns,

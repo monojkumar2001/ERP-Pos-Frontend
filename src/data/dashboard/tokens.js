@@ -1,5 +1,5 @@
 export const DASH = {
-  sidebar: "#2980b9",
+  sidebar: "#00a78b",
   sidebarHover: "rgba(255,255,255,0.12)",
   sidebarActive: "rgba(255,255,255,0.18)",
   contentBg: "#f4f6f8",
@@ -57,7 +57,7 @@ export const QUICK_ACTIONS = [
   {
     label: "HRM Employee Management",
     href: "/en/hrm/employee/employees",
-    color: "#04cdb9",
+    color: "#00a78b",
     icon: "fa-users",
   },
 ];

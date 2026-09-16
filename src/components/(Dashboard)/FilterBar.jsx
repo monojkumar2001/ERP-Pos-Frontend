@@ -15,7 +15,7 @@ function MultiSelect({ placeholder, options = [], value, onChange }) {
       <button
         type="button"
         onClick={() => setOpen((v) => !v)}
-        className="flex min-h-9 w-full min-w-[12rem] flex-wrap items-center gap-1 rounded border border-slate-200 bg-white px-2 py-1 text-left text-[13px] outline-none focus:border-[#2980b9]"
+        className="flex min-h-9 w-full min-w-[12rem] flex-wrap items-center gap-1 rounded border border-slate-200 bg-white px-2 py-1 text-left text-[13px] outline-none focus:border-[#00a78b]"
       >
         {value.length === 0 && (
           <span className="text-slate-400">{placeholder || "Select"}</span>
@@ -57,14 +57,14 @@ function MultiSelect({ placeholder, options = [], value, onChange }) {
               type="button"
               onClick={() => toggle(opt)}
               className={`flex w-full items-center gap-2 px-3 py-1.5 text-left text-[13px] hover:bg-slate-50 ${
-                value.includes(opt) ? "bg-[#e8f1f8] text-[#2980b9]" : "text-slate-700"
+                value.includes(opt) ? "bg-[#e8f1f8] text-[#00a78b]" : "text-slate-700"
               }`}
             >
               <input
                 type="checkbox"
                 readOnly
                 checked={value.includes(opt)}
-                className="accent-[#2980b9]"
+                className="accent-[#00a78b]"
               />
               {opt}
             </button>
@@ -108,7 +108,7 @@ export default function FilterBar({ filters = [], onApply, onClear }) {
               <input
                 type="text"
                 placeholder={f.placeholder || f.label}
-                className="h-9 w-full rounded border border-slate-200 bg-white py-1 pl-3 pr-8 text-[13px] text-slate-700 outline-none focus:border-[#2980b9]"
+                className="h-9 w-full rounded border border-slate-200 bg-white py-1 pl-3 pr-8 text-[13px] text-slate-700 outline-none focus:border-[#00a78b]"
               />
               <span className="material-icons pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 text-[18px] text-slate-400">
                 calendar_today
@@ -117,15 +117,31 @@ export default function FilterBar({ filters = [], onApply, onClear }) {
           );
         }
 
+        if (f.type === "checkbox") {
+          return (
+            <label
+              key={f.key}
+              className="mb-1 flex min-w-[12rem] cursor-pointer items-center gap-2 text-[13px] text-slate-700"
+            >
+              <input type="checkbox" className="accent-[#00a78b]" />
+              {f.label || f.placeholder}
+            </label>
+          );
+        }
+
         return (
           <div key={f.key} className="min-w-[12rem]">
-            <select className="h-9 w-full rounded border border-slate-200 bg-white px-2 text-[13px] text-slate-700 outline-none focus:border-[#2980b9]">
+            <select className="h-9 w-full rounded border border-slate-200 bg-white px-2 text-[13px] text-slate-700 outline-none focus:border-[#00a78b]">
               <option value="">{f.placeholder || `Select ${f.label}`}</option>
-              {(f.options || ["Option 1", "Option 2"]).map((opt) => (
-                <option key={opt} value={opt}>
-                  {opt}
-                </option>
-              ))}
+              {(f.options || []).map((opt) => {
+                const value = typeof opt === "object" ? String(opt.value ?? opt.id) : String(opt);
+                const label = typeof opt === "object" ? opt.label ?? opt.name ?? value : opt;
+                return (
+                  <option key={value} value={value}>
+                    {label}
+                  </option>
+                );
+              })}
             </select>
           </div>
         );
@@ -134,14 +150,14 @@ export default function FilterBar({ filters = [], onApply, onClear }) {
       <button
         type="button"
         onClick={onApply}
-        className="h-8 rounded bg-[#2980b9] px-3 text-[12px] font-medium text-white hover:bg-[#2472a4]"
+        className="h-8 rounded bg-[#00a78b] px-3 text-[12px] font-medium text-white hover:bg-[#008f77]"
       >
         Apply Filter
       </button>
       <button
         type="button"
         onClick={onClear}
-        className="h-8 rounded border border-[#2980b9] bg-white px-3 text-[12px] font-medium text-[#2980b9] hover:bg-[#e8f1f8]"
+        className="h-8 rounded border border-[#00a78b] bg-white px-3 text-[12px] font-medium text-[#00a78b] hover:bg-[#e8f1f8]"
       >
         Clear Filter
       </button>

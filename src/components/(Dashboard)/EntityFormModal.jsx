@@ -61,13 +61,13 @@ export default function EntityFormModal({
                     onChange={(e) => onChange(f.key, e.target.value)}
                     placeholder={f.placeholder || f.label}
                     rows={3}
-                    className="w-full rounded border border-slate-200 px-3 py-2 text-[13px] outline-none focus:border-[#2980b9]"
+                    className="w-full rounded border border-slate-200 px-3 py-2 text-[13px] outline-none focus:border-[#00a78b]"
                   />
                 ) : f.type === "select" ? (
                   <select
                     value={values[f.key] || ""}
                     onChange={(e) => onChange(f.key, e.target.value)}
-                    className="h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#2980b9]"
+                    className="h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#00a78b]"
                   >
                     <option value="">{f.placeholder || "Select..."}</option>
                     {(f.options || []).map((o) => (
@@ -88,7 +88,7 @@ export default function EntityFormModal({
                           value={item}
                           onChange={(e) => updateRepeating(f.key, idx, e.target.value)}
                           placeholder={f.placeholder || "Name"}
-                          className="h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#2980b9]"
+                          className="h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#00a78b]"
                         />
                         <button
                           type="button"
@@ -103,7 +103,7 @@ export default function EntityFormModal({
                     <button
                       type="button"
                       onClick={() => addRepeating(f.key)}
-                      className="text-[13px] font-medium text-[#2980b9] hover:underline"
+                      className="text-[13px] font-medium text-[#00a78b] hover:underline"
                     >
                       {f.addRowLabel || "Add"}
                     </button>
@@ -114,7 +114,7 @@ export default function EntityFormModal({
                     value={values[f.key] || ""}
                     onChange={(e) => onChange(f.key, e.target.value)}
                     placeholder={f.placeholder || f.label}
-                    className="h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#2980b9]"
+                    className="h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#00a78b]"
                   />
                 )}
               </div>
@@ -127,12 +127,12 @@ export default function EntityFormModal({
                 {imageLabel}
               </label>
               <div className="flex min-h-[200px] flex-col items-center justify-center rounded-lg border-2 border-dashed border-[#9ec4e0] bg-[#f3f9fc] px-4 py-6 text-center">
-                <span className="material-icons mb-2 text-[36px] text-[#2980b9]">cloud_upload</span>
+                <span className="material-icons mb-2 text-[36px] text-[#00a78b]">cloud_upload</span>
                 <p className="m-0 text-[13px] text-slate-600">Drag and drop file here</p>
                 <p className="my-2 text-[12px] text-slate-400">or</p>
                 <button
                   type="button"
-                  className="rounded bg-[#2980b9] px-4 py-2 text-[13px] font-medium text-white hover:bg-[#2472a4]"
+                  className="rounded bg-[#00a78b] px-4 py-2 text-[13px] font-medium text-white hover:bg-[#008f77]"
                 >
                   Upload Photo
                 </button>
@@ -150,14 +150,14 @@ export default function EntityFormModal({
           <button
             type="button"
             onClick={onClose}
-            className="h-9 rounded-full border border-[#2980b9] bg-white px-5 text-[13px] font-medium text-[#2980b9] hover:bg-[#f0f7fb]"
+            className="h-9 rounded-full border border-[#00a78b] bg-white px-5 text-[13px] font-medium text-[#00a78b] hover:bg-[#f0f7fb]"
           >
             Cancel
           </button>
           <button
             type="button"
             onClick={onSave}
-            className="h-9 rounded-full bg-[#2980b9] px-5 text-[13px] font-medium text-white hover:bg-[#2472a4]"
+            className="h-9 rounded-full bg-[#00a78b] px-5 text-[13px] font-medium text-white hover:bg-[#008f77]"
           >
             Save
           </button>

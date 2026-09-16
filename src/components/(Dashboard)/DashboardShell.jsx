@@ -47,7 +47,7 @@ export default function DashboardShell({ children }) {
             href="https://softifybd.com"
             target="_blank"
             rel="noreferrer"
-            className="font-medium text-[#2980b9] hover:underline"
+            className="font-medium text-[#00a78b] hover:underline"
           >
             Softifybd
           </a>{" "}
