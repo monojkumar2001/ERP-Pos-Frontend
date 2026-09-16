@@ -3,11 +3,12 @@
 import { useMemo, useState } from "react";
 import Link from "next/link";
 import PageHeader from "./PageHeader";
+import { api } from "../../lib/api";
 
 function FieldInput({ field, value, onChange, requiredOverride }) {
   const required = requiredOverride ?? field.required;
   const inputClass =
-    "h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#2980b9]";
+    "h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#00a78b]";
 
   if (field.type === "textarea") {
     return (
@@ -17,7 +18,7 @@ function FieldInput({ field, value, onChange, requiredOverride }) {
         value={value || ""}
         placeholder={field.placeholder}
         onChange={(e) => onChange(e.target.value)}
-        className="w-full rounded border border-slate-200 px-3 py-2 text-[13px] outline-none focus:border-[#2980b9]"
+        className="w-full rounded border border-slate-200 px-3 py-2 text-[13px] outline-none focus:border-[#00a78b]"
       />
     );
   }
@@ -51,7 +52,7 @@ function FieldInput({ field, value, onChange, requiredOverride }) {
               value={o}
               checked={value === o}
               onChange={() => onChange(o)}
-              className="accent-[#2980b9]"
+              className="accent-[#00a78b]"
             />
             {o}
           </label>
@@ -80,7 +81,7 @@ function FieldBlock({ field, value, onChange, requiredOverride }) {
           type="checkbox"
           checked={Boolean(value)}
           onChange={(e) => onChange(e.target.checked)}
-          className="accent-[#2980b9]"
+          className="accent-[#00a78b]"
         />
         {field.label}
       </label>
@@ -90,14 +91,13 @@ function FieldBlock({ field, value, onChange, requiredOverride }) {
   if (field.type === "toggle") {
     return (
       <label className="inline-flex cursor-pointer items-center gap-3 text-[13px] font-medium text-[#1a557a]">
-        <span>{field.label}</span>
         <button
           type="button"
           role="switch"
           aria-checked={Boolean(value)}
           onClick={() => onChange(!value)}
           className={`relative h-6 w-11 rounded-full transition-colors ${
-            value ? "bg-[#2980b9]" : "bg-slate-300"
+            value ? "bg-[#00a78b]" : "bg-slate-300"
           }`}
         >
           <span
@@ -106,15 +106,21 @@ function FieldBlock({ field, value, onChange, requiredOverride }) {
             }`}
           />
         </button>
+        <span>{field.label}</span>
       </label>
     );
   }
 
   return (
     <div>
-      <label className="mb-1 block text-[13px] font-medium text-[#1a557a]">
+      <label className="mb-1 flex items-center gap-1 text-[13px] font-medium text-[#1a557a]">
         {field.label}
         {(requiredOverride ?? field.required) && <span className="text-red-500"> *</span>}
+        {field.help && (
+          <span className="material-icons text-[14px] text-[#00a78b]" title="Help">
+            info
+          </span>
+        )}
       </label>
       <FieldInput
         field={field}
@@ -131,12 +137,12 @@ function PhotoUpload({ label }) {
     <div>
       <label className="mb-1 block text-[13px] font-medium text-[#1a557a]">{label}</label>
       <div className="flex min-h-[220px] flex-col items-center justify-center rounded-lg border-2 border-dashed border-[#9ec4e0] bg-[#f3f9fc] px-4 py-6 text-center">
-        <span className="material-icons mb-2 text-[36px] text-[#2980b9]">cloud_upload</span>
+        <span className="material-icons mb-2 text-[36px] text-[#00a78b]">cloud_upload</span>
         <p className="m-0 text-[13px] text-slate-600">Drag and drop file here</p>
         <p className="my-2 text-[12px] text-slate-400">or</p>
         <button
           type="button"
-          className="rounded bg-[#2980b9] px-4 py-2 text-[13px] font-medium text-white hover:bg-[#2472a4]"
+          className="rounded bg-[#00a78b] px-4 py-2 text-[13px] font-medium text-white hover:bg-[#008f77]"
         >
           Upload Photo
         </button>
@@ -152,19 +158,16 @@ function PhotoUpload({ label }) {
 
 function EntityForm({ config, values, setValues, onSubmit, backHref }) {
   const fields = config.fields || [];
-  const toggleField = fields.find((f) => f.section === "toggle");
-  const showContact = toggleField ? Boolean(values[toggleField.key]) : false;
+  const showContact = Boolean(values.add_contact_info);
+  const showAddress = Boolean(values.add_address);
   const basicFields = fields.filter((f) => f.section === "basic");
   const balanceFields = fields.filter((f) => f.section === "balance");
   const toggleFields = fields.filter((f) => f.section === "toggle");
   const contactFields = fields.filter((f) => f.section === "contact");
-  const requiredBasic = basicFields.filter((f) => f.required);
-  const canSave = requiredBasic.every((f) => String(values[f.key] || "").trim());
-  const extraTitle =
-    config.extraSectionTitle ||
-    (toggleField?.label?.toLowerCase().includes("address")
-      ? "Address Information"
-      : "Contact Information");
+  const addressFields = fields.filter((f) => f.section === "address");
+  const requiredKeys = config.requiredKeys || ["name", "supplier_type"];
+  const canSave = requiredKeys.every((key) => String(values[key] || "").trim());
+  const basicCols = config.basicGridCols === 3 ? "sm:grid-cols-2 xl:grid-cols-3" : "sm:grid-cols-2";
 
   const setVal = (key, val) => setValues((prev) => ({ ...prev, [key]: val }));
 
@@ -181,7 +184,7 @@ function EntityForm({ config, values, setValues, onSubmit, backHref }) {
         <div>
           <h3 className="mb-4 text-[15px] font-semibold text-[#1a557a]">Basic Information</h3>
           <div className="grid gap-5 lg:grid-cols-[1fr_280px]">
-            <div className="grid gap-4 sm:grid-cols-2">
+            <div className={`grid gap-4 ${basicCols}`}>
               {basicFields.map((f) => (
                 <FieldBlock
                   key={f.key}
@@ -197,7 +200,7 @@ function EntityForm({ config, values, setValues, onSubmit, backHref }) {
 
         {balanceFields.length > 0 && (
           <div className="border-t border-slate-100 pt-5">
-            <div className="max-w-md space-y-4">
+            <div className={`grid gap-4 ${config.entity === "customer" ? "max-w-3xl sm:grid-cols-2" : "max-w-md"}`}>
               {balanceFields.map((f) => (
                 <FieldBlock
                   key={f.key}
@@ -211,17 +214,24 @@ function EntityForm({ config, values, setValues, onSubmit, backHref }) {
         )}
 
         {toggleFields.map((f) => (
-          <FieldBlock
-            key={f.key}
-            field={f}
-            value={values[f.key]}
-            onChange={(v) => setVal(f.key, v)}
-          />
+          <div key={f.key} className="space-y-3">
+            <FieldBlock
+              field={f}
+              value={values[f.key]}
+              onChange={(v) => setVal(f.key, v)}
+            />
+            {f.clearWarning && !values[f.key] && (
+              <div className="flex items-start gap-2 rounded border border-[#b6d4ea] bg-[#e8f4fc] px-3 py-2 text-[13px] text-[#1a557a]">
+                <span className="material-icons text-[18px] text-[#00a78b]">info</span>
+                <span className="flex-1">{f.clearWarning}</span>
+              </div>
+            )}
+          </div>
         ))}
 
         {showContact && (
           <div className="rounded-lg bg-[#f3f9fc] p-4">
-            <h3 className="mb-4 text-[15px] font-semibold text-[#1a557a]">{extraTitle}</h3>
+            <h3 className="mb-4 text-[15px] font-semibold text-[#1a557a]">Contact Information</h3>
             <div className="grid gap-4 sm:grid-cols-2">
               {contactFields.map((f) => (
                 <FieldBlock
@@ -235,19 +245,36 @@ function EntityForm({ config, values, setValues, onSubmit, backHref }) {
             </div>
           </div>
         )}
+
+        {showAddress && (
+          <div className="rounded-lg bg-[#f3f9fc] p-4">
+            <h3 className="mb-4 text-[15px] font-semibold text-[#1a557a]">Address</h3>
+            <div className="grid gap-4 sm:grid-cols-2">
+              {addressFields.map((f) => (
+                <FieldBlock
+                  key={f.key}
+                  field={f}
+                  value={values[f.key]}
+                  onChange={(v) => setVal(f.key, v)}
+                  requiredOverride={showAddress ? f.required : false}
+                />
+              ))}
+            </div>
+          </div>
+        )}
       </div>
 
       <div className="flex justify-end gap-2 border-t border-slate-100 px-5 py-4">
         <Link
           href={backHref}
-          className="inline-flex h-9 items-center rounded-full border border-[#2980b9] bg-white px-5 text-[13px] font-medium text-[#2980b9] hover:bg-[#f0f7fb]"
+          className="inline-flex h-9 items-center rounded-full border border-[#00a78b] bg-white px-5 text-[13px] font-medium text-[#00a78b] hover:bg-[#f0f7fb]"
         >
           Cancel
         </Link>
         <button
           type="submit"
           disabled={!canSave}
-          className="h-9 rounded-full bg-[#2980b9] px-5 text-[13px] font-medium text-white hover:bg-[#2472a4] disabled:cursor-not-allowed disabled:bg-slate-300"
+          className="h-9 rounded-full bg-[#00a78b] px-5 text-[13px] font-medium text-white hover:bg-[#008f77] disabled:cursor-not-allowed disabled:bg-slate-300"
         >
           Save
         </button>
@@ -256,15 +283,16 @@ function EntityForm({ config, values, setValues, onSubmit, backHref }) {
   );
 }
 
-export default function FormPage({ config }) {
+export default function FormPage({ config, initialValues }) {
   const [saved, setSaved] = useState(false);
+  const [saveError, setSaveError] = useState("");
   const [values, setValues] = useState(() => {
     const init = {};
     (config?.fields || []).forEach((f) => {
       if (f.type === "checkbox" || f.type === "toggle") init[f.key] = Boolean(f.defaultValue);
       else init[f.key] = f.defaultValue || "";
     });
-    return init;
+    return { ...init, ...(initialValues || {}) };
   });
 
   const isEntity = config?.layout === "entity";
@@ -276,8 +304,18 @@ export default function FormPage({ config }) {
 
   if (!config) return null;
 
-  const onSubmit = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
+    if (config.apiEndpoint) {
+      setSaveError("");
+      try {
+        await api(config.apiEndpoint, { method: "POST", body: values });
+        setSaved(true);
+      } catch (err) {
+        setSaveError(err.message || "Failed to save");
+      }
+      return;
+    }
     setSaved(true);
   };
 
@@ -317,6 +355,11 @@ export default function FormPage({ config }) {
           </div>
         ) : (
           <form onSubmit={onSubmit} className="space-y-4">
+            {saveError && (
+              <div className="rounded border border-red-200 bg-red-50 px-3 py-2 text-[13px] text-red-700">
+                {saveError}
+              </div>
+            )}
             {config.fields?.map((f) => (
               <FieldBlock
                 key={f.key}
@@ -328,7 +371,7 @@ export default function FormPage({ config }) {
             <div className="flex gap-2 pt-2">
               <button
                 type="submit"
-                className="h-10 rounded bg-[#2980b9] px-5 text-[13px] font-medium text-white hover:bg-[#2472a4]"
+                className="h-10 rounded bg-[#00a78b] px-5 text-[13px] font-medium text-white hover:bg-[#008f77]"
               >
                 Save
               </button>

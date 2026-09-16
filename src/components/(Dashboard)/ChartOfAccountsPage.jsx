@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { accountingApi } from "../../lib/api";
+import EntityFormModal from "./EntityFormModal";
 
 const FALLBACK_TABS = [
   { id: "expense", label: "EXPENSE", count: 0 },
@@ -11,6 +12,24 @@ const FALLBACK_TABS = [
   { id: "asset", label: "ASSET", count: 0 },
 ];
 
+const TYPE_OPTIONS = [
+  { value: "expense", label: "Expense" },
+  { value: "income", label: "Income" },
+  { value: "equity", label: "Owner's Equity" },
+  { value: "liabilities", label: "Liabilities" },
+  { value: "asset", label: "Asset" },
+];
+
+function emptyAccountForm(tab, groupName = "") {
+  return {
+    name: "",
+    type: tab || "asset",
+    group_name: groupName,
+    description: "",
+    code: "",
+  };
+}
+
 export default function ChartOfAccountsPage() {
   const [tab, setTab] = useState("asset");
   const [search, setSearch] = useState("");
@@ -19,30 +38,33 @@ export default function ChartOfAccountsPage() {
   const [data, setData] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+  const [modal, setModal] = useState(null);
+  const [form, setForm] = useState(emptyAccountForm());
+  const [menuId, setMenuId] = useState(null);
+  const [saving, setSaving] = useState(false);
 
-  useEffect(() => {
-    let cancelled = false;
+  const loadAccounts = useCallback(() => {
     setLoading(true);
-    accountingApi
+    setError("");
+    return accountingApi
       .accounts()
       .then((res) => {
-        if (cancelled) return;
         setTabs(res.tabs?.length ? res.tabs : FALLBACK_TABS);
         setData(res.data || {});
       })
       .catch((err) => {
-        if (cancelled) return;
         setError(err.message || "Failed to load accounts");
       })
-      .finally(() => {
-        if (!cancelled) setLoading(false);
-      });
-    return () => {
-      cancelled = true;
-    };
+      .finally(() => setLoading(false));
   }, []);
 
+  useEffect(() => {
+    loadAccounts();
+  }, [loadAccounts]);
+
   const groups = data[tab] || [];
+
+  const groupOptions = useMemo(() => groups.map((g) => g.name), [groups]);
 
   const filtered = useMemo(() => {
     const q = search.trim().toLowerCase();
@@ -69,18 +91,128 @@ export default function ChartOfAccountsPage() {
 
   const isOpen = (name) => openGroups[name] !== false;
 
+  const openCreate = (groupName = "") => {
+    setForm(emptyAccountForm(tab, groupName));
+    setModal({ mode: "create" });
+    setMenuId(null);
+  };
+
+  const openEdit = async (acc) => {
+    setMenuId(null);
+    try {
+      const res = await accountingApi.getAccount(acc.id);
+      const payload = res?.data ?? res;
+      setForm({
+        id: payload.id,
+        name: payload.name || "",
+        type: payload.type === "liability" ? "liabilities" : payload.type || tab,
+        group_name: payload.group_name || "",
+        description: payload.description || "",
+        code: payload.code || "",
+      });
+      setModal({ mode: "edit", id: acc.id });
+    } catch (err) {
+      setError(err.message || "Failed to load account");
+    }
+  };
+
+  const onFormChange = (key, value) => setForm((prev) => ({ ...prev, [key]: value }));
+
+  const saveAccount = async () => {
+    if (saving) return;
+    if (!form.name?.trim()) {
+      setError("Account name is required.");
+      return;
+    }
+    setSaving(true);
+    setError("");
+    try {
+      const body = {
+        name: form.name.trim(),
+        type: form.type,
+        group_name: form.group_name?.trim() || null,
+        description: form.description?.trim() || null,
+        code: form.code?.trim() || null,
+      };
+      if (modal?.mode === "edit" && modal.id) {
+        await accountingApi.updateAccount(modal.id, body);
+      } else {
+        await accountingApi.createAccount(body);
+      }
+      setModal(null);
+      await loadAccounts();
+    } catch (err) {
+      setError(err.message || "Failed to save account");
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const deleteAccount = async (acc) => {
+    setMenuId(null);
+    if (!window.confirm(`Delete account "${acc.name}"?`)) return;
+    setError("");
+    try {
+      await accountingApi.deleteAccount(acc.id);
+      await loadAccounts();
+    } catch (err) {
+      setError(err.message || "Failed to delete account");
+    }
+  };
+
+  const modalFields = [
+    { key: "name", label: "Account Name", required: true, placeholder: "Account Name" },
+    {
+      key: "type",
+      label: "Account Category",
+      type: "select",
+      required: true,
+      placeholder: "Select category",
+      options: TYPE_OPTIONS.map((t) => t.label),
+    },
+    {
+      key: "group_name",
+      label: "Group",
+      type: "select",
+      placeholder: "Select group",
+      options: groupOptions.length ? groupOptions : ["Other"],
+    },
+    { key: "code", label: "Code", placeholder: "Optional account code" },
+    {
+      key: "description",
+      label: "Description",
+      type: "textarea",
+      placeholder: "Description",
+    },
+  ];
+
+  const modalValues = {
+    ...form,
+    type: TYPE_OPTIONS.find((t) => t.value === form.type)?.label || form.type,
+  };
+
+  const onModalChange = (key, value) => {
+    if (key === "type") {
+      const match = TYPE_OPTIONS.find((t) => t.label === value);
+      onFormChange("type", match?.value || value);
+      return;
+    }
+    onFormChange(key, value);
+  };
+
   return (
     <div className="text-[#1a557a]">
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <h1 className="m-0 flex items-center gap-2 text-[22px] font-semibold text-[#1a557a]">
           Chart of Accounts
-          <button type="button" className="text-[#2980b9]" aria-label="Help">
+          <button type="button" className="text-[#00a78b]" aria-label="Help">
             <i className="far fa-question-circle text-[16px]" />
           </button>
         </h1>
         <button
           type="button"
-          className="inline-flex h-9 items-center rounded border border-[#2980b9] bg-white px-3 text-[13px] font-medium text-[#2980b9] hover:bg-[#2980b9] hover:text-white"
+          onClick={() => openCreate()}
+          className="inline-flex h-9 items-center rounded border border-[#00a78b] bg-white px-3 text-[13px] font-medium text-[#00a78b] hover:bg-[#00a78b] hover:text-white"
         >
           Add New Account
         </button>
@@ -92,7 +224,7 @@ export default function ChartOfAccountsPage() {
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             placeholder="Search..."
-            className="h-9 w-full rounded border border-[#cfd8e3] bg-white py-2 pl-3 pr-9 text-[13px] outline-none focus:border-[#2980b9]"
+            className="h-9 w-full rounded border border-[#cfd8e3] bg-white py-2 pl-3 pr-9 text-[13px] outline-none focus:border-[#00a78b]"
           />
           <i className="fas fa-search absolute right-3 top-1/2 -translate-y-1/2 text-[13px] text-slate-400" />
         </div>
@@ -112,7 +244,7 @@ export default function ChartOfAccountsPage() {
             onClick={() => setTab(t.id)}
             className={`inline-flex items-center gap-2 px-6 py-3 text-[12px] font-semibold uppercase tracking-wide ${
               tab === t.id
-                ? "border-b-2 border-[#2980b9] text-[#2980b9]"
+                ? "border-b-2 border-[#00a78b] text-[#00a78b]"
                 : "border-b-2 border-transparent text-[#296d9b]"
             }`}
           >
@@ -142,14 +274,15 @@ export default function ChartOfAccountsPage() {
                   className="flex items-center gap-2 text-[13px] font-semibold text-[#1a557a]"
                 >
                   <i
-                    className={`fas fa-chevron-${isOpen(group.name) ? "down" : "right"} text-[11px] text-[#2980b9]`}
+                    className={`fas fa-chevron-${isOpen(group.name) ? "down" : "right"} text-[11px] text-[#00a78b]`}
                   />
                   {group.name}
                   <i className="far fa-question-circle text-[12px] text-[#8aa0b3]" />
                 </button>
                 <button
                   type="button"
-                  className="text-[12px] font-medium text-[#2980b9] hover:underline"
+                  onClick={() => openCreate(group.name)}
+                  className="text-[12px] font-medium text-[#00a78b] hover:underline"
                 >
                   + Add New
                 </button>
@@ -160,12 +293,12 @@ export default function ChartOfAccountsPage() {
                   {group.accounts.map((acc, idx) => (
                     <li
                       key={`${acc.id || acc.name}-${idx}`}
-                      className="flex items-center gap-3 border-b border-[#eef1f4] px-4 py-3 last:border-b-0 hover:bg-[#f8fafc]"
+                      className="relative flex items-center gap-3 border-b border-[#eef1f4] px-4 py-3 last:border-b-0 hover:bg-[#f8fafc]"
                     >
                       <div className="min-w-0 flex-1">
                         <div className="flex flex-wrap items-baseline gap-2">
                           {acc.code && (
-                            <span className="account-number text-[12px] font-semibold text-[#2980b9]">
+                            <span className="account-number text-[12px] font-semibold text-[#00a78b]">
                               {acc.code}
                             </span>
                           )}
@@ -180,13 +313,34 @@ export default function ChartOfAccountsPage() {
                       <span className="inline-flex rounded-full bg-[#28a745] px-2.5 py-0.5 text-[11px] font-semibold text-white">
                         {acc.status}
                       </span>
-                      <button
-                        type="button"
-                        className="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
-                        aria-label="Actions"
-                      >
-                        <i className="fas fa-ellipsis-v text-[13px]" />
-                      </button>
+                      <div className="relative">
+                        <button
+                          type="button"
+                          onClick={() => setMenuId(menuId === acc.id ? null : acc.id)}
+                          className="rounded p-1 text-slate-400 hover:bg-slate-100 hover:text-slate-600"
+                          aria-label="Actions"
+                        >
+                          <i className="fas fa-ellipsis-v text-[13px]" />
+                        </button>
+                        {menuId === acc.id && (
+                          <div className="absolute right-0 top-full z-20 mt-1 min-w-[120px] rounded-md border border-slate-200 bg-white py-1 shadow-lg">
+                            <button
+                              type="button"
+                              className="block w-full px-3 py-2 text-left text-[13px] text-[#1a557a] hover:bg-[#f0f7fb]"
+                              onClick={() => openEdit(acc)}
+                            >
+                              Edit
+                            </button>
+                            <button
+                              type="button"
+                              className="block w-full px-3 py-2 text-left text-[13px] text-red-600 hover:bg-[#f0f7fb]"
+                              onClick={() => deleteAccount(acc)}
+                            >
+                              Delete
+                            </button>
+                          </div>
+                        )}
+                      </div>
                     </li>
                   ))}
                   {!group.accounts.length && (
@@ -205,6 +359,16 @@ export default function ChartOfAccountsPage() {
           )}
         </div>
       )}
+
+      <EntityFormModal
+        open={Boolean(modal)}
+        title={modal?.mode === "edit" ? "Edit Account" : "Add New Account"}
+        fields={modalFields}
+        values={modalValues}
+        onChange={onModalChange}
+        onClose={() => setModal(null)}
+        onSave={saveAccount}
+      />
     </div>
   );
 }

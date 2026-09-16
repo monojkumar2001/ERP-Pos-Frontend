@@ -2153,12 +2153,18 @@
     "hasCheckbox": false,
     "placeholders": [
       "Search",
+      "Select Item Categories",
       "Select Item Manufacturer",
       "Select Item Brand",
       "Warehouses",
       "Select Status"
     ],
     "ngSelects": [
+      {
+        "ph": "Select Item Categories",
+        "multi": true,
+        "values": []
+      },
       {
         "ph": "Select Item Manufacturer",
         "multi": false,
@@ -2182,9 +2188,21 @@
         ]
       }
     ],
-    "footer": "Showing 1 to 25 of 4551 entries",
+    "checkboxFilters": [
+      "Show Available Stock Items Only"
+    ],
+    "footer": "Showing 1 to 25 of 4585 entries",
     "totalAmt": "",
     "firstRows": [
+      [
+        "Katari Rice",
+        "I-004821",
+        "N/A",
+        "NB",
+        "497 kg",
+        "0 kg",
+        "Active"
+      ],
       [
         "TP Link",
         "I-004787",
@@ -2206,6 +2224,9 @@
     ],
     "statuses": [
       "Active"
+    ],
+    "linkCols": [
+      "ITEM"
     ]
   },
   "/en/hrm/employee/employees": {
@@ -2345,5 +2366,253 @@
       "Active",
       "Inactive"
     ]
+  },
+  "/en/inventory/stock-adjustments": {
+    "path": "/en/inventory/stock-adjustments",
+    "title": "Stock Adjustments",
+    "addBtn": "Add New",
+    "ths": [
+      "ADJUSTMENT NUMBER",
+      "DATE",
+      "ADJUSTMENT REASON",
+      "WAREHOUSE",
+      "ADJUSTMENT TYPE",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Select Warehouse",
+      "Status",
+      "Adjustment Reason",
+      "Select Date Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Select Warehouse",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Status",
+        "multi": false,
+        "values": [
+          "Approved",
+          "Draft"
+        ]
+      },
+      {
+        "ph": "Adjustment Reason",
+        "multi": false,
+        "values": [
+          "Damage",
+          "Theft",
+          "Increase Product",
+          "Wastage products"
+        ]
+      },
+      {
+        "ph": "Select Date Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 77 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "SA-2026-000031",
+        "9 Sep 2026",
+        "Damage",
+        "Food Cart",
+        "Decrease",
+        "Approved"
+      ],
+      [
+        "SA-2026-000030",
+        "8 Sep 2026",
+        "Theft",
+        "Madanganj Warehouse",
+        "Decrease",
+        "Approved"
+      ],
+      [
+        "SA-2026-000029",
+        "7 Sep 2026",
+        "Increase Product",
+        "Default",
+        "Increase",
+        "Approved"
+      ]
+    ],
+    "statuses": [
+      "Approved",
+      "Draft"
+    ]
+  },
+  "/en/inventory/warehouse-transfer-list": {
+    "path": "/en/inventory/warehouse-transfer-list",
+    "title": "Stock Movement",
+    "addBtn": "Add New",
+    "secondaryAddBtn": "Add Request",
+    "ths": [
+      "TRANSFER NUMBER",
+      "TRANSFER DATE",
+      "SOURCE WAREHOUSE",
+      "DESTINATION WAREHOUSE",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Warehouses",
+      "Status",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Warehouses",
+        "multi": false,
+        "values": []
+      },
+      {
+        "ph": "Status",
+        "multi": false,
+        "values": [
+          "Received",
+          "Requested",
+          "Initiated"
+        ]
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 25 of 90 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "WT-2026-000036",
+        "1 Sep 2026",
+        "Default",
+        "Madanganj Warehouse",
+        "Received"
+      ],
+      [
+        "WT-2026-000035",
+        "28 Aug 2026",
+        "Default",
+        "Bogra Warehouse",
+        "Requested"
+      ],
+      [
+        "WT-2026-000034",
+        "20 Aug 2026",
+        "Own Factory",
+        "Default",
+        "Initiated"
+      ]
+    ],
+    "statuses": [
+      "Received",
+      "Requested",
+      "Initiated"
+    ]
+  },
+  "/en/inventory/receive-stock": {
+    "path": "/en/inventory/receive-stock",
+    "title": "Receivable Stock",
+    "addBtn": "",
+    "ths": [
+      "TRANSFER NUMBER",
+      "TRANSFER DATE",
+      "SOURCE WAREHOUSE",
+      "DESTINATION WAREHOUSE",
+      "STATUS",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Warehouses",
+      "Select Range",
+      "From Date",
+      "To Date"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Warehouses",
+        "multi": false,
+        "values": [
+          "Default"
+        ]
+      },
+      {
+        "ph": "Select Range",
+        "multi": false,
+        "values": []
+      }
+    ],
+    "footer": "Showing 1 to 1 of 1 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "WT-2026-000009",
+        "8 Jan 2026",
+        "Own Factory",
+        "Default",
+        "Initiated"
+      ]
+    ],
+    "statuses": [
+      "Initiated",
+      "Received",
+      "Requested"
+    ]
+  },
+  "/en/inventory/warehouse-access": {
+    "path": "/en/inventory/warehouse-access",
+    "title": "Warehouse Access",
+    "addBtn": "Add User Access",
+    "ths": [
+      "USER EMAIL",
+      "ACTION"
+    ],
+    "hasCheckbox": false,
+    "placeholders": [
+      "Select Warehouse"
+    ],
+    "ngSelects": [
+      {
+        "ph": "Select Warehouse",
+        "multi": false,
+        "values": [
+          "Default"
+        ]
+      }
+    ],
+    "accessBy": [
+      "Warehouse",
+      "User"
+    ],
+    "footer": "Showing 1 to 5 of 5 entries",
+    "totalAmt": "",
+    "firstRows": [
+      [
+        "admin@softifybd.com"
+      ],
+      [
+        "demo@biznify.com.bd"
+      ],
+      [
+        "manager@softifybd.com"
+      ]
+    ],
+    "statuses": []
   }
 }

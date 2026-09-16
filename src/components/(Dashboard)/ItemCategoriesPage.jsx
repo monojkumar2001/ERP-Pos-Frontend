@@ -1,7 +1,7 @@
 "use client";
 
-import { useMemo, useState, useEffect, useRef } from "react";
-import { ITEM_CATEGORIES } from "../../data/dashboard/itemCategories";
+import { useMemo, useState, useEffect, useRef, useCallback } from "react";
+import { masterApi } from "../../lib/api";
 
 function countChildren(node) {
   return node.children?.length || 0;
@@ -62,7 +62,7 @@ function CategoryModal({ open, title, initial, parentOptions, onClose, onSave })
                 onChange={(e) => setParent(e.target.value)}
                 list="category-parent-options"
                 placeholder="Parent Category"
-                className="h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#2980b9]"
+                className="h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#00a78b]"
               />
               <datalist id="category-parent-options">
                 <option value="Root" />
@@ -79,7 +79,7 @@ function CategoryModal({ open, title, initial, parentOptions, onClose, onSave })
                 value={name}
                 onChange={(e) => setName(e.target.value)}
                 placeholder="Category Name"
-                className="h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#2980b9]"
+                className="h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#00a78b]"
               />
             </div>
             <div>
@@ -91,7 +91,7 @@ function CategoryModal({ open, title, initial, parentOptions, onClose, onSave })
                 value={position}
                 onChange={(e) => setPosition(e.target.value)}
                 placeholder="Reverse Factor"
-                className="h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#2980b9]"
+                className="h-10 w-full rounded border border-slate-200 px-3 text-[13px] outline-none focus:border-[#00a78b]"
               />
             </div>
           </div>
@@ -101,12 +101,12 @@ function CategoryModal({ open, title, initial, parentOptions, onClose, onSave })
               Category Image
             </label>
             <div className="flex min-h-[220px] flex-col items-center justify-center rounded-lg border-2 border-dashed border-[#9ec4e0] bg-[#f3f9fc] px-4 py-6 text-center">
-              <span className="material-icons mb-2 text-[36px] text-[#2980b9]">cloud_upload</span>
+              <span className="material-icons mb-2 text-[36px] text-[#00a78b]">cloud_upload</span>
               <p className="m-0 text-[13px] text-slate-600">Drag and drop file here</p>
               <p className="my-2 text-[12px] text-slate-400">or</p>
               <button
                 type="button"
-                className="rounded bg-[#2980b9] px-4 py-2 text-[13px] font-medium text-white hover:bg-[#2472a4]"
+                className="rounded bg-[#00a78b] px-4 py-2 text-[13px] font-medium text-white hover:bg-[#008f77]"
               >
                 Upload Photo
               </button>
@@ -123,7 +123,7 @@ function CategoryModal({ open, title, initial, parentOptions, onClose, onSave })
           <button
             type="button"
             onClick={onClose}
-            className="h-9 rounded-full border border-[#2980b9] bg-white px-5 text-[13px] font-medium text-[#2980b9] hover:bg-[#f0f7fb]"
+            className="h-9 rounded-full border border-[#00a78b] bg-white px-5 text-[13px] font-medium text-[#00a78b] hover:bg-[#f0f7fb]"
           >
             Cancel
           </button>
@@ -133,7 +133,7 @@ function CategoryModal({ open, title, initial, parentOptions, onClose, onSave })
               if (!name.trim()) return;
               onSave({ parent, name: name.trim(), position: Number(position) || 1 });
             }}
-            className="h-9 rounded-full bg-[#2980b9] px-5 text-[13px] font-medium text-white hover:bg-[#2472a4]"
+            className="h-9 rounded-full bg-[#00a78b] px-5 text-[13px] font-medium text-white hover:bg-[#008f77]"
           >
             Save
           </button>
@@ -287,18 +287,50 @@ function flattenParentNames(nodes, acc = []) {
   return acc;
 }
 
+function findParentName(nodes, targetId, parentName = "Root") {
+  for (const n of nodes) {
+    if (n.id === targetId) return parentName;
+    const found = findParentName(n.children || [], targetId, n.name);
+    if (found) return found;
+  }
+  return null;
+}
+
 export default function ItemCategoriesPage() {
-  const [categories, setCategories] = useState(ITEM_CATEGORIES);
+  const [categories, setCategories] = useState([]);
   const [search, setSearch] = useState("");
-  const [openIds, setOpenIds] = useState(() => {
-    const init = {};
-    ITEM_CATEGORIES.forEach((c) => {
-      if (c.children?.length) init[c.id] = true;
-    });
-    return init;
-  });
+  const [openIds, setOpenIds] = useState({});
   const [menuId, setMenuId] = useState(null);
   const [modal, setModal] = useState(null); // { mode, node?, parentName? }
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState("");
+
+  const loadCategories = useCallback(() => {
+    setLoading(true);
+    setError("");
+    return masterApi.itemCategories
+      .list()
+      .then((data) => {
+        const tree = data.rows || [];
+        setCategories(tree);
+        setOpenIds((prev) => {
+          const next = { ...prev };
+          tree.forEach((c) => {
+            if (c.children?.length && next[c.id] == null) next[c.id] = true;
+          });
+          return next;
+        });
+      })
+      .catch((err) => {
+        setError(err.message || "Failed to load categories");
+        setCategories([]);
+      })
+      .finally(() => setLoading(false));
+  }, []);
+
+  useEffect(() => {
+    loadCategories();
+  }, [loadCategories]);
 
   const filtered = useMemo(() => filterTree(categories, search.trim()), [categories, search]);
   const parentOptions = useMemo(() => flattenParentNames(categories), [categories]);
@@ -306,42 +338,63 @@ export default function ItemCategoriesPage() {
   const toggle = (id) =>
     setOpenIds((prev) => ({ ...prev, [id]: !prev[id] }));
 
-  const onAction = (key, node) => {
+  const onAction = async (key, node) => {
     if (key === "add-under") {
       setModal({ mode: "add", parentName: node.name, under: node });
     } else if (key === "edit") {
       setModal({
         mode: "edit",
         node,
-        parentName: "Root",
+        parentName: findParentName(categories, node.id) || "Root",
         name: node.name,
+        position: node.position,
       });
     } else if (key === "inactive") {
-      setCategories((prev) => markInactive(prev, node.id));
+      try {
+        await masterApi.itemCategories.updateStatus(node.id, "Inactive");
+        await loadCategories();
+      } catch (err) {
+        setError(err.message || "Failed to update status");
+      }
     } else if (key === "delete") {
-      setCategories((prev) => removeNode(prev, node.id));
+      try {
+        await masterApi.itemCategories.delete(node.id);
+        await loadCategories();
+      } catch (err) {
+        setError(err.message || "Failed to delete category");
+      }
     } else if (key === "add-discount") {
       setCategories((prev) => setDiscount(prev, node.id, true));
     } else if (key === "remove-discount") {
       setCategories((prev) => setDiscount(prev, node.id, false));
     } else if (key === "move") {
-      setModal({ mode: "move", node });
+      setModal({
+        mode: "move",
+        node,
+        parentName: findParentName(categories, node.id) || "Root",
+      });
     }
   };
 
-  const onSave = (data) => {
-    if (modal?.mode === "edit" && modal.node) {
-      setCategories((prev) => renameNode(prev, modal.node.id, data.name));
-    } else {
-      const id = `${data.name.toLowerCase().replace(/[^a-z0-9\u0980-\u09FF]+/gi, "-")}-${Date.now()}`;
-      const newNode = { id, name: data.name, children: [] };
-      if (!data.parent || data.parent === "Root") {
-        setCategories((prev) => [...prev, newNode]);
+  const onSave = async (data) => {
+    const body = {
+      name: data.name,
+      parent: data.parent,
+      position: Number(data.position) || 1,
+    };
+    try {
+      if (modal?.mode === "edit" && modal.node) {
+        await masterApi.itemCategories.update(modal.node.id, body);
+      } else if (modal?.mode === "move" && modal.node) {
+        await masterApi.itemCategories.update(modal.node.id, { parent: data.parent });
       } else {
-        setCategories((prev) => addUnder(prev, data.parent, newNode));
+        await masterApi.itemCategories.create(body);
       }
+      setModal(null);
+      await loadCategories();
+    } catch (err) {
+      setError(err.message || "Failed to save category");
     }
-    setModal(null);
   };
 
   return (
@@ -349,7 +402,7 @@ export default function ItemCategoriesPage() {
       <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
         <h1 className="m-0 flex items-center gap-2 text-[22px] font-semibold text-[#1a557a]">
           All Categories
-          <button type="button" className="text-[#2980b9]" aria-label="Help">
+          <button type="button" className="text-[#00a78b]" aria-label="Help">
             <i className="far fa-question-circle text-[16px]" />
           </button>
         </h1>
@@ -359,7 +412,7 @@ export default function ItemCategoriesPage() {
               value={search}
               onChange={(e) => setSearch(e.target.value)}
               placeholder="Search..."
-              className="h-9 w-56 rounded-full border border-slate-200 py-1 pl-4 pr-9 text-[13px] outline-none focus:border-[#2980b9]"
+              className="h-9 w-56 rounded-full border border-slate-200 py-1 pl-4 pr-9 text-[13px] outline-none focus:border-[#00a78b]"
             />
             <span className="material-icons absolute right-2.5 top-1/2 -translate-y-1/2 text-[18px] text-slate-400">
               search
@@ -368,15 +421,23 @@ export default function ItemCategoriesPage() {
           <button
             type="button"
             onClick={() => setModal({ mode: "add", parentName: "Root" })}
-            className="inline-flex h-9 items-center rounded-full border border-[#2980b9] bg-white px-4 text-[13px] font-medium text-[#2980b9] hover:bg-[#2980b9] hover:text-white"
+            className="inline-flex h-9 items-center rounded-full border border-[#00a78b] bg-white px-4 text-[13px] font-medium text-[#00a78b] hover:bg-[#00a78b] hover:text-white"
           >
             Add New
           </button>
         </div>
       </div>
 
+      {error && (
+        <div className="mb-3 rounded border border-red-200 bg-red-50 px-3 py-2 text-[13px] text-red-700">
+          {error}
+        </div>
+      )}
+
       <div className="overflow-hidden rounded border border-[#e5e7eb] bg-white">
-        {filtered.map((node, i) => (
+        {loading ? (
+          <div className="px-4 py-10 text-center text-slate-400">Loading…</div>
+        ) : filtered.map((node, i) => (
           <CategoryRow
             key={node.id}
             node={node}
@@ -389,7 +450,7 @@ export default function ItemCategoriesPage() {
             onAction={onAction}
           />
         ))}
-        {!filtered.length && (
+        {!loading && !filtered.length && (
           <div className="px-4 py-10 text-center text-slate-400">No categories found</div>
         )}
       </div>
@@ -402,7 +463,7 @@ export default function ItemCategoriesPage() {
             ? {
                 parent: modal.parentName || "Root",
                 name: modal.name || "",
-                position: categories.length + 1,
+                position: modal.position ?? categories.length + 1,
               }
             : null
         }
@@ -415,13 +476,14 @@ export default function ItemCategoriesPage() {
         <CategoryModal
           open
           title={`Move ${modal.node.name}`}
-          initial={{ parent: "Root", name: modal.node.name, position: 1 }}
+          initial={{
+            parent: modal.parentName || "Root",
+            name: modal.node.name,
+            position: modal.node.position || 1,
+          }}
           parentOptions={parentOptions.filter((p) => p !== modal.node.name)}
           onClose={() => setModal(null)}
-          onSave={(data) => {
-            setCategories((prev) => moveNode(prev, modal.node.id, data.parent));
-            setModal(null);
-          }}
+          onSave={onSave}
         />
       )}
     </div>

@@ -9,61 +9,91 @@ function Icon({ name, className = "text-[18px]" }) {
   return <span className={`material-icons ${className}`}>{name}</span>;
 }
 
-function NavNode({ node, depth = 0, openMap, toggle, pathname }) {
-  const hasChildren = Boolean(node.children?.length);
-  const isOpen = openMap[node.id];
-  const isActive =
-    node.href &&
-    (pathname === node.href || (node.href !== "/en/dashboard" && pathname.startsWith(node.href)));
-  const childActive =
-    hasChildren &&
-    node.children.some(
-      (c) =>
-        (c.href && pathname.startsWith(c.href)) ||
-        c.children?.some((x) => x.href && pathname.startsWith(x.href))
-    );
+function pathMatches(href, pathname) {
+  if (!href || !pathname) return false;
+  if (pathname === href) return true;
+  if (href === "/en/dashboard") return false;
+  return pathname.startsWith(href);
+}
 
-  useEffect(() => {
-    if (childActive && !openMap[node.id]) {
-      toggle(node.id, true);
+function nodeContainsPath(node, pathname) {
+  if (pathMatches(node.href, pathname)) return true;
+  return Boolean(node.children?.some((child) => nodeContainsPath(child, pathname)));
+}
+
+/** Open only the ancestry chain for the active route (accordion-friendly). */
+function openChainForPath(nodes, pathname, acc = {}) {
+  for (const node of nodes) {
+    if (!node.children?.length) continue;
+    if (nodeContainsPath(node, pathname)) {
+      acc[node.id] = true;
+      openChainForPath(node.children, pathname, acc);
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [pathname]);
+  }
+  return acc;
+}
 
-  const pad = 12 + depth * 14;
+function NavNode({
+  node,
+  depth = 0,
+  openMap,
+  onToggle,
+  siblingIds,
+  pathname,
+}) {
+  const hasChildren = Boolean(node.children?.length);
+  const isOpen = Boolean(openMap[node.id]);
+  const isActive = pathMatches(node.href, pathname);
+  const childActive = hasChildren && nodeContainsPath(node, pathname);
+  const pad = 12 + depth * 28;
+  const childIds = useMemo(
+    () => (hasChildren ? node.children.filter((c) => c.children?.length).map((c) => c.id) : []),
+    [hasChildren, node.children]
+  );
 
   if (hasChildren) {
     return (
       <li>
         <button
           type="button"
-          onClick={() => toggle(node.id)}
-          className={`flex w-full items-center gap-2 py-2.5 pr-3 text-left text-[13px] text-white/95 transition hover:bg-white/10 ${
+          onClick={() => onToggle(node.id, siblingIds)}
+          className={`flex w-full items-center gap-2 py-2.5 pr-3 text-left text-[16px] text-white/95 transition-colors hover:bg-white/10 ${
             childActive || isOpen ? "bg-white/10" : ""
           }`}
           style={{ paddingLeft: pad }}
+          aria-expanded={isOpen}
         >
           {node.icon ? <Icon name={node.icon} /> : <span className="w-[18px]" />}
           <span className="flex-1 truncate">{node.label}</span>
           <Icon
-            name={isOpen ? "expand_more" : "chevron_right"}
-            className="text-[16px] opacity-80"
+            name="expand_more"
+            className={`text-[16px] opacity-80 transition-transform duration-300 ease-out ${
+              isOpen ? "rotate-0" : "-rotate-90"
+            }`}
           />
         </button>
-        {isOpen && (
-          <ul className="m-0 list-none p-0">
-            {node.children.map((child) => (
-              <NavNode
-                key={child.id}
-                node={child}
-                depth={depth + 1}
-                openMap={openMap}
-                toggle={toggle}
-                pathname={pathname}
-              />
-            ))}
-          </ul>
-        )}
+
+        <div
+          className={`grid transition-[grid-template-rows] duration-300 ease-out ${
+            isOpen ? "grid-rows-[1fr]" : "grid-rows-[0fr]"
+          }`}
+        >
+          <div className="overflow-hidden">
+            <ul className="m-0 list-none p-0">
+              {node.children.map((child) => (
+                <NavNode
+                  key={child.id}
+                  node={child}
+                  depth={depth + 1}
+                  openMap={openMap}
+                  onToggle={onToggle}
+                  siblingIds={childIds}
+                  pathname={pathname}
+                />
+              ))}
+            </ul>
+          </div>
+        </div>
       </li>
     );
   }
@@ -72,7 +102,7 @@ function NavNode({ node, depth = 0, openMap, toggle, pathname }) {
     <li>
       <Link
         href={node.href || "#"}
-        className={`relative flex items-center gap-2 py-2.5 pr-3 text-[13px] text-white/95 transition hover:bg-white/10 ${
+        className={`relative flex items-center gap-2 py-2.5 pr-3 text-[16px] text-white/95 transition-colors hover:bg-white/10 ${
           isActive ? "bg-white/20" : ""
         }`}
         style={{ paddingLeft: pad }}
@@ -92,46 +122,40 @@ function NavNode({ node, depth = 0, openMap, toggle, pathname }) {
 
 export default function Sidebar({ collapsed, onToggleCollapse }) {
   const pathname = usePathname();
-  const [openMap, setOpenMap] = useState(() => {
-    const initial = { dashboard: true };
-    const mark = (nodes) => {
-      for (const n of nodes) {
-        if (n.children?.length) {
-          const hit = n.children.some(
-            (c) =>
-              (c.href && pathname?.startsWith(c.href)) ||
-              c.children?.some((x) => x.href && pathname?.startsWith(x.href))
-          );
-          if (hit || n.children.some((c) => c.children)) {
-            // open ancestors when a deep child matches
-            const deepHit = (node) =>
-              (node.href && pathname?.startsWith(node.href)) ||
-              node.children?.some(deepHit);
-            if (deepHit(n)) initial[n.id] = true;
-            mark(n.children);
-          }
-        }
-      }
-    };
-    mark(DASHBOARD_NAV);
-    return initial;
-  });
-
-  const toggle = (id, force) => {
-    setOpenMap((prev) => ({
-      ...prev,
-      [id]: typeof force === "boolean" ? force : !prev[id],
-    }));
-  };
-
   const items = useMemo(() => DASHBOARD_NAV, []);
+  const rootSiblingIds = useMemo(
+    () => items.filter((n) => n.children?.length).map((n) => n.id),
+    [items]
+  );
+
+  const [openMap, setOpenMap] = useState(() => openChainForPath(DASHBOARD_NAV, pathname));
+
+  // Keep only the active route's parent chain open when navigating
+  useEffect(() => {
+    setOpenMap(openChainForPath(DASHBOARD_NAV, pathname));
+  }, [pathname]);
+
+  const onToggle = (id, siblingIds = []) => {
+    setOpenMap((prev) => {
+      const willOpen = !prev[id];
+      const next = { ...prev };
+
+      // Accordion: close siblings at the same level
+      for (const sib of siblingIds) {
+        if (sib !== id) next[sib] = false;
+      }
+
+      next[id] = willOpen;
+      return next;
+    });
+  };
 
   return (
     <aside
       className={`fixed bottom-0 left-0 top-0 z-40 flex flex-col text-white transition-all duration-200 ${
         collapsed ? "w-[64px]" : "w-[256px]"
       }`}
-      style={{ backgroundColor: "#2980b9" }}
+      style={{ backgroundColor: "#00a78b" }}
     >
       <div className="flex h-14 shrink-0 items-center gap-2 border-b border-white/15 px-3">
         <button
@@ -167,7 +191,8 @@ export default function Sidebar({ collapsed, onToggleCollapse }) {
                 key={node.id}
                 node={node}
                 openMap={openMap}
-                toggle={toggle}
+                onToggle={onToggle}
+                siblingIds={rootSiblingIds}
                 pathname={pathname}
               />
             )
