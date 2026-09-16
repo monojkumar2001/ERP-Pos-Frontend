@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 :root {
-  --primary-color: #00b7aa;
+  --primary-color: #00a78b;
   --secondary-color: #164b77;
   --title-color: #222c34;
   --paragraph-color: #222c34;
@@ -13,18 +13,18 @@
   --border-color: #ecf1f4;
   --white-color: #ffffff;
   --white-color-2: #fafbfc;
-  --white-color-3: #e6f4f0;
+  --white-color-3: #e6f7f3;
   --icon-box: #f6faff;
   --price-muted: #7393ad;
   --gradient-color: linear-gradient(
     280deg,
-    rgb(0, 183, 170) 0%,
+    rgb(0, 167, 139) 0%,
     rgb(22, 75, 119) 100%
   );
   --gradient-hover: linear-gradient(
     280deg,
     rgb(22, 75, 119) 0%,
-    rgb(0, 183, 170) 100%
+    rgb(0, 167, 139) 100%
   );
 }
 
@@ -237,7 +237,7 @@ body {
 
   .badge-pill {
     display: inline-block;
-    background: rgba(0, 183, 170, 0.08);
+    background: rgba(0, 167, 139, 0.08);
     padding: 4px 16px;
     border-radius: 32px;
     color: var(--primary-color);
@@ -265,7 +265,7 @@ body {
   .gradient-word {
     background: linear-gradient(
       90deg,
-      rgb(0, 183, 170),
+      rgb(0, 167, 139),
       rgb(255, 131, 0),
       rgb(202, 12, 255),
       rgb(22, 75, 119),

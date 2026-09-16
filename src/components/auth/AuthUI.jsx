@@ -24,7 +24,7 @@ export function AuthShell({ children }) {
 
 export function AuthCard({ children }) {
   return (
-    <div className="auth-card relative z-[2] w-full max-w-[448px] rounded-[20px] border-t-[6px] border-t-[#09c3a2] bg-white px-6 py-6 shadow-[0_24px_72px_0_rgba(4,52,91,0.08)] sm:px-10">
+    <div className="auth-card relative z-[2] w-full max-w-[448px] rounded-[20px] border-t-[6px] border-t-[#00a78b] bg-white px-6 py-6 shadow-[0_24px_72px_0_rgba(4,52,91,0.08)] sm:px-10">
       <div
         className="pointer-events-none absolute right-5 top-6 z-0 h-[72px] w-6 bg-contain bg-center bg-no-repeat opacity-90"
         style={{ backgroundImage: `url(${AUTH_IMG}/images/icons/pattern.svg)` }}
@@ -62,7 +62,7 @@ export function GoogleButton() {
   return (
     <button
       type="button"
-      className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-transparent bg-[#f5fbfa] px-2.5 py-2.5 text-base font-semibold leading-[1.4] text-[#282b2b] transition hover:border-[#00a78b]"
+      className="mt-4 flex w-full items-center justify-center gap-2 rounded-lg border border-transparent bg-[#fff8f0] px-2.5 py-2.5 text-base font-semibold leading-[1.4] text-[#282b2b] transition hover:border-[#00a78b]"
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
       <img
@@ -212,7 +212,7 @@ export function PrimaryButton({ children, type = "submit", disabled = false }) {
 
 export function AuthFooter({ text, href, linkLabel }) {
   return (
-    <div className="mt-4 flex items-center justify-between rounded-lg bg-[#f5fbfa] px-3 py-[7px]">
+    <div className="mt-4 flex items-center justify-between rounded-lg bg-[#fff8f0] px-3 py-[7px]">
       <p className="m-0 text-base font-medium leading-[1.5] text-[#282b2b]">{text}</p>
       <Link
         href={href}

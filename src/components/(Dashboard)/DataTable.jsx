@@ -1,22 +1,27 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import Link from "next/link";
 
 function StatusPill({ value }) {
-  const v = String(value).toLowerCase();
+  const v = String(value).toLowerCase().replace(/\s+/g, "");
   let cls = "bg-slate-400 text-white";
   if (
-    ["active", "approved", "completed", "paid", "verified", "delivered", "refunded", "approve"].includes(
+    ["active", "approved", "completed", "paid", "verified", "delivered", "refunded", "approve", "resolved", "closed"].includes(
       v
     )
   )
     cls = "bg-[#28a745] text-white";
+  else if (v === "open") cls = "bg-[#007bff] text-white";
+  else if (v === "inprogress" || v === "in-progress") cls = "bg-[#fd7e14] text-white";
   else if (["draft", "pending", "in-process", "partially paid", "partially delivered", "partially invoiced", "not invoiced"].includes(v))
     cls = "bg-[#ffc107] text-[#212529]";
   else if (["inactive", "rejected", "cancelled", "unpaid"].includes(v))
     cls = "bg-[#dc3545] text-white";
-  else if (["ordered", "invoiced", "closed", "received", "billable"].includes(v))
+  else if (["ordered", "invoiced", "received", "billable"].includes(v))
     cls = "bg-[#17a2b8] text-white";
+  else if (["requested", "initiated"].includes(v))
+    cls = v === "requested" ? "bg-[#fd7e14] text-white" : "bg-[#ffc107] text-[#212529]";
   else if (["not billable"].includes(v)) cls = "bg-slate-500 text-white";
 
   return (
@@ -61,6 +66,23 @@ function RowActionMenu({ row, actions, open, onClose }) {
           typeof item.getDisabled === "function"
             ? item.getDisabled(row)
             : Boolean(item.disabled);
+        const label = typeof item.label === "function" ? item.label(row) : item.label;
+        const href =
+          typeof item.getHref === "function" ? item.getHref(row) : item.href;
+
+        if (href && !disabled) {
+          return (
+            <Link
+              key={item.key}
+              href={href}
+              className="block w-full px-3 py-2 text-left text-[13px] text-[#1a557a] hover:bg-[#f0f7fb]"
+              onClick={onClose}
+            >
+              {label}
+            </Link>
+          );
+        }
+
         return (
         <button
           key={item.key}
@@ -77,7 +99,7 @@ function RowActionMenu({ row, actions, open, onClose }) {
             onClose();
           }}
         >
-          {typeof item.label === "function" ? item.label(row) : item.label}
+          {label}
         </button>
         );
       })}
@@ -92,11 +114,16 @@ export default function DataTable({
   totalAmount,
   amountKey = "amount",
   rowActions,
+  onLinkClick,
+  selectedIds,
+  onSelectionChange,
 }) {
   const [pageSize, setPageSize] = useState(25);
   const [page, setPage] = useState(1);
   const [search, setSearch] = useState("");
   const [openActionId, setOpenActionId] = useState(null);
+  const selectionEnabled = typeof onSelectionChange === "function";
+  const selected = selectedIds || [];
 
   const filtered = useMemo(() => {
     if (!search.trim()) return rows;
@@ -114,6 +141,25 @@ export default function DataTable({
 
   const amountColIndex = columns.findIndex((c) => c.key === amountKey);
   const totalLabelColSpan = amountColIndex > 0 ? amountColIndex : Math.max(1, columns.length - 3);
+  const pageIds = pageRows.map((r) => r.id);
+  const allPageSelected =
+    selectionEnabled && pageIds.length > 0 && pageIds.every((id) => selected.includes(id));
+
+  const toggleRow = (id) => {
+    if (!selectionEnabled) return;
+    if (selected.includes(id)) onSelectionChange(selected.filter((x) => x !== id));
+    else onSelectionChange([...selected, id]);
+  };
+
+  const toggleAllPage = () => {
+    if (!selectionEnabled) return;
+    if (allPageSelected) {
+      onSelectionChange(selected.filter((id) => !pageIds.includes(id)));
+    } else {
+      const merged = new Set([...selected, ...pageIds]);
+      onSelectionChange([...merged]);
+    }
+  };
 
   return (
     <div className="overflow-hidden rounded border border-[#e5e7eb] bg-white">
@@ -144,7 +190,7 @@ export default function DataTable({
               setPage(1);
             }}
             placeholder="Search..."
-            className="h-8 w-52 rounded border border-slate-200 py-1 pl-3 pr-8 text-[13px] outline-none focus:border-[#2980b9]"
+            className="h-8 w-52 rounded border border-slate-200 py-1 pl-3 pr-8 text-[13px] outline-none focus:border-[#00a78b]"
           />
           <span className="material-icons absolute right-2 top-1/2 -translate-y-1/2 text-[18px] text-slate-400">
             search
@@ -155,14 +201,20 @@ export default function DataTable({
       <div className="overflow-x-auto">
         <table className="w-full min-w-[900px] border-collapse text-left text-[13px]">
           <thead>
-            <tr style={{ backgroundColor: "#2980b9" }}>
+            <tr style={{ backgroundColor: "#00a78b" }}>
               {columns.map((col) => (
                 <th
                   key={col.key}
                   className="whitespace-nowrap px-3 py-2.5 text-[11px] font-semibold uppercase tracking-wide text-white"
                 >
                   {col.type === "checkbox" ? (
-                    <input type="checkbox" className="accent-white" readOnly />
+                    <input
+                      type="checkbox"
+                      className="accent-white"
+                      checked={allPageSelected}
+                      onChange={toggleAllPage}
+                      disabled={!selectionEnabled}
+                    />
                   ) : (
                     col.label
                   )}
@@ -183,7 +235,13 @@ export default function DataTable({
                       } ${col.type === "description" || col.key === "description" ? "max-w-[280px] truncate" : ""}`}
                     >
                       {col.type === "checkbox" ? (
-                        <input type="checkbox" className="accent-[#2980b9]" readOnly />
+                        <input
+                          type="checkbox"
+                          className="accent-[#00a78b]"
+                          checked={selected.includes(row.id)}
+                          onChange={() => toggleRow(row.id)}
+                          disabled={!selectionEnabled}
+                        />
                       ) : col.type === "status" ? (
                         <StatusPill value={val} />
                       ) : col.type === "action" ? (
@@ -209,7 +267,11 @@ export default function DataTable({
                         val === "N/A" || !val ? (
                           <span className="text-slate-400">N/A</span>
                         ) : (
-                          <span className="cursor-pointer font-medium text-[#2980b9] hover:underline">
+                          <button
+                            type="button"
+                            className="cursor-pointer border-0 bg-transparent p-0 text-left font-medium text-[#00a78b] hover:underline"
+                            onClick={() => onLinkClick?.(row, col)}
+                          >
                             {col.showIcon ? (
                               <span className="inline-flex items-center gap-2">
                                 <span className="material-icons text-[16px] text-slate-400">
@@ -220,8 +282,18 @@ export default function DataTable({
                             ) : (
                               val
                             )}
-                          </span>
+                          </button>
                         )
+                      ) : col.key === "available_stock" || col.key === "low_stock" ? (
+                        <span
+                          className={
+                            /^0(\s|$)/.test(String(val || "").trim())
+                              ? "font-medium text-[#dc3545]"
+                              : ""
+                          }
+                        >
+                          {val}
+                        </span>
                       ) : (
                         val
                       )}
@@ -304,7 +376,7 @@ export default function DataTable({
                 onClick={() => setPage(n)}
                 className={`min-w-8 rounded border px-2 py-1 ${
                   page === n
-                    ? "border-[#2980b9] bg-[#2980b9] text-white"
+                    ? "border-[#00a78b] bg-[#00a78b] text-white"
                     : "border-slate-200 bg-white"
                 }`}
               >
@@ -318,7 +390,7 @@ export default function DataTable({
               onClick={() => setPage(pageCount)}
               className={`min-w-8 rounded border px-2 py-1 ${
                 page === pageCount
-                  ? "border-[#2980b9] bg-[#2980b9] text-white"
+                  ? "border-[#00a78b] bg-[#00a78b] text-white"
                   : "border-slate-200 bg-white"
               }`}
             >

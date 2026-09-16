@@ -15,7 +15,7 @@ import { saveSession } from "../../../lib/auth";
 
 function ShieldIcon() {
   return (
-    <div className="mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full bg-gradient-to-br from-[#3dd6b0] to-[#00a78b] shadow-[0_10px_30px_rgba(0,167,139,0.28)]">
+    <div className="mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full bg-gradient-to-br from-[#ff9a3d] to-[#00a78b] shadow-[0_10px_30px_rgba(0,167,139,0.28)]">
       <svg width="34" height="34" viewBox="0 0 24 24" fill="none" aria-hidden>
         <path
           d="M12 3l7 3v5c0 4.5-2.9 8.4-7 9.5C7.9 19.4 5 15.5 5 11V6l7-3z"
@@ -208,7 +208,7 @@ function VerifyForm() {
   };
 
   return (
-    <div className="auth-card relative z-[2] w-full max-w-[440px] rounded-[22px] border-t-[5px] border-t-[#09c3a2] bg-white px-6 py-8 shadow-[0_24px_72px_0_rgba(4,52,91,0.1)] sm:px-10">
+    <div className="auth-card relative z-[2] w-full max-w-[440px] rounded-[22px] border-t-[5px] border-t-[#00a78b] bg-white px-6 py-8 shadow-[0_24px_72px_0_rgba(4,52,91,0.1)] sm:px-10">
       <ShieldIcon />
 
       <div className="mt-4 flex justify-center">
@@ -262,7 +262,7 @@ function VerifyForm() {
         <button
           type="submit"
           disabled={loading || code.length !== 6}
-          className="mt-6 block h-12 w-full rounded-xl bg-[#00a78b] px-3 text-base font-semibold text-white transition hover:bg-[#078f78] disabled:cursor-not-allowed disabled:opacity-55"
+          className="mt-6 block h-12 w-full rounded-xl bg-[#00a78b] px-3 text-base font-semibold text-white transition hover:bg-[#008f77] disabled:cursor-not-allowed disabled:opacity-55"
         >
           {loading ? "Verifying..." : "Verify Account"}
         </button>
@@ -288,7 +288,7 @@ function VerifyForm() {
           disabled={!canResend || resending || !email}
           className={`mt-3 inline-flex h-10 min-w-[140px] items-center justify-center rounded-lg px-5 text-sm font-semibold text-white transition ${
             canResend
-              ? "bg-[#00a78b] hover:bg-[#078f78]"
+              ? "bg-[#00a78b] hover:bg-[#008f77]"
               : "cursor-not-allowed bg-[#9eb6c9]"
           }`}
         >
@@ -311,7 +311,7 @@ function VerifyForm() {
 
 function VerifyFallback() {
   return (
-    <div className="w-full max-w-[440px] rounded-[22px] border-t-[5px] border-t-[#09c3a2] bg-white px-6 py-16 text-center text-[#5f7388] shadow-[0_24px_72px_0_rgba(4,52,91,0.1)]">
+    <div className="w-full max-w-[440px] rounded-[22px] border-t-[5px] border-t-[#00a78b] bg-white px-6 py-16 text-center text-[#5f7388] shadow-[0_24px_72px_0_rgba(4,52,91,0.1)]">
       Loading OTP...
     </div>
   );

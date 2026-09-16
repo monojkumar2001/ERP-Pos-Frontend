@@ -9,9 +9,9 @@ module.exports = {
     extend: {
       colors: {
         primary: {
-          DEFAULT: "#00b7aa",
-          dark: "#009e93",
-          light: "rgba(0, 183, 170, 0.08)",
+          DEFAULT: "#00a78b",
+          dark: "#008f77",
+          light: "rgba(0, 167, 139, 0.08)",
         },
         secondary: {
           DEFAULT: "#164b77",
@@ -36,11 +36,11 @@ module.exports = {
       },
       backgroundImage: {
         "brand-gradient":
-          "linear-gradient(280deg, rgb(0, 183, 170) 0%, rgb(22, 75, 119) 100%)",
+          "linear-gradient(280deg, rgb(0, 167, 139) 0%, rgb(22, 75, 119) 100%)",
         "brand-gradient-hover":
-          "linear-gradient(280deg, rgb(22, 75, 119) 0%, rgb(0, 183, 170) 100%)",
+          "linear-gradient(280deg, rgb(22, 75, 119) 0%, rgb(0, 167, 139) 100%)",
         "hero-glow":
-          "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,183,170,0.10) 0%, rgba(230,244,240,0.35) 35%, rgba(255,255,255,0) 70%)",
+          "radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,167,139,0.10) 0%, rgba(230,244,240,0.35) 35%, rgba(255,255,255,0) 70%)",
       },
       boxShadow: {
         card: "0 10px 40px rgba(22, 75, 119, 0.08)",

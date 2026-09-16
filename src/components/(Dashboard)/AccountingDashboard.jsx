@@ -168,7 +168,7 @@ export default function AccountingDashboard() {
               type="date"
               value={from}
               onChange={(e) => setFrom(e.target.value)}
-              className="h-9 rounded border border-[#cfd8e3] bg-white px-2 text-[13px] outline-none focus:border-[#2980b9]"
+              className="h-9 rounded border border-[#cfd8e3] bg-white px-2 text-[13px] outline-none focus:border-[#00a78b]"
             />
           </div>
           <div>
@@ -177,13 +177,13 @@ export default function AccountingDashboard() {
               type="date"
               value={to}
               onChange={(e) => setTo(e.target.value)}
-              className="h-9 rounded border border-[#cfd8e3] bg-white px-2 text-[13px] outline-none focus:border-[#2980b9]"
+              className="h-9 rounded border border-[#cfd8e3] bg-white px-2 text-[13px] outline-none focus:border-[#00a78b]"
             />
           </div>
           <button
             type="button"
             onClick={() => setApplied({ from, to })}
-            className="h-9 rounded bg-[#2980b9] px-4 text-[13px] font-medium text-white hover:bg-[#2472a4]"
+            className="h-9 rounded bg-[#00a78b] px-4 text-[13px] font-medium text-white hover:bg-[#008f77]"
           >
             Apply Filter
           </button>
@@ -274,7 +274,7 @@ export default function AccountingDashboard() {
                   onClick={() => setTab(t)}
                   className={`inline-flex items-center gap-2 border-b-2 pb-2 text-[13px] font-semibold uppercase ${
                     tab === t
-                      ? "border-[#2980b9] text-[#2980b9]"
+                      ? "border-[#00a78b] text-[#00a78b]"
                       : "border-transparent text-[#296d9b]"
                   }`}
                 >
